@@ -15,10 +15,15 @@ body {
 ========================== */
 
 header {
-    background-color: #173222;
-    border-bottom: 3px solid #D4AF37;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
     text-align: center;
-    padding: 20px;
+    padding-top: 20px;
+    background: transparent;
+    border: none;
 }
 
 header h2 {
