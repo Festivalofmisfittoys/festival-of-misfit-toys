@@ -96,22 +96,29 @@ nav a:hover {
 }
 
 .hero h1 {
-    color: white;
-
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(3.5rem, 7vw, 6rem);
 
     font-weight: 900;
 
-    line-height: .95;
-
     text-transform: uppercase;
+
+    line-height: .95;
 
     letter-spacing: 2px;
 
     margin: 20px 0;
 
+    background: linear-gradient(
+        to bottom,
+        #ffffff,
+        #D4AF37
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     text-shadow:
-        0 4px 20px rgba(0,0,0,.6);
+        0 4px 15px rgba(0,0,0,.5);
 }
 
 .hero-tagline {
