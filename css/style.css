@@ -232,3 +232,66 @@ footer {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0,0,0,.4);
 }
+/* ===== HERO UPGRADE ===== */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(
+        to bottom,
+        #1F3B2C,
+        #121212
+    );
+}
+
+.hero-date {
+    color: #C7A44C;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin: 20px 0;
+    color: #C7A44C;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+}
+
+.tagline {
+    color: white;
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+/* ===== BUTTON STYLE ===== */
+
+.mission a {
+    display: inline-block;
+    background-color: #8B1E2D;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.mission a:hover {
+    background-color: #C7A44C;
+    color: #121212;
+}
+
+/* ===== BETTER FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 2px solid #C7A44C;
+    margin-top: 50px;
+    color: #999;
+    background-color: #0a0a0a;
+}
