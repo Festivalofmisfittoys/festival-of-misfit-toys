@@ -4,212 +4,659 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Festival of Misfit Toys</title>
+
+    <meta name="description"
+        content="Festival of Misfit Toys — SWFL's holiday metal festival. Free admission, live Florida bands, vendors, food, and a holiday toy drive.">
+    <meta name="theme-color" content="#080808">
+
+    <title>Festival of Misfit Toys | SWFL's Holiday Metal Festival</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
-<div class="ticker-wrap">
+    <!-- ==================================
+         HEADER
+    ================================== -->
 
-    <div class="ticker">
+    <header>
 
-        FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD •
+        <div class="ticker-wrap">
+            <div class="ticker">
+                FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD •
+            </div>
+        </div>
 
-    </div>
+        <nav aria-label="Main navigation">
+            <a href="#lineup">Lineup</a>
+            <a href="#experience">Experience</a>
+            <a href="#info">Event Info</a>
+            <a href="#toydrive">Toy Drive</a>
+            <a href="#faq">FAQ</a>
+            <a href="#sponsors">Sponsors</a>
+        </nav>
 
-</div>
-<nav>
+    </header>
 
-    <a href="#lineup">Lineup</a>
 
-    <a href="#info">Event Info</a>
+    <main>
 
-    <a href="#toydrive">Toy Drive</a>
+        <!-- ==================================
+             HERO
+        ================================== -->
 
-    <a href="#faq">FAQ</a>
+        <section class="hero" id="top">
 
-    <a href="#sponsors">Sponsors</a>
+            <div class="hero-overlay">
 
-</nav>
+                <p class="hero-date">
+                    SATURDAY • NOVEMBER 28 • BAY STREET YARD
+                </p>
 
-</header>
+                <h1>
+                    FESTIVAL OF<br>
+                    MISFIT TOYS
+                </h1>
 
-<section class="hero">
+                <p class="hero-tagline">
+                    SWFL'S HOLIDAY METAL FESTIVAL
+                </p>
 
-<div class="hero-overlay">
+                <p class="hero-subtitle">
+                    Heavy Music. Big Hearts.
+                </p>
 
-    <p class="hero-date">
-        SATURDAY • NOVEMBER 28 • BAY STREET YARD
-    </p>
+                <p class="hero-highlight">
+                    FREE ADMISSION • BRING A NEW UNWRAPPED TOY
+                </p>
 
-    <h1>
-        FESTIVAL OF<br>
-        MISFIT TOYS
-    </h1>
+                <div class="hero-actions">
 
-        <p class="hero-tagline">
-            SWFL'S HOLIDAY METAL FESTIVAL
+                    <a class="hero-button hero-button-primary" href="#lineup">
+                        LINEUP REVEAL
+                    </a>
 
+                    <a class="hero-button hero-button-secondary" href="#toydrive">
+                        THE TOY DRIVE
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             FESTIVAL STATS
+        ================================== -->
+
+        <section class="festival-stats" aria-label="Festival highlights">
+
+            <div class="stat">
+                <span class="stat-number">01</span>
+                <span class="stat-label">BIG CAUSE</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-number">02</span>
+                <span class="stat-label">STAGES</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">FLORIDA BANDS</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-number">FREE</span>
+                <span class="stat-label">ADMISSION</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-number">ALL</span>
+                <span class="stat-label">AGES</span>
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             VIDEO
+        ================================== -->
+
+        <section class="video-section" aria-label="Festival video">
+
+            <video
+                class="festival-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata">
+
+                <source src="videos/FOMTVideo.mp4" type="video/mp4">
+
+            </video>
+
+        </section>
+
+
+        <!-- ==================================
+             LINEUP REVEAL
+        ================================== -->
+
+        <section id="lineup" class="announcement">
+
+            <div class="section-kicker">
+                THE WAIT IS ALMOST OVER
+            </div>
+
+            <h2>LINEUP REVEAL</h2>
+
+            <p class="reveal-date">
+                SEPTEMBER 8
+            </p>
+
+            <p class="section-lead">
+                Ten or more Florida bands. Two stages. One massive day of heavy music.
+            </p>
+
+            <div class="countdown-box">
+
+                <div class="countdown-label">
+                    COUNTDOWN TO THE REVEAL
+                </div>
+
+                <div id="countdown">
+                    Loading Countdown...
+                </div>
+
+            </div>
+
+            <div class="lineup-placeholder">
+
+                <span class="placeholder-number">
+                    00
+                </span>
+
+                <div>
+                    <strong>LINEUP COMING SOON</strong>
+
+                    <p>
+                        The Misfits are being assembled.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             FESTIVAL EXPERIENCE
+        ================================== -->
+
+        <section id="experience" class="event-info">
+
+            <div class="section-kicker">
+                MORE THAN A SHOW
+            </div>
+
+            <h2>THE FESTIVAL EXPERIENCE</h2>
+
+            <p class="section-lead">
+                A full day built around heavy music, local community, and giving back.
+            </p>
+
+            <div class="info-grid">
+
+                <article class="info-item">
+
+                    <span class="card-number">
+                        01
+                    </span>
+
+                    <h3>
+                        TWO STAGES
+                    </h3>
+
+                    <p>
+                        Live heavy music across two stages throughout the festival.
+                    </p>
+
+                </article>
+
+
+                <article class="info-item">
+
+                    <span class="card-number">
+                        02
+                    </span>
+
+                    <h3>
+                        10+ FLORIDA BANDS
+                    </h3>
+
+                    <p>
+                        A showcase of the Florida heavy music scene.
+                    </p>
+
+                </article>
+
+
+                <article class="info-item">
+
+                    <span class="card-number">
+                        03
+                    </span>
+
+                    <h3>
+                        TOY DRIVE
+                    </h3>
+
+                    <p>
+                        Bring a new, unwrapped toy and help make the holidays brighter.
+                    </p>
+
+                </article>
+
+
+                <article class="info-item">
+
+                    <span class="card-number">
+                        04
+                    </span>
+
+                    <h3>
+                        VENDORS &amp; MERCH
+                    </h3>
+
+                    <p>
+                        Shop local vendors, festival merchandise, and more.
+                    </p>
+
+                </article>
+
+
+                <article class="info-item">
+
+                    <span class="card-number">
+                        05
+                    </span>
+
+                    <h3>
+                        FOOD &amp; DRINKS
+                    </h3>
+
+                    <p>
+                        Food and drinks available throughout the event.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             TOY DRIVE / MISSION
+        ================================== -->
+
+        <section id="toydrive" class="mission mission-feature">
+
+            <div class="mission-content">
+
+                <div class="section-kicker">
+                    THE HEART OF THE FESTIVAL
+                </div>
+
+                <h2>
+                    COME FOR THE MUSIC.<br>
+                    GIVE FOR THE KIDS.
+                </h2>
+
+                <div class="mission-rule"></div>
+
+                <p class="mission-intro">
+                    Festival of Misfit Toys is a free, all-ages metal festival supporting local children during the
+                    holiday season.
+                </p>
+
+                <p>
+                    Instead of purchasing a ticket, bring a new, unwrapped toy donation.
+                </p>
+
+                <div class="mission-callout">
+
+                    <span>
+                        ADMISSION
+                    </span>
+
+                    <strong>
+                        FREE
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             EVENT INFO
+        ================================== -->
+
+        <section class="event-details" id="info">
+
+            <div class="details-heading">
+
+                <div class="section-kicker">
+                    PLAN YOUR DAY
+                </div>
+
+                <h2>
+                    EVENT INFO
+                </h2>
+
+            </div>
+
+            <div class="details-grid">
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        WHEN
+                    </span>
+
+                    <strong>
+                        SATURDAY • NOVEMBER 28
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        WHERE
+                    </span>
+
+                    <strong>
+                        BAY STREET YARD
+                    </strong>
+
+                    <small>
+                        DOWNTOWN FORT MYERS
+                    </small>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        ADMISSION
+                    </span>
+
+                    <strong>
+                        FREE
+                    </strong>
+
+                    <small>
+                        ALL AGES
+                    </small>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        BRING
+                    </span>
+
+                    <strong>
+                        NEW, UNWRAPPED TOY
+                    </strong>
+
+                    <small>
+                        TOY DONATIONS STRONGLY ENCOURAGED
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             FAQ
+        ================================== -->
+
+        <section id="faq" class="mission faq-section">
+
+            <div class="section-kicker">
+                GOOD TO KNOW
+            </div>
+
+            <h2>
+                FREQUENTLY ASKED QUESTIONS
+            </h2>
+
+            <div class="faq-list">
+
+                <details>
+
+                    <summary>
+                        Is the festival all ages?
+                    </summary>
+
+                    <p>
+                        Yes! Festival of Misfit Toys is an all-ages event.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        How much does it cost?
+                    </summary>
+
+                    <p>
+                        Admission is completely free.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Do I need to bring a toy?
+                    </summary>
+
+                    <p>
+                        No, but toy donations are strongly encouraged.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can I bring a chair?
+                    </summary>
+
+                    <p>
+                        No. Outside chairs are not permitted. There will be seating throughout the venue.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Is the event rain or shine?
+                    </summary>
+
+                    <p>
+                        Yes. The festival is rain or shine.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        When is the lineup announced?
+                    </summary>
+
+                    <p>
+                        September 8.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             SPONSORS
+        ================================== -->
+
+        <section id="sponsors" class="sponsor-section">
+
+            <div class="sponsor-inner">
+
+                <div class="section-kicker">
+                    JOIN THE MISFIT FAMILY
+                </div>
+
+                <h2>
+                    SPONSOR THE FESTIVAL
+                </h2>
+
+                <p>
+                    Interested in supporting Festival of Misfit Toys?
+                </p>
+
+                <p class="sponsor-lead">
+                    Partner with a community-focused festival bringing heavy music and holiday giving together in
+                    Southwest Florida.
+                </p>
+
+                <a
+                    class="sponsor-button"
+                    href="https://drive.google.com/file/d/1RM5jB2gamPlqLiY-oGn-UlToGe9ow-y2/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener">
+
+                    BECOME A SPONSOR
+
+                </a>
+
+                <p class="contact-email">
+                    festivalofmisfittoys@gmail.com
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             FINAL CTA
+        ================================== -->
+
+        <section class="final-cta">
+
+            <div class="final-cta-inner">
+
+                <p class="section-kicker">
+                    NOVEMBER 28 • BAY STREET YARD
+                </p>
+
+                <h2>
+                    MAKE A LITTLE<br>
+                    NOISE FOR A<br>
+                    BIG CAUSE.
+                </h2>
+
+                <p>
+                    Free admission. Heavy music. Bring a toy.
+                </p>
+
+                <a
+                    href="#top"
+                    class="final-button">
+
+                    BACK TO TOP
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <p>
+            <strong>
+                Festival of Misfit Toys
+            </strong>
         </p>
 
-        <p class="hero-highlight">
-            FREE ADMISSION • BRING A NEW UNWRAPPED TOY
+        <p>
+            Bay Street Yard • Downtown Fort Myers
         </p>
 
-    </div>
+        <p>
+            Free Admission • Bring a New Unwrapped Toy
+        </p>
 
-</section>
+        <p>
+            festivalofmisfittoys@gmail.com
+        </p>
 
-<section id="lineup" class="announcement">
+        <div class="footer-rule"></div>
 
-    <h2>LINEUP REVEAL</h2>
+        <p class="footer-small">
+            © Festival of Misfit Toys
+        </p>
 
-    <p class="reveal-date">
-        SEPTEMBER 8
-    </p>
+    </footer>
 
-    <div class="countdown-box">
 
-        <div id="countdown">
-            Loading Countdown...
-        </div>
+    <a
+        href="#top"
+        class="back-to-top"
+        aria-label="Back to top">
 
-    </div>
+        ↑
 
-</section>
+    </a>
 
-<section class="video-section">
 
-    <video class="festival-video" autoplay muted loop playsinline>
-
-        <source src="videos/FOMTVideo.mp4" type="video/mp4">
-
-    </video>
-
-</section>
-<section id="info" class="event-info">
-
-    <h2>WHAT TO EXPECT</h2>
-
-    <div class="info-grid">
-
-        <div class="info-item">
-            🎸
-            <h3>Two Stages</h3>
-        </div>
-
-        <div class="info-item">
-            🤘
-            <h3>10+ Florida Bands</h3>
-        </div>
-
-        <div class="info-item">
-            🧸
-            <h3>Toy Drive</h3>
-        </div>
-
-        <div class="info-item">
-            🛍
-            <h3>Vendors & Merch</h3>
-        </div>
-
-        <div class="info-item">
-            🍔
-            <h3>Food & Drinks</h3>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="toydrive" class="mission">
-
-    <h2>FREE ADMISSION</h2>
-
-    <p>
-        Festival of Misfit Toys is a free, all-ages metal festival supporting local children during the holiday season.
-    </p>
-
-    <p>
-        Bring a new, unwrapped toy donation instead of purchasing a ticket.
-    </p>
-
-</section>
-<section id="faq" class="mission">
-
-    <h2>Frequently Asked Questions</h2>
-
-    <p><strong>Is the festival all ages?</strong><br>
-    Yes! Festival of Misfit Toys is an all-ages event.</p>
-
-    <p><strong>How much does it cost?</strong><br>
-    Admission is completely free.</p>
-
-    <p><strong>Do I need to bring a toy?</strong><br>
-    No, but toy donations are strongly encouraged.</p>
-
-    <p><strong>Can I bring a chair?</strong><br>
-    No. Outside chairs are not permitted, there will be seating throughout the venue.</p>
-
-    <p><strong>Is the event rain or shine?</strong><br>
-    Yes. The festival is rain or shine.</p>
-
-    <p><strong>When is the lineup announced?</strong><br>
-    September 8.</p>
-
-</section>
-<section id="sponsors" class="mission">
-
-    <h2>SPONSORSHIP OPPORTUNITIES</h2>
-
-    <p>
-        Interested in supporting Festival of Misfit Toys?
-    </p>
-
-    <p>
-        <a href="https://drive.google.com/file/d/1RM5jB2gamPlqLiY-oGn-UlToGe9ow-y2/view?usp=drive_link"
-           target="_blank">
-            🎸 Become a Sponsor
-        </a>
-    </p>
-
-    <p class="contact-email">
-        festivalofmisfittoys@gmail.com
-    </p>
-
-</section>
-
-<footer>
-
-    <p><strong>Festival of Misfit Toys</strong></p>
-
-    <p>
-        Bay Street Yard • Downtown Fort Myers
-    </p>
-
-    <p>
-        Free Admission • Bring a New Unwrapped Toy
-    </p>
-
-    <p>
-        festivalofmisfittoys@gmail.com
-    </p>
-
-</footer>
-
-<a href="#" class="back-to-top">
-    ↑
-</a>
-    
-<div class="pick pick1">🎸</div>
-<div class="pick pick2">🎸</div>
-<div class="pick pick3">🎸</div>
-<div class="pick pick4">🎸</div>
-<div class="pick pick5">🎸</div>
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
