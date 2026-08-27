@@ -189,3 +189,19 @@ footer {
     text-transform: uppercase;
     letter-spacing: 3px;
 }
+.countdown-box {
+    background-color: #121212;
+    border: 2px solid #C7A44C;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    text-align: center;
+}
+
+#countdown {
+    color: #C7A44C;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
