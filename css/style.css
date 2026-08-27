@@ -129,3 +129,24 @@ footer {
     }
 
 }
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.countbox {
+    background-color: #121212;
+    border: 2px solid #C7A44C;
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 100px;
+}
+
+.countbox span {
+    display: block;
+    font-size: 2rem;
+    color: #C7A44C;
+    font-weight: bold;
+}
