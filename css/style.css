@@ -205,3 +205,30 @@ footer {
     font-weight: bold;
     margin-top: 15px;
 }
+/* ===== COUNTDOWN ===== */
+
+.countdown-box {
+    background-color: #121212;
+    border: 2px solid #C7A44C;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 20px;
+}
+
+#countdown {
+    color: #C7A44C;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background-color: #8B1E2D;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
+}
