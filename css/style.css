@@ -1,85 +1,94 @@
-/* ==========================
-   GLOBAL
-========================== */
+/* ==================================
+   FESTIVAL OF MISFIT TOYS
+================================== */
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-image: url("../images/FOMT10.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
-
-    color: white;
-
     margin: 0;
     padding: 0;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    background-image: url("../images/FOMT10.jpg");
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: white;
 }
 
-/* ==========================
-   HEADER
-========================== */
+/* ==================================
+   NAVIGATION
+================================== */
 
 header {
+
     position: fixed;
 
     top: 0;
+    left: 0;
+
     width: 100%;
 
     z-index: 1000;
 
-    backdrop-filter: blur(10px);
-
     background: rgba(0,0,0,.45);
+
+    backdrop-filter: blur(12px);
 
     padding: 15px 0;
 }
 
 nav {
+
     display: flex;
 
     justify-content: center;
 
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 10px;
 }
 
 nav a {
 
-    color: white;
-
     text-decoration: none;
 
-    font-size: .9rem;
-
-    letter-spacing: 2px;
+    color: white;
 
     text-transform: uppercase;
 
-    border: 1px solid rgba(255,255,255,.3);
+    letter-spacing: 1px;
 
-    padding: 10px 14px;
+    font-size: .9rem;
 
-    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,.15);
+
+    padding: 10px 16px;
+
+    border-radius: 30px;
 
     transition: .3s;
+
+    box-shadow:
+        0 0 20px rgba(0,0,0,.25);
 }
 
 nav a:hover {
 
-    background: #E63946;
+    background: #B11E2C;
 
-    border-color: #E63946;
+    border-color: #B11E2C;
+
+    transform: translateY(-2px);
 }
 
-/* ==========================
+/* ==================================
    HERO
-========================== */
+================================== */
 
 .hero {
 
@@ -87,9 +96,9 @@ nav a:hover {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     position: relative;
 }
@@ -103,124 +112,138 @@ nav a:hover {
     inset: 0;
 
     background:
-
-    linear-gradient(
-        rgba(125,0,0,.25),
-        rgba(0,0,0,.75)
-    );
+        linear-gradient(
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.85)
+        );
 }
 
 .hero-overlay {
 
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 
     text-align: center;
+
+    max-width: 1200px;
 
     padding: 20px;
 }
 
 .hero-date {
 
-    color: #2ECC71;
+    color: #D4AF37;
 
     letter-spacing: 4px;
 
     font-weight: bold;
+
+    margin-bottom: 20px;
 }
 
 .hero h1 {
 
-    font-size: clamp(3rem,7vw,6rem);
+    font-size: clamp(3rem, 6vw, 5.5rem);
 
-    margin: 20px 0;
+    font-weight: 900;
 
     text-transform: uppercase;
 
-    font-weight: 900;
+    margin: 0;
+
+    line-height: .95;
 
     color: white;
 
     text-shadow:
-    0 0 20px rgba(0,0,0,.8);
+        0 5px 20px rgba(0,0,0,.75),
+        0 15px 35px rgba(0,0,0,.75);
 }
 
 .hero-tagline {
 
-    color: #E63946;
+    margin-top: 25px;
 
-    font-size: 1.6rem;
+    color: #D4AF37;
 
-    text-transform: uppercase;
+    font-size: 1.3rem;
 
     letter-spacing: 3px;
+
+    text-transform: uppercase;
 
     font-weight: bold;
 }
 
 .hero-subtitle {
 
-    font-size: 1.3rem;
-
     margin-top: 15px;
+
+    font-size: 1.2rem;
 }
 
 .hero-highlight {
 
-    margin-top: 25px;
-
     display: inline-block;
 
-    background: #E63946;
+    margin-top: 25px;
 
-    padding: 14px 22px;
+    background: rgba(177,30,44,.90);
 
-    border-radius: 40px;
+    padding: 14px 24px;
+
+    border-radius: 50px;
 
     font-weight: bold;
+
+    box-shadow:
+        0 8px 25px rgba(177,30,44,.45);
 }
 
-/* ==========================
-   SECTIONS
-========================== */
+/* ==================================
+   PANELS
+================================== */
 
 .announcement,
 .event-info,
 .mission {
 
     background:
-    rgba(0,0,0,.82);
+        rgba(10,10,10,.82);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
 
-    margin: 50px auto;
-
-    padding: 50px 30px;
+    border-radius: 16px;
 
     max-width: 1200px;
 
-    border-radius: 16px;
+    margin: 50px auto;
+
+    padding: 50px 35px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45);
 }
 
-/* ==========================
+/* ==================================
    HEADINGS
-========================== */
+================================== */
 
 h2 {
 
-    color: #2ECC71;
+    color: #D4AF37;
 
-    text-transform: uppercase;
+    text-align: center;
 
     letter-spacing: 2px;
 
-    text-align: center;
+    text-transform: uppercase;
 }
 
-/* ==========================
-   LINEUP
-========================== */
+/* ==================================
+   COUNTDOWN
+================================== */
 
 .reveal-date {
 
@@ -228,45 +251,51 @@ h2 {
 
     font-size: 5rem;
 
-    color: #E63946;
-
     font-weight: 900;
+
+    color: white;
+
+    margin: 10px 0;
+
+    text-shadow:
+        0 0 20px rgba(177,30,44,.5);
 }
 
 .countdown-box {
 
-    text-align: center;
+    max-width: 700px;
 
-    border: 2px solid #E63946;
-
-    border-radius: 12px;
+    margin: 25px auto;
 
     padding: 30px;
 
-    max-width: 700px;
+    border: 2px solid #B11E2C;
 
-    margin: 20px auto;
+    border-radius: 12px;
+
+    background:
+        rgba(0,0,0,.6);
 }
 
 #countdown {
 
     font-size: 2rem;
 
-    color: white;
-
     font-weight: bold;
+
+    color: #D4AF37;
 }
 
-/* ==========================
-   WHAT TO EXPECT
-========================== */
+/* ==================================
+   INFO GRID
+================================== */
 
 .info-grid {
 
     display: grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(180px,1fr));
+        repeat(auto-fit,minmax(180px,1fr));
 
     gap: 20px;
 
@@ -275,106 +304,107 @@ h2 {
 
 .info-item {
 
-    background:
-    rgba(255,255,255,.05);
+    text-align: center;
 
-    border:
-    2px solid rgba(46,204,113,.3);
+    padding: 25px;
 
     border-radius: 12px;
 
-    padding: 30px;
+    background:
+        rgba(255,255,255,.04);
 
-    font-size: 2rem;
+    border: 1px solid rgba(255,255,255,.08);
 
     transition: .3s;
 }
 
 .info-item:hover {
 
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 
     background:
-    rgba(230,57,70,.2);
+        rgba(177,30,44,.15);
 }
 
 .info-item h3 {
 
-    font-size: 1rem;
-
     color: white;
 
+    margin-top: 10px;
+
     text-transform: uppercase;
+
+    font-size: .95rem;
 }
 
-/* ==========================
-   BUTTONS
-========================== */
+/* ==================================
+   SPONSOR BUTTON
+================================== */
 
 .mission a {
 
     display: inline-block;
 
-    padding: 15px 22px;
+    text-decoration: none;
 
-    background: #E63946;
+    background: #B11E2C;
 
     color: white;
 
-    text-decoration: none;
+    padding: 15px 25px;
 
     border-radius: 50px;
 
     font-weight: bold;
+
+    transition: .3s;
 }
 
 .mission a:hover {
 
-    background: #2ECC71;
+    background: #D4AF37;
 
     color: black;
 }
 
-/* ==========================
+/* ==================================
    FAQ
-========================== */
+================================== */
 
 .faq-question {
 
-    color: #2ECC71;
+    color: #D4AF37;
 
     font-weight: bold;
-
-    margin-top: 25px;
 }
 
-/* ==========================
+/* ==================================
    FOOTER
-========================== */
+================================== */
 
 footer {
 
     background:
-    rgba(0,0,0,.85);
+        rgba(0,0,0,.85);
 
     text-align: center;
 
-    padding: 50px 20px;
-
     margin-top: 60px;
+
+    padding: 50px 20px;
 }
 
-/* ==========================
+/* ==================================
    BACK TO TOP
-========================== */
+================================== */
 
 .back-to-top {
 
     position: fixed;
 
-    bottom: 25px;
-
     right: 25px;
+
+    bottom: 25px;
 
     width: 50px;
 
@@ -382,43 +412,55 @@ footer {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-    background: #E63946;
-
-    color: white;
-
-    border-radius: 50%;
+    align-items: center;
 
     text-decoration: none;
 
-    font-size: 1.3rem;
+    border-radius: 50%;
+
+    background: #B11E2C;
+
+    color: white;
+
+    font-weight: bold;
+
+    z-index: 500;
 }
 
 .back-to-top:hover {
 
-    background: #2ECC71;
+    background: #D4AF37;
 
     color: black;
 }
 
-/* ==========================
+/* ==================================
    MOBILE
-========================== */
+================================== */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
     .announcement,
     .event-info,
     .mission {
 
-        margin: 20px 10px;
+        margin: 25px 10px;
     }
 
     .reveal-date {
 
         font-size: 3rem;
+    }
+
+    nav {
+
+        gap: 8px;
+    }
+
+    nav a {
+
+        padding: 8px 12px;
     }
 }
