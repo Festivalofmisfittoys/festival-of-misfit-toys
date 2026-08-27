@@ -174,7 +174,31 @@ nav a:hover {
     color: #D4AF37;
     text-transform: uppercase;
 }
+/* ==========================
+   EVENT INFO
+========================== */
 
+.event-info {
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
+    max-width: 1200px;
+
+    margin: 50px auto;
+
+    border-radius: 12px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+}
+
+.event-info h2 {
+    color: #D4AF37;
+    margin-bottom: 40px;
+}
 /* ==========================
    COUNTDOWN
 ========================== */
@@ -200,9 +224,21 @@ nav a:hover {
 ========================== */
 
 .mission {
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
     max-width: 1000px;
-    margin: auto;
-    padding: 50px 20px;
+
+    margin: 50px auto;
+
+    border: 1px solid rgba(212,175,55,.3);
+
+    border-radius: 12px;
+
+    padding: 50px 30px;
+
     text-align: center;
 }
 
