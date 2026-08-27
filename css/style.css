@@ -147,57 +147,54 @@ nav a:hover {
 
 .hero h1 {
 
-    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-size: clamp(2.3rem, 4vw, 4rem);
 
     font-weight: 900;
 
     text-transform: uppercase;
 
-    line-height: .95;
+    letter-spacing: 2px;
 
-    letter-spacing: 1px;
+    line-height: .95;
 
     margin: 20px 0;
 
-    background: linear-gradient(
-        to bottom,
-        #fefefe,
-        #c9c9c9
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #d9d9d9;
 
     text-shadow:
-        0 0 4px rgba(255,255,255,.1),
-        0 0 12px rgba(177,30,44,.25),
-        0 0 20px rgba(177,30,44,.15),
-        0 4px 12px rgba(0,0,0,.9);
+        0 2px 4px rgba(0,0,0,.7),
+        0 0 10px rgba(177,30,44,.35),
+        0 0 25px rgba(177,30,44,.2);
+
+    filter:
+        drop-shadow(0 4px 15px rgba(0,0,0,.6));
 }
 
 .hero-tagline {
 
-    color: #D4AF37;
+    color: #B11E2C;
 
     font-size: 1rem;
 
     font-weight: 900;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
     margin-top: 10px;
 
     text-shadow:
-        0 0 10px rgba(212,175,55,.3);
+        0 0 8px rgba(177,30,44,.4);
 }
 
 .hero-subtitle {
 
-    margin-top: 15px;
+    font-size: 1.15rem;
 
-    font-size: 1.2rem;
+    color: rgba(255,255,255,.90);
+
+    letter-spacing: 1px;
 }
 
 .hero-highlight {
