@@ -557,77 +557,115 @@ footer p {
 
 .video-banner {
 
+    position: *elative;
+
     width: 100%;
 
-    height: 700px;
+    mi*-height: 700px;
 
-    margin: 80px 0;
-
-    position: relative;
+    margin: 80px *;
 
     overflow: hidden;
 
-    background:
+    back*round:
         linear-gradient(
-            rgba(0,0,0,.35),
-            rgba(0,0,0,.75)
+  *         rgba(125,0,0,.20),
+      *     rgba(0,0,0,.85)
         ),
-        url("../images/FOMT10.jpg");
+  *     url("../images/FOMT10.jpg");
+*    background-size: cover;
 
-    background-size: cover;
+    b*ckground-position: center center;
+*    border-top: 2px solid rgba(177*30,44,.4);
 
-    background-position: center;
+    border*bottom: 2px solid rgba(177,30,*4,.4);
 }
 
 .video-banner-overlay {
+*   *display* flex;
 
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    flex-direction: column;
+    flex-direction: column*
 
     justify-content: center;
 
-    align-items: center;
+  * align-items: center;
 
-    text-align: center;
+    text-al*gn: center;
 
-    padding: 30px;
+    min-height: 700px*
+
+    padding: 50px;
 }
 
-.video-banner h2 {
+.video-ban*er h2 {
 
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem* 5vw, 4rem);
+
+    margin-bottom: 1*px;
 
     color: white;
 
-    margin-bottom: 15px;
+    text-t*ansform: uppercase;
 
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 20px rgba(177,30,44,.4);
+    text-shad*w:
+        0 0 10px rgba(177,30,44*.4),
+        0 5px 20px rgba(0,0,*,.8);
 }
 
 .video-banner p {
 
-    font-size: 1.25rem;
+    co*or: #d9d9d9;
 
-    color: white;
+*   font*size: 1.2rem;
+*
+
+.video-placeholder {
+
+    margin*top: 40px;
+
+    width: min*90%, 1200px);
+
+    height* 450*x;
+
+    border-radius: 16px;
+
+    *ackground:
+        rgba(0,0,0,.65)*
+
+    border:
+*       2px solid rgba(177,30,44,.4*;
+
+    display: flex;
+
+   *flex*direction: column;
+
+    justify-co*tent: center;
+
+    align-items: ce*ter;
+
+    box-shadow:
+        0 20*x 50px rgba(0,0,0,.45);
 }
 
-.video-coming-soon {
+.video-*laceholder span {
 
-    margin-top: 20px;
+    font-size: *rem;
 
-    color: #D4AF37;
+    margin-bottom: 20px;
+}
 
-    letter-spacing: 3px;
+*video-placeholder p {
 
-    text-transform: uppercase;
+    margin:*5px 0;
+}
 
-    font-weight: bold;
+.coming-soon {
+
+    colo*: #D4AF37;
+
+    text*transform: uppercase;
+
+    letter-*pacing: 3px;
+
+    font-weight: bol*;
 }
