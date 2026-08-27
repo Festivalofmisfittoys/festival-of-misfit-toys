@@ -126,16 +126,11 @@ nav a:hover {
 
 .hero::before {
 
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
     background:
-        linear-gradient(
-            rgba(90,0,0,.25),
-            rgba(0,0,0,.82)
+        radial-gradient(
+            circle at center,
+            rgba(177,30,44,.20) 0%,
+            rgba(0,0,0,.75) 75%
         );
 }
 
@@ -168,27 +163,25 @@ nav a:hover {
 
 .hero h1 {
 
-    font-size: clamp(2.3rem, 4vw, 4rem);
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
 
     font-weight: 900;
 
     text-transform: uppercase;
 
-    letter-spacing: 2px;
+    line-height: .9;
 
-    line-height: .95;
+    letter-spacing: 1px;
 
-    margin: 20px 0;
+    margin: 15px 0;
 
-    color: #d9d9d9;
+    color: #f0f0f0;
 
     text-shadow:
-        0 2px 4px rgba(0,0,0,.7),
-        0 0 10px rgba(177,30,44,.35),
-        0 0 25px rgba(177,30,44,.2);
-
-    filter:
-        drop-shadow(0 4px 15px rgba(0,0,0,.6));
+        0 2px 3px rgba(0,0,0,.8),
+        0 0 10px rgba(177,30,44,.25),
+        0 0 20px rgba(177,30,44,.25),
+        0 0 40px rgba(177,30,44,.15);
 }
 
 .hero-tagline {
