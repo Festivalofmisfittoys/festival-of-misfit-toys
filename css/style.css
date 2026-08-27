@@ -32,3 +32,23 @@ header {
     padding: 20px;
     border-bottom: 3px solid #C7A44C;
 }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background-color: #1F3B2C;
+    border: 2px solid #C7A44C;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background-color: #8B1E2D;
+    cursor: pointer;
+}
