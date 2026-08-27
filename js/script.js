@@ -1,39 +1,37 @@
-const countdownDate = new Date("September 8, 2026 00:00:00").getTime();
+const countdown = document.getElementById("countdown");
 
-const timer = setInterval(function () {
+const revealDate = new Date("September 8, 2026 00:00:00").getTime();
+
+function updateCountdown() {
 
     const now = new Date().getTime();
 
-    const distance = countdownDate - now;
+    const distance = revealDate - now;
+
+    if (distance <= 0) {
+
+        countdown.innerHTML = "LINEUP ANNOUNCED!";
+        return;
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
     );
 
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
     );
 
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
+    countdown.innerHTML =
+        days + " DAYS • " +
+        hours + " HOURS • " +
+        minutes + " MINUTES";
+}
 
-    document.getElementById("countdown").innerHTML =
-        days + "d " +
-        hours + "h " +
-        minutes + "m " +
-        seconds + "s";
+updateCountdown();
 
-    if (distance < 0) {
-        clearInterval(timer);
-
-        document.getElementById("countdown").innerHTML =
-            "LINEUP ANNOUNCED!";
-    }
-
-}, 1000);
+setInterval(updateCountdown, 1000);
