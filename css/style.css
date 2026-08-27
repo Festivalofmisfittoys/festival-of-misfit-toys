@@ -589,3 +589,47 @@ footer p {
 
     display: block;
 }
+/* ==================================
+   MOVING TICKER
+================================== */
+
+.ticker-wrap {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    background: rgba(177,30,44,.95);
+
+    border-bottom: 1px solid rgba(255,255,255,.15);
+
+    padding: 8px 0;
+}
+
+.ticker {
+
+    display: inline-block;
+
+    color: white;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    animation: ticker 25s linear infinite;
+}
+
+@keyframes ticker {
+
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
