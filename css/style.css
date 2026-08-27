@@ -150,3 +150,32 @@ footer {
     color: #C7A44C;
     font-weight: bold;
 }
+/* ========= COUNTDOWN ========= */
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.countbox {
+    background-color: #121212;
+    border: 2px solid #C7A44C;
+    border-radius: 10px;
+    padding: 15px 25px;
+    min-width: 120px;
+    text-align: center;
+}
+
+.countbox span {
+    color: #C7A44C;
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: block;
+}
+
+.countbox p {
+    margin-top: 10px;
+}
