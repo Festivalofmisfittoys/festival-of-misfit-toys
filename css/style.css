@@ -21,7 +21,7 @@ body {
 }
 
 /* ==================================
-   NAVIGATION
+   HEADER
 ================================== */
 
 header {
@@ -35,11 +35,37 @@ header {
 
     z-index: 1000;
 
-    background: rgba(0,0,0,.45);
+    background: rgba(0,0,0,.60);
 
     backdrop-filter: blur(12px);
 
-    padding: 15px 0;
+    padding: 10px 0 15px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+}
+
+.header-logo {
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+.header-logo img {
+
+    max-width: 220px;
+
+    width: auto;
+
+    height: auto;
+
+    display: block;
+
+    margin: 0 auto;
+
+    filter:
+        drop-shadow(0 5px 15px rgba(0,0,0,.6));
 }
 
 nav {
@@ -63,7 +89,7 @@ nav a {
 
     letter-spacing: 1px;
 
-    font-size: .9rem;
+    font-size: .85rem;
 
     border: 1px solid rgba(255,255,255,.15);
 
@@ -72,9 +98,6 @@ nav a {
     border-radius: 30px;
 
     transition: .3s;
-
-    box-shadow:
-        0 0 20px rgba(0,0,0,.25);
 }
 
 nav a:hover {
@@ -82,8 +105,6 @@ nav a:hover {
     background: #B11E2C;
 
     border-color: #B11E2C;
-
-    transform: translateY(-2px);
 }
 
 /* ==================================
