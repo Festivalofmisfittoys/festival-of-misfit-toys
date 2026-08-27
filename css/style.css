@@ -87,3 +87,11 @@ nav a:hover {
 .card p {
     line-height: 1.6;
 }
+.card a {
+    color: white;
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: #C7A44C;
+}
