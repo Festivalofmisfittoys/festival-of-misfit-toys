@@ -795,3 +795,684 @@ strong {
         height: 44px;
     }
 }
+
+
+/* ==================================
+   FESTIVAL BRAND — NEW HTML SECTIONS
+================================== */
+
+
+/* ==================================
+   HERO ACTIONS
+================================== */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 13px 22px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    border-radius: 2px;
+    transition: .25s ease;
+}
+
+.hero-button-primary {
+    background: #B11E2C;
+    color: #ffffff;
+    border: 1px solid #D4AF37;
+    box-shadow: 0 8px 22px rgba(0,0,0,.45);
+}
+
+.hero-button-primary:hover {
+    background: #D4AF37;
+    color: #050505;
+    transform: translateY(-3px);
+}
+
+.hero-button-secondary {
+    background: rgba(0,0,0,.55);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,.35);
+}
+
+.hero-button-secondary:hover {
+    background: #ffffff;
+    color: #050505;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+}
+
+
+/* ==================================
+   FESTIVAL STATS
+================================== */
+
+.festival-stats {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    background: #070707;
+    border-top: 1px solid rgba(212,175,55,.35);
+    border-bottom: 1px solid rgba(177,30,44,.55);
+    box-shadow: 0 15px 35px rgba(0,0,0,.45);
+    z-index: 10;
+}
+
+.stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 125px;
+    padding: 20px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,.08);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat-number {
+    color: #ffffff;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: clamp(1.7rem, 3vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #7A1220;
+}
+
+.stat-label {
+    margin-top: 9px;
+    color: #D4AF37;
+    font-size: .65rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* ==================================
+   SHARED SECTION ELEMENTS
+================================== */
+
+.section-kicker {
+    position: relative;
+    margin-bottom: 10px;
+    color: #D4AF37;
+    font-size: .65rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.section-lead {
+    position: relative;
+    max-width: 760px;
+    margin: 20px auto 0;
+    color: rgba(255,255,255,.72);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* ==================================
+   LINEUP PLACEHOLDER
+================================== */
+
+.lineup-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    max-width: 650px;
+    margin: 35px auto 0;
+    padding: 22px 25px;
+    text-align: left;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.09);
+    border-left: 4px solid #B11E2C;
+}
+
+.placeholder-number {
+    color: rgba(255,255,255,.14);
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.lineup-placeholder strong {
+    color: #ffffff;
+    font-size: .85rem;
+    letter-spacing: 2px;
+}
+
+.lineup-placeholder p {
+    margin: 5px 0 0;
+    color: rgba(255,255,255,.55);
+    font-size: .85rem;
+}
+
+
+/* ==================================
+   COUNTDOWN LABEL
+================================== */
+
+.countdown-label {
+    margin-bottom: 10px;
+    color: rgba(255,255,255,.5);
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+/* ==================================
+   INFO CARD TEXT
+================================== */
+
+.card-number {
+    display: block;
+    margin-bottom: 8px;
+    color: #B11E2C;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.info-item p {
+    margin: 12px 0 0;
+    color: rgba(255,255,255,.58);
+    font-size: .85rem;
+    line-height: 1.55;
+}
+
+
+/* ==================================
+   TOY DRIVE / MISSION
+================================== */
+
+.mission-feature {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(177,30,44,.16),
+            rgba(10,10,10,.96) 38%,
+            rgba(5,5,5,.98)
+        );
+    border-top: 2px solid #D4AF37;
+}
+
+.mission-content {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.mission-feature h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: .95;
+}
+
+.mission-intro {
+    font-size: 1.15rem !important;
+    color: rgba(255,255,255,.88) !important;
+    max-width: 750px !important;
+}
+
+.mission-rule {
+    width: 100px;
+    height: 4px;
+    margin: 24px auto;
+    background: #B11E2C;
+    box-shadow: 0 0 16px rgba(177,30,44,.35);
+}
+
+.mission-callout {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 18px 38px;
+    border: 1px solid rgba(212,175,55,.55);
+    background: rgba(0,0,0,.45);
+}
+
+.mission-callout span {
+    color: rgba(255,255,255,.5);
+    font-size: .6rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.mission-callout strong {
+    margin-top: 3px;
+    color: #D4AF37;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+
+/* ==================================
+   EVENT DETAILS
+================================== */
+
+.event-details {
+    position: relative;
+    width: min(92%, 1400px);
+    margin: 70px auto;
+    padding: 65px;
+    box-sizing: border-box;
+    background: #090909;
+    border-top: 2px solid #B11E2C;
+    border-bottom: 1px solid rgba(212,175,55,.2);
+    box-shadow: 0 25px 55px rgba(0,0,0,.5);
+}
+
+.details-heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.details-heading h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0 #7A1220;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    margin: auto;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    min-height: 105px;
+    padding: 15px 25px;
+    border-right: 1px solid rgba(255,255,255,.08);
+}
+
+.detail:last-child {
+    border-right: none;
+}
+
+.detail-label {
+    margin-bottom: 12px;
+    color: #B11E2C;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.detail strong {
+    color: #ffffff;
+    font-size: .85rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.detail small {
+    margin-top: 6px;
+    color: rgba(255,255,255,.42);
+    font-size: .68rem;
+    line-height: 1.4;
+}
+
+
+/* ==================================
+   FAQ ACCORDION
+================================== */
+
+.faq-section {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,15,15,.98),
+            rgba(5,5,5,.98)
+        );
+}
+
+.faq-list {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+
+.faq-list details {
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.faq-list details:last-child {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.faq-list summary {
+    position: relative;
+    padding: 20px 45px 20px 5px;
+    color: #ffffff;
+    font-size: .9rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+    transition: .2s ease;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::after {
+    content: "+";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #D4AF37;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.faq-list details[open] summary {
+    color: #D4AF37;
+}
+
+.faq-list details[open] summary::after {
+    content: "−";
+}
+
+.faq-list summary:hover {
+    color: #D4AF37;
+}
+
+.faq-list details p {
+    margin: 0;
+    padding: 0 45px 22px 5px;
+    color: rgba(255,255,255,.6);
+    font-size: .9rem;
+    line-height: 1.7;
+}
+
+
+/* ==================================
+   SPONSOR SECTION
+================================== */
+
+.sponsor-section {
+    position: relative;
+    width: 100%;
+    padding: 100px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            #0c0c0c,
+            #16090b 50%,
+            #090909
+        );
+    border-top: 1px solid rgba(212,175,55,.25);
+    border-bottom: 2px solid #B11E2C;
+}
+
+.sponsor-inner {
+    max-width: 800px;
+    margin: auto;
+}
+
+.sponsor-section h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    line-height: .9;
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 0 #7A1220;
+}
+
+.sponsor-section > .sponsor-inner > p {
+    color: rgba(255,255,255,.7);
+}
+
+.sponsor-lead {
+    max-width: 650px;
+    margin: 15px auto 30px !important;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.sponsor-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 17px 30px;
+    color: #ffffff;
+    background: #B11E2C;
+    border: 1px solid #D4AF37;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: .75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,.45);
+}
+
+.sponsor-button:hover {
+    background: #D4AF37;
+    color: #050505;
+    transform: translateY(-4px);
+}
+
+.sponsor-section .contact-email {
+    margin-top: 25px;
+}
+
+
+/* ==================================
+   FINAL CTA
+================================== */
+
+.final-cta {
+    position: relative;
+    padding: 120px 20px;
+    text-align: center;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            rgba(0,0,0,.76),
+            rgba(0,0,0,.9)
+        ),
+        url("../images/FOMT10.jpg");
+    background-position: center;
+    background-size: cover;
+    border-bottom: 1px solid rgba(212,175,55,.25);
+}
+
+.final-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0px,
+            transparent 22px,
+            rgba(255,255,255,.012) 22px,
+            rgba(255,255,255,.012) 24px
+        );
+}
+
+.final-cta-inner {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.final-cta h2 {
+    margin: 15px 0;
+    color: #ffffff;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: .82;
+    letter-spacing: 3px;
+    text-shadow:
+        4px 4px 0 #7A1220,
+        0 15px 35px rgba(0,0,0,.7);
+}
+
+.final-cta p:not(.section-kicker) {
+    color: rgba(255,255,255,.8);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.final-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 24px;
+    color: #ffffff;
+    border: 1px solid rgba(212,175,55,.65);
+    background: rgba(0,0,0,.65);
+    text-decoration: none;
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s ease;
+}
+
+.final-button:hover {
+    color: #050505;
+    background: #D4AF37;
+    transform: translateY(-3px);
+}
+
+
+/* ==================================
+   FOOTER ADDITIONS
+================================== */
+
+.footer-rule {
+    width: 60px;
+    height: 2px;
+    margin: 28px auto;
+    background: #B11E2C;
+}
+
+.footer-small {
+    font-size: .65rem;
+    color: rgba(255,255,255,.3) !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 768px) {
+
+    .hero-actions {
+        gap: 8px;
+    }
+
+    .hero-button {
+        padding: 11px 15px;
+        font-size: .62rem;
+        letter-spacing: 1.2px;
+    }
+
+    .festival-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat {
+        min-height: 90px;
+    }
+
+    .stat:nth-child(2),
+    .stat:nth-child(4) {
+        border-right: none;
+    }
+
+    .stat:last-child {
+        grid-column: 1 / -1;
+        border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .lineup-placeholder {
+        gap: 15px;
+        padding: 18px;
+    }
+
+    .placeholder-number {
+        font-size: 2.5rem;
+    }
+
+    .event-details {
+        width: calc(100% - 20px);
+        padding: 40px 20px;
+        margin: 35px 10px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .detail {
+        min-height: 95px;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .detail:nth-child(2) {
+        border-right: none;
+    }
+
+    .detail:nth-child(3),
+    .detail:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .detail:nth-child(4) {
+        border-right: none;
+    }
+
+    .sponsor-section {
+        padding: 75px 20px;
+    }
+
+    .final-cta {
+        padding: 90px 20px;
+    }
+
+    .final-cta h2 {
+        letter-spacing: 2px;
+    }
+
+}
