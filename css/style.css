@@ -386,3 +386,68 @@ footer {
         font-size: 2.5rem;
     }
 }
+/* ==========================
+   FLOATING GUITAR PICKS
+========================== */
+
+.pick {
+    position: fixed;
+
+    color: rgba(212,175,55,.15);
+
+    font-size: 2.5rem;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    animation: float 12s infinite ease-in-out;
+}
+
+.pick1 {
+    top: 15%;
+    left: 5%;
+}
+
+.pick2 {
+    top: 30%;
+    right: 8%;
+
+    animation-delay: 2s;
+}
+
+.pick3 {
+    top: 55%;
+    left: 8%;
+
+    animation-delay: 4s;
+}
+
+.pick4 {
+    top: 70%;
+    right: 6%;
+
+    animation-delay: 6s;
+}
+
+.pick5 {
+    top: 85%;
+    left: 50%;
+
+    animation-delay: 8s;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
