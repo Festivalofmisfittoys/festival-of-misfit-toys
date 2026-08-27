@@ -95,3 +95,19 @@ nav a:hover {
 .card a:hover {
     color: #C7A44C;
 }
+.mission {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.mission h2 {
+    color: #C7A44C;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
