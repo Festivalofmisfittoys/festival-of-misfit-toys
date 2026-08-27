@@ -158,10 +158,15 @@ nav a:hover {
 ========================== */
 
 .announcement {
-    text-align: center;
-    background-color: #173222;
+    background: rgba(0,0,0,.85);
+
+    backdrop-filter: blur(10px);
+
     border-top: 2px solid #D4AF37;
     border-bottom: 2px solid #D4AF37;
+
+    text-align: center;
+
     padding: 35px;
 }
 
