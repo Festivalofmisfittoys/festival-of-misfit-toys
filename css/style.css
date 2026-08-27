@@ -25,3 +25,10 @@ h2 {
     font-weight: bold;
     font-size: 1.2rem;
 }
+header {
+    background-color: #1F3B2C;
+    color: #F5F5F5;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #C7A44C;
+}
