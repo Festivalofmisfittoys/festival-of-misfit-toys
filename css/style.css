@@ -31,21 +31,28 @@ header {
 
     text-align: center;
 }
-
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 20px;
 
-    font-size: .95rem;
+    border: 2px solid #D4AF37;
+
+    padding: 10px 20px;
+
+    border-radius: 6px;
+
     font-weight: bold;
 
     letter-spacing: 2px;
+
     text-transform: uppercase;
+
+    transition: .3s;
 }
 
 nav a:hover {
-    color: #D4AF37;
+    background-color: #D4AF37;
+    color: black;
 }
 
 /* ==========================
