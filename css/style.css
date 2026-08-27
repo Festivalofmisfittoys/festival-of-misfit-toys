@@ -336,9 +336,9 @@ h2 {
     font-size: .95rem;
 }
 
-/* ==================================
+/* ==========================
    SPONSOR BUTTON
-================================== */
+========================== */
 
 .mission a {
 
@@ -346,24 +346,48 @@ h2 {
 
     text-decoration: none;
 
-    background: #B11E2C;
+    background: linear-gradient(
+        135deg,
+        #B11E2C,
+        #7A1220
+    );
 
     color: white;
 
-    padding: 15px 25px;
+    padding: 18px 30px;
 
     border-radius: 50px;
 
-    font-weight: bold;
+    font-weight: 900;
 
-    transition: .3s;
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    border: 2px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 10px 25px rgba(177,30,44,.4);
+
+    transition: all .3s ease;
 }
 
 .mission a:hover {
 
-    background: #D4AF37;
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    background: linear-gradient(
+        135deg,
+        #D4AF37,
+        #B8860B
+    );
 
     color: black;
+
+    box-shadow:
+        0 15px 30px rgba(212,175,55,.4);
 }
 
 /* ==================================
