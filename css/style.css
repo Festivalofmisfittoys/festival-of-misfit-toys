@@ -52,3 +52,17 @@ header {
     background-color: #8B1E2D;
     cursor: pointer;
 }
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #C7A44C;
+}
