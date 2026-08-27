@@ -181,3 +181,11 @@ footer {
 .countbox p {
     margin-top: 10px;
 }
+.logo-area {
+    padding-bottom: 20px;
+}
+
+.logo-area h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
