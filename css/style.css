@@ -46,9 +46,12 @@ nav a:hover {
 }
 
 .hero h1 {
-    color: #C7A44C;
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-family: Impact, Arial Black, sans-serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #D4AF37;
+    margin: 20px 0;
 }
 
 .tagline {
