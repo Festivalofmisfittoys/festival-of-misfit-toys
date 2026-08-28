@@ -1573,32 +1573,26 @@ footer p {
 
 
 /* =========================================================
-   ARTIST FLIP CARDS
+   FOMT ARTIST FLIP CARDS — CLEAN VERSION
+   Desktop = hover
+   Mobile = tap via .is-flipped
    ========================================================= */
 
 .lineup-section {
-  position: relative;
-
-  width: min(1400px,94%);
-
-  margin: 70px auto;
-
-  padding: 70px 20px;
-
-  text-align: center;
+    position: relative;
+    width: min(1400px, 94%);
+    margin: 70px auto;
+    padding: 70px 20px;
+    text-align: center;
 }
 
 .artist-grid {
-  width: min(1180px,100%);
+    width: min(1180px, 100%);
+    margin: 45px auto 0;
 
-  margin: 45px auto 0;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
 
@@ -1607,35 +1601,27 @@ footer p {
    ========================================================= */
 
 .artist-card {
-  position: relative;
+    position: relative;
+    height: 390px;
 
-  height: 390px;
+    perspective: 1200px;
+    cursor: pointer;
 
-  perspective: 1200px;
+    outline: none;
 
-  cursor: pointer;
-
-  outline: none;
-
-  /*
-   * Important:
-   * The card itself does NOT rotate.
-   * Only .artist-card-inner rotates.
-   */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .artist-card-inner {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 
-  -webkit-transform-style: preserve-3d;
-
-  transition:
-    transform .75s cubic-bezier(.2,.75,.2,1);
+    transition: transform .75s cubic-bezier(.2,.75,.2,1);
 }
 
 
@@ -1645,9 +1631,10 @@ footer p {
 
 @media (hover: hover) and (pointer: fine) {
 
-  .artist-card:hover .artist-card-inner {
-    transform: rotateY(180deg);
-  }
+    .artist-card:hover .artist-card-inner {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
 
 }
 
@@ -1657,140 +1644,165 @@ footer p {
    ========================================================= */
 
 .artist-card.is-flipped .artist-card-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 
 /* =========================================================
-   KEYBOARD ACCESS
+   KEYBOARD
    ========================================================= */
 
 .artist-card:focus-visible {
-  outline: 2px solid var(--gold);
-
-  outline-offset: 5px;
+    outline: 2px solid var(--gold);
+    outline-offset: 5px;
 }
 
 
 /* =========================================================
-   CARD FACES
+   FRONT + BACK
    ========================================================= */
 
 .artist-card-front,
 .artist-card-back {
-  position: absolute;
+    position: absolute;
+    inset: 0;
 
-  inset: 0;
+    width: 100%;
+    height: 100%;
 
-  width: 100%;
-  height: 100%;
+    overflow: hidden;
 
-  overflow: hidden;
+    border: 1px solid rgba(212,175,55,.35);
+    border-top: 3px solid var(--red);
 
-  /*
-   * THIS IS CRITICAL.
-   * The browser must hide the opposite face
-   * when it rotates away.
-   */
-  backface-visibility: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #050505
+        );
 
-  -webkit-backface-visibility: hidden;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.55),
+        inset 0 0 40px rgba(177,30,44,.06);
 
-  /*
-   * Keep the faces on their own 3D layer.
-   */
-  transform-style: preserve-3d;
+    /*
+     * IMPORTANT:
+     * Keep each face on its own 3D plane.
+     */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
-  -webkit-transform-style: preserve-3d;
-
-  border: 1px solid rgba(212,175,55,.35);
-
-  border-top: 3px solid var(--red);
-
-  background:
-    linear-gradient(
-      145deg,
-      #171717,
-      #050505
-    );
-
-  box-shadow:
-    0 20px 45px rgba(0,0,0,.55),
-    inset 0 0 40px rgba(177,30,44,.06);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 
 /* =========================================================
-   FRONT
+   FRONT FACE
    ========================================================= */
 
 .artist-card-front {
-  display: flex;
+    z-index: 2;
 
-  flex-direction: column;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
 
-  /*
-   * NO rotateY HERE.
-   *
-   * The front is the natural starting face.
-   */
+    display: flex;
+    flex-direction: column;
 }
 
 
 /* =========================================================
-   MYSTERY IMAGE
+   BACK FACE
+   ========================================================= */
+
+.artist-card-back {
+    z-index: 1;
+
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-top-color: var(--gold);
+
+    /*
+     * This keeps the contents of the back
+     * facing the viewer when the card flips.
+     */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   FRONT IMAGE
    ========================================================= */
 
 .artist-image {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  height: 300px;
+    width: 100%;
+    height: 300px;
 
-  display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
+    overflow: hidden;
 }
 
+
+/* =========================================================
+   MYSTERY ARTWORK
+   ========================================================= */
+
 .mystery-image {
-  background:
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(177,30,44,.30),
-      transparent 42%
-    ),
-    radial-gradient(
-      circle at 65% 70%,
-      rgba(212,175,55,.08),
-      transparent 40%
-    ),
-    linear-gradient(
-      135deg,
-      #191919,
-      #030303
-    );
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(177,30,44,.30),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 65% 70%,
+            rgba(212,175,55,.08),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #191919,
+            #030303
+        );
 }
 
 .mystery-image::before {
-  content: "";
+    content: "";
 
-  position: absolute;
+    position: absolute;
+    inset: -50%;
 
-  inset: -50%;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 14px,
+            rgba(255,255,255,.025) 14px 16px
+        );
 
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 14px,
-      rgba(255,255,255,.025) 14px 16px
-    );
+    transform: rotate(8deg);
+    -webkit-transform: rotate(8deg);
 
-  transform: rotate(8deg);
-
-  pointer-events: none;
+    pointer-events: none;
 }
 
 
@@ -1799,31 +1811,30 @@ footer p {
    ========================================================= */
 
 .mystery-symbol {
-  position: relative;
+    position: relative;
 
-  z-index: 2;
+    z-index: 2;
 
-  color: rgba(255,255,255,.92);
+    color: rgba(255,255,255,.92);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: 9rem;
+    font-size: 9rem;
+    line-height: 1;
 
-  line-height: 1;
+    text-shadow:
+        6px 6px 0 var(--red-dark),
+        0 0 35px rgba(177,30,44,.35);
 
-  text-shadow:
-    6px 6px 0 var(--red-dark),
-    0 0 35px rgba(177,30,44,.35);
-
-  /*
-   * Prevent the question mark from becoming
-   * an accidental clickable layer.
-   */
-  pointer-events: none;
+    /*
+     * Prevent the question mark from becoming
+     * interactive content on the flipped face.
+     */
+    pointer-events: none;
 }
 
 
@@ -1832,20 +1843,19 @@ footer p {
    ========================================================= */
 
 .artist-number {
-  position: absolute;
+    position: absolute;
 
-  top: 15px;
-  left: 17px;
+    top: 15px;
+    left: 17px;
 
-  z-index: 5;
+    z-index: 5;
 
-  color: rgba(255,255,255,.42);
+    color: rgba(255,255,255,.42);
 
-  font-size: .55rem;
+    font-size: .55rem;
+    font-weight: 900;
 
-  font-weight: 900;
-
-  letter-spacing: 2px;
+    letter-spacing: 2px;
 }
 
 
@@ -1854,172 +1864,129 @@ footer p {
    ========================================================= */
 
 .artist-front-info {
-  flex: 1;
+    flex: 1;
 
-  display: flex;
+    display: flex;
+    flex-direction: column;
 
-  flex-direction: column;
+    justify-content: center;
 
-  justify-content: center;
-
-  padding: 15px 18px;
+    padding: 15px 18px;
 }
 
 .artist-status {
-  color: var(--gold);
+    color: var(--gold);
 
-  font-size: .55rem;
+    font-size: .55rem;
+    font-weight: 900;
 
-  font-weight: 900;
-
-  letter-spacing: 2.5px;
+    letter-spacing: 2.5px;
 }
 
 .artist-front-info h3 {
-  margin: 7px 0 0;
+    margin: 7px 0 0;
 
-  color: var(--white);
+    color: var(--white);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: 1.35rem;
+    font-size: 1.35rem;
 
-  letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
 }
 
 
 /* =========================================================
-   BACK
-   ========================================================= */
-
-.artist-card-back {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 35px 25px;
-
-  text-align: center;
-
-  /*
-   * The back starts rotated away.
-   * When the inner rotates 180 degrees,
-   * the back becomes visible normally.
-   */
-  transform: rotateY(180deg);
-
-  border-top-color: var(--gold);
-}
-
-
-/* =========================================================
-   BACK NUMBER
+   BACK CONTENT
    ========================================================= */
 
 .artist-card-back .artist-number {
-  position: relative;
+    position: relative;
 
-  top: auto;
-  left: auto;
+    top: auto;
+    left: auto;
 
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 
-  color: var(--red);
+    color: var(--red);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: 3.2rem;
+    font-size: 3.2rem;
 
-  letter-spacing: 0;
+    letter-spacing: 0;
 }
 
-
-/* =========================================================
-   BACK TITLE
-   ========================================================= */
-
 .artist-card-back h3 {
-  margin: 0;
+    margin: 0;
 
-  color: var(--white);
+    color: var(--white);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: 1.45rem;
+    font-size: 1.45rem;
 
-  letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
 }
 
 .artist-card-back p {
-  max-width: 270px;
+    max-width: 270px;
 
-  margin: 12px auto 0;
+    margin: 12px auto 0;
 
-  color: rgba(255,255,255,.58);
+    color: rgba(255,255,255,.58);
 
-  font-size: .78rem;
+    font-size: .78rem;
 
-  line-height: 1.55;
+    line-height: 1.55;
 }
 
 
 /* =========================================================
-   SOCIAL BUTTONS
+   SOCIAL LINKS
    ========================================================= */
 
 .artist-socials {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
 
-  flex-wrap: wrap;
+    justify-content: center;
 
-  justify-content: center;
+    gap: 7px;
 
-  gap: 7px;
-
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .artist-socials button {
-  position: relative;
+    padding: 9px 11px;
 
-  z-index: 10;
+    border: 1px solid rgba(212,175,55,.35);
 
-  padding: 9px 11px;
+    background: transparent;
 
-  border: 1px solid rgba(212,175,55,.35);
+    color: var(--gold);
 
-  background: transparent;
+    font-size: .52rem;
+    font-weight: 900;
 
-  color: var(--gold);
-
-  font-size: .52rem;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-
-  cursor: pointer;
+    letter-spacing: 1px;
 }
 
 .artist-socials button:disabled {
-  opacity: .5;
-
-  cursor: default;
+    opacity: .5;
+    cursor: default;
 }
 
 
@@ -2028,42 +1995,40 @@ footer p {
    ========================================================= */
 
 .learn-more-btn {
-  position: relative;
+    position: relative;
+    z-index: 20;
 
-  z-index: 20;
+    margin-top: 22px;
 
-  margin-top: 22px;
+    padding: 12px 25px;
 
-  padding: 12px 25px;
+    border: 1px solid var(--red);
 
-  border: 1px solid var(--red);
+    background: var(--red);
 
-  background: var(--red);
+    color: var(--white);
 
-  color: var(--white);
+    font-size: .58rem;
+    font-weight: 900;
 
-  font-size: .58rem;
+    letter-spacing: 1.8px;
 
-  font-weight: 900;
+    cursor: pointer;
 
-  letter-spacing: 1.8px;
+    pointer-events: auto;
 
-  cursor: pointer;
-
-  pointer-events: auto;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    transform .2s ease;
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
 }
 
 .learn-more-btn:hover {
-  background: var(--red-dark);
+    background: var(--red-dark);
 
-  border-color: var(--gold);
+    border-color: var(--gold);
 
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 
@@ -2072,190 +2037,183 @@ footer p {
    ========================================================= */
 
 .artist-modal {
-  position: fixed;
+    position: fixed;
 
-  inset: 0;
+    inset: 0;
 
-  z-index: 9999;
+    z-index: 9999;
 
-  display: flex;
+    display: flex;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-  padding: 25px;
+    padding: 25px;
 
-  opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-  visibility: hidden;
-
-  pointer-events: none;
-
-  transition:
-    opacity .25s ease,
-    visibility .25s ease;
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
 }
 
 .artist-modal.is-open {
-  opacity: 1;
-
-  visibility: visible;
-
-  pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .artist-modal-overlay {
-  position: absolute;
+    position: absolute;
 
-  inset: 0;
+    inset: 0;
 
-  background: rgba(0,0,0,.86);
+    background: rgba(0,0,0,.86);
 
-  backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .artist-modal-content {
-  position: relative;
+    position: relative;
 
-  z-index: 2;
+    z-index: 2;
 
-  width: min(760px,100%);
+    width: min(760px,100%);
 
-  max-height: 90vh;
+    max-height: 90vh;
 
-  overflow-y: auto;
+    overflow-y: auto;
 
-  background:
-    linear-gradient(
-      145deg,
-      #181818,
-      #050505
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #050505
+        );
 
-  border: 1px solid rgba(212,175,55,.4);
+    border: 1px solid rgba(212,175,55,.4);
+    border-top: 4px solid var(--red);
 
-  border-top: 4px solid var(--red);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.75);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.75);
 }
 
 .artist-modal-image {
-  height: 300px;
+    height: 300px;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .artist-modal-image span {
-  color: rgba(255,255,255,.9);
+    color: rgba(255,255,255,.9);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: 8rem;
+    font-size: 8rem;
 
-  text-shadow:
-    5px 5px 0 var(--red-dark);
+    text-shadow:
+        5px 5px 0 var(--red-dark);
 }
 
 .artist-modal-body {
-  padding: 35px;
+    padding: 35px;
 
-  text-align: center;
+    text-align: center;
 }
 
 .artist-modal-kicker {
-  color: var(--gold);
+    color: var(--gold);
 
-  font-size: .58rem;
+    font-size: .58rem;
+    font-weight: 900;
 
-  font-weight: 900;
-
-  letter-spacing: 3px;
+    letter-spacing: 3px;
 }
 
 .artist-modal-body h2 {
-  margin: 10px 0 18px;
+    margin: 10px 0 18px;
 
-  color: var(--white);
+    color: var(--white);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-  font-size: clamp(2rem,5vw,3.5rem);
+    font-size: clamp(2rem,5vw,3.5rem);
 
-  letter-spacing: 2px;
+    letter-spacing: 2px;
 }
 
 .artist-modal-body p {
-  max-width: 600px;
+    max-width: 600px;
 
-  margin: 0 auto;
+    margin: 0 auto;
 
-  color: rgba(255,255,255,.68);
+    color: rgba(255,255,255,.68);
 
-  line-height: 1.7;
+    line-height: 1.7;
 }
 
 .artist-modal-links {
-  display: flex;
+    display: flex;
 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 
-  justify-content: center;
+    justify-content: center;
 
-  gap: 10px;
+    gap: 10px;
 
-  margin-top: 28px;
+    margin-top: 28px;
 }
 
 .artist-modal-links button {
-  padding: 11px 18px;
+    padding: 11px 18px;
 
-  background: transparent;
+    background: transparent;
 
-  border: 1px solid rgba(212,175,55,.4);
+    border: 1px solid rgba(212,175,55,.4);
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-size: .55rem;
+    font-size: .55rem;
+    font-weight: 900;
 
-  font-weight: 900;
-
-  letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
 }
 
 .artist-modal-close {
-  position: absolute;
+    position: absolute;
 
-  top: 12px;
-  right: 15px;
+    top: 12px;
+    right: 15px;
 
-  z-index: 5;
+    z-index: 5;
 
-  width: 38px;
-  height: 38px;
+    width: 38px;
+    height: 38px;
 
-  border: 1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.25);
 
-  background: rgba(0,0,0,.55);
+    background: rgba(0,0,0,.55);
 
-  color: white;
+    color: white;
 
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 
-  line-height: 1;
+    line-height: 1;
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 
@@ -2263,580 +2221,91 @@ footer p {
    MOBILE
    ========================================================= */
 
-@media (max-width: 768px) {
-
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-
-  /* HEADER */
-
-  header {
-    position: relative;
-
-    inset: auto;
-
-    width: 100%;
-
-    padding: 8px 0 10px;
-  }
-
-  .ticker-wrap {
-    padding: 7px 0;
-  }
-
-  .ticker {
-    font-size: .58rem;
-
-    letter-spacing: 1.4px;
-
-    animation-duration: 20s;
-  }
-
-  nav {
-    display: grid;
-
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
-    gap: 7px;
-
-    width: 100%;
-
-    margin: 8px 0 0;
-
-    padding: 0 12px;
-  }
-
-  nav a {
-    width: 100%;
-
-    min-height: 48px;
-
-    padding: 8px 5px;
-
-    font-size: .57rem;
-
-    letter-spacing: .9px;
-
-    white-space: nowrap;
-  }
-
-
-  /* HERO */
-
-  .hero {
-    display: block;
-
-    min-height: 0;
-
-    width: 100%;
-
-    padding: 42px 14px 70px;
-
-    overflow: visible;
-  }
-
-  .hero-overlay {
-    width: 100%;
-
-    max-width: none;
-
-    margin: 0;
-
-    padding: 0;
-
-    text-align: center;
-  }
-
-  .hero-date {
-    max-width: 100%;
-
-    font-size: .53rem;
-
-    letter-spacing: 1.3px;
-
-    line-height: 1.5;
-
-    overflow-wrap: anywhere;
-  }
-
-  .hero h1 {
-    width: 100%;
-
-    max-width: 100%;
-
-    margin: 25px auto 20px;
-
-    font-size:
-      clamp(2.35rem,11.8vw,4.2rem);
-
-    line-height: .84;
-
-    letter-spacing: .7px;
-
-    overflow: visible;
-  }
-
-  .hero h1::before {
-    width: 103%;
-    height: 108%;
-  }
-
-  .hero h1::after {
-    max-width: 94%;
-
-    margin-top: 17px;
-
-    padding: 5px 8px 4px;
-
-    font-size: .4rem;
-
-    letter-spacing: 1.5px;
-  }
-
-  .hero-tagline {
-    font-size: .58rem;
-
-    letter-spacing: 1.8px;
-
-    line-height: 1.4;
-  }
-
-  .hero-subtitle {
-    font-size: .88rem;
-  }
-
-  .hero-highlight {
-    width: min(100%,360px);
-
-    padding: 12px 13px;
-
-    font-size: .57rem;
-
-    line-height: 1.5;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-
-    gap: 10px;
-
-    width: 100%;
-  }
-
-  .hero-button {
-    width: min(100%,280px);
-
-    text-align: center;
-  }
-
-
-  /* STATS */
-
-  .festival-stats {
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .stat {
-    min-height: 88px;
-
-    padding: 14px 7px;
-  }
-
-  .stat:nth-child(2),
-  .stat:nth-child(4) {
-    border-right: none;
-  }
-
-  .stat:last-child {
-    grid-column: 1 / -1;
-
-    border-top:
-      1px solid rgba(255,255,255,.08);
-
-    border-right: none;
-  }
-
-  .stat-number {
-    font-size: 1.55rem;
-  }
-
-  .stat-label {
-    font-size: .53rem;
-
-    letter-spacing: 1.2px;
-
-    line-height: 1.3;
-  }
-
-
-  /* PANELS */
-
-  .announcement,
-  .event-info,
-  .mission {
-    width: calc(100% - 20px);
-
-    margin: 35px 10px;
-
-    padding: 40px 16px;
-  }
-
-  .announcement h2,
-  .event-info h2,
-  .mission h2 {
-    font-size:
-      clamp(1.85rem,9.5vw,3rem);
-
-    letter-spacing: 1.5px;
-  }
-
-  .reveal-date {
-    width: 100%;
-
-    margin: 18px auto 12px;
-
-    padding: 0;
-
-    font-size:
-      clamp(1.95rem,9.7vw,3.2rem);
-
-    line-height: .95;
-
-    letter-spacing: .2px;
-
-    white-space: nowrap;
-
-    text-align: center;
-  }
-
-  .countdown-box {
-    width: 100%;
-
-    margin: 24px auto;
-
-    padding: 20px 9px;
-  }
-
-  .countdown-label {
-    font-size: .47rem;
-
-    letter-spacing: 1.8px;
-  }
-
-  .countdown-box #countdown {
-    font-size:
-      clamp(1.05rem,6.2vw,1.8rem);
-
-    line-height: 1.3;
-
-    letter-spacing: .7px;
-  }
-
-
-  /* =====================================================
-     ARTIST CARDS — MOBILE
-     ===================================================== */
-
-  .lineup-section {
-    width: 100%;
-
-    margin: 35px auto;
-
-    padding: 50px 12px;
-  }
-
-  .artist-grid {
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
-    gap: 13px;
-
-    margin-top: 30px;
-  }
-
-  .artist-card {
-    height: 320px;
-
-    /*
-     * Important for mobile Safari.
-     * Keep the perspective on the card itself.
-     */
-    perspective: 1000px;
-
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .artist-card-inner {
-    height: 100%;
-
-    transform-style: preserve-3d;
-
-    -webkit-transform-style: preserve-3d;
-  }
-
-  .artist-image {
-    height: 220px;
-  }
-
-  .mystery-symbol {
-    font-size: 6rem;
-  }
-
-  .artist-front-info {
-    padding: 10px;
-  }
-
-  .artist-status {
-    font-size: .43rem;
-
-    letter-spacing: 1.5px;
-  }
-
-  .artist-front-info h3 {
-    font-size: .82rem;
-
-    letter-spacing: .8px;
-  }
-
-  .artist-card-back {
-    padding: 20px 10px;
-  }
-
-  .artist-card-back .artist-number {
-    font-size: 2.2rem;
-  }
-
-  .artist-card-back h3 {
-    font-size: .9rem;
-  }
-
-  .artist-card-back p {
-    font-size: .62rem;
-  }
-
-  .artist-socials {
-    gap: 4px;
-
-    margin-top: 15px;
-  }
-
-  .artist-socials button {
-    padding: 6px 5px;
-
-    font-size: .39rem;
-  }
-
-  .learn-more-btn {
-    margin-top: 14px;
-
-    padding: 9px 13px;
-
-    font-size: .45rem;
-  }
-
-
-  /* VIDEO */
-
-  .video-section {
-    height: 52vh;
-
-    min-height: 320px;
-
-    margin: 50px 0;
-  }
-
-  .video-section::after {
-    bottom: 15px;
-
-    max-width: 90%;
-
-    text-align: center;
-
-    font-size: .78rem;
-
-    letter-spacing: 2px;
-  }
-
-
-  /* EXPERIENCE */
-
-  .info-grid {
-    grid-template-columns: 1fr;
-
-    gap: 10px;
-
-    margin-top: 30px;
-  }
-
-  .info-item {
-    padding: 22px 14px;
-  }
-
-  .info-item h3 {
-    font-size: .76rem;
-  }
-
-
-  /* EVENT DETAILS */
-
-  .event-details {
-    width: calc(100% - 20px);
-
-    margin: 35px 10px;
-
-    padding: 40px 16px;
-  }
-
-  .details-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .detail {
-    min-height: auto;
-
-    padding: 18px 8px;
-
-    border-right: none;
-
-    border-bottom:
-      1px solid rgba(255,255,255,.08);
-  }
-
-  .detail:last-child {
-    border-bottom: none;
-  }
-
-
-  /* PARKING */
-
-  .parking-section {
-    grid-template-columns: 1fr;
-
-    gap: 30px;
-
-    margin-top: 40px;
-
-    padding-top: 40px;
-  }
-
-  .parking-copy {
-    text-align: left;
-  }
-
-  .parking-copy h3 {
-    font-size:
-      clamp(1.85rem,9vw,3rem);
-  }
-
-  .parking-copy > p {
-    font-size: .84rem;
-  }
-
-  .parking-map {
-    width: 100%;
-  }
-
-  .map-button {
-    width: 100%;
-
-    text-align: center;
-  }
-
-
-  /* FAQ */
-
-  .faq-list {
-    margin-top: 25px;
-  }
-
-  .faq-list summary {
-    padding: 18px 38px 18px 3px;
-
-    font-size: .69rem;
-
-    line-height: 1.5;
-  }
-
-  .faq-list details p {
-    padding: 0 20px 20px 3px;
-
-    font-size: .81rem;
-  }
-
-
-  /* SPONSORS */
-
-  .sponsor-section {
-    padding: 75px 18px;
-  }
-
-  .sponsor-section h2 {
-    font-size:
-      clamp(2.2rem,11.5vw,4rem);
-
-    letter-spacing: 2px;
-  }
-
-  .sponsor-button,
-  .final-button {
-    width: min(100%,300px);
-
-    text-align: center;
-  }
-
-
-  /* CTA */
-
-  .final-cta {
-    padding: 85px 18px;
-  }
-
-  .final-cta h2 {
-    font-size:
-      clamp(2.9rem,14.5vw,5rem);
-
-    line-height: .84;
-
-    letter-spacing: 1.5px;
-  }
-
-
-  /* FOOTER */
-
-  footer {
-    padding: 55px 18px;
-  }
-
-  .back-to-top {
-    right: 15px;
-
-    bottom: 15px;
-
-    width: 44px;
-    height: 44px;
-  }
-
-
-  /* MODAL */
-
-  .artist-modal {
-    padding: 12px;
-  }
-
-  .artist-modal-image {
-    height: 220px;
-  }
-
-  .artist-modal-body {
-    padding: 25px 18px;
-  }
+@media (max-width:768px) {
+
+    .lineup-section {
+        width: 100%;
+        padding: 50px 12px;
+    }
+
+    .artist-grid {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap: 13px;
+
+        margin-top: 30px;
+    }
+
+    .artist-card {
+        height: 320px;
+    }
+
+    .artist-image {
+        height: 220px;
+    }
+
+    .mystery-symbol {
+        font-size: 6rem;
+    }
+
+    .artist-front-info {
+        padding: 10px;
+    }
+
+    .artist-status {
+        font-size: .43rem;
+        letter-spacing: 1.5px;
+    }
+
+    .artist-front-info h3 {
+        font-size: .82rem;
+        letter-spacing: .8px;
+    }
+
+    .artist-card-back {
+        padding: 20px 10px;
+    }
+
+    .artist-card-back .artist-number {
+        font-size: 2.2rem;
+    }
+
+    .artist-card-back h3 {
+        font-size: .9rem;
+    }
+
+    .artist-card-back p {
+        font-size: .62rem;
+    }
+
+    .artist-socials {
+        gap: 4px;
+        margin-top: 15px;
+    }
+
+    .artist-socials button {
+        padding: 6px 5px;
+        font-size: .39rem;
+    }
+
+    .learn-more-btn {
+        margin-top: 14px;
+        padding: 9px 13px;
+        font-size: .45rem;
+    }
+
+    .artist-modal {
+        padding: 12px;
+    }
+
+    .artist-modal-image {
+        height: 220px;
+    }
+
+    .artist-modal-body {
+        padding: 25px 18px;
+    }
 }
 
 
@@ -2846,65 +2315,18 @@ footer p {
 
 @media (max-width:390px) {
 
-  nav a {
-    min-height: 44px;
+    .artist-grid {
+        grid-template-columns: 1fr;
+        max-width: 330px;
+    }
 
-    font-size: .51rem;
+    .artist-card {
+        height: 370px;
+    }
 
-    letter-spacing: .6px;
-  }
-
-  .hero {
-    padding-left: 9px;
-    padding-right: 9px;
-  }
-
-  .hero h1 {
-    font-size:
-      clamp(2.15rem,11.4vw,3.4rem);
-  }
-
-  .hero h1::after {
-    font-size: .37rem;
-
-    letter-spacing: 1px;
-  }
-
-  .reveal-date {
-    font-size:
-      clamp(1.82rem,9.3vw,2.7rem);
-  }
-
-  #countdown {
-    font-size: 1.03rem;
-  }
-
-  .artist-grid {
-    grid-template-columns: 1fr;
-
-    max-width: 330px;
-  }
-
-  .artist-card {
-    height: 370px;
-  }
-
-  .artist-image {
-    height: 265px;
-  }
-}
-
-
-/* =========================================================
-   TOUCH DEVICES
-   ========================================================= */
-
-@media (hover: none) and (pointer: coarse) {
-
-  .artist-card {
-    cursor: pointer;
-  }
-
+    .artist-image {
+        height: 265px;
+    }
 }
 
 
@@ -2913,5 +2335,5 @@ footer p {
    ========================================================= */
 
 body.modal-open {
-  overflow: hidden;
+    overflow: hidden;
 }
