@@ -314,6 +314,7 @@ footer p:first-child{color:#fff;font-family:Impact,Haettenschweiler,"Arial Narro
 .artist-card-front {
     display: flex;
     flex-direction: column;
+    transform: rotateY(0deg);
 }
 
 .artist-image {
