@@ -990,6 +990,7 @@ body.modal-open {
    MOBILE / TOUCH FLIP
    ========================================================= */
 
+/* Flip when JavaScript adds this class */
 .artist-card.is-flipped .artist-card-inner {
     transform: rotateY(180deg);
 }
