@@ -1004,3 +1004,20 @@ body.modal-open {
         pointer-events: none;
     }
 }
+/* ==========================================
+   ARTIST CARD 3D FACE FIX
+   ========================================== */
+
+.artist-card-front,
+.artist-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.artist-card-front {
+    transform: rotateY(0deg);
+}
+
+.artist-card-back {
+    transform: rotateY(180deg);
+}
