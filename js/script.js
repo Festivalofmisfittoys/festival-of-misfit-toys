@@ -265,22 +265,26 @@ artistCards.forEach(function (card) {
 });
 
 /* ==========================================
-   MOBILE + DESKTOP TAP/CLICK FLIP
+   MOBILE / TOUCH TAP-TO-FLIP
    ========================================== */
 
-const artistCards = document.querySelectorAll(".artist-card");
+if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
 
-artistCards.forEach(function(card) {
+    const artistCards = document.querySelectorAll(".artist-card");
 
-    card.addEventListener("click", function(event) {
+    artistCards.forEach(function(card) {
 
-        // Don't flip when clicking Learn More or social buttons
-        if (event.target.closest("button")) {
-            return;
-        }
+        card.addEventListener("click", function(event) {
 
-        card.classList.toggle("is-flipped");
+            // Don't flip when interacting with buttons
+            if (event.target.closest("button")) {
+                return;
+            }
+
+            card.classList.toggle("is-flipped");
+
+        });
 
     });
 
-});
+}
