@@ -1735,6 +1735,15 @@ footer p {
     text-align: center;
 
     border-top-color: var(--gold);
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Keep everything on the back face readable */
+.artist-card-back > * {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 /* =========================================================
    FRONT IMAGE
