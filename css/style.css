@@ -2351,3 +2351,50 @@ strong {
     }
 
 }
+/* ==================================
+   MOBILE HEADER SPACE FIX
+================================== */
+
+@media (max-width: 600px) {
+
+    /*
+       The mobile navigation is tall because it
+       uses three rows. Reserve that space before
+       the hero begins.
+    */
+
+    header {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 45px;
+        padding-bottom: 80px;
+        box-sizing: border-box;
+    }
+
+    .hero-overlay {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 14px;
+        box-sizing: border-box;
+    }
+
+    /*
+       Keep the entire festival logo visible.
+    */
+
+    .hero h1 {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+}
