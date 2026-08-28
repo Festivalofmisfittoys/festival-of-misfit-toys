@@ -263,7 +263,10 @@ footer p:first-child{color:#fff;font-family:Impact,Haettenschweiler,"Arial Narro
     }
 
 }
-
+/* Mobile / touch tap-to-flip */
+.artist-card.is-flipped .artist-card-inner {
+    transform: rotateY(180deg);
+}
 
 /* Keyboard */
 
