@@ -1909,3 +1909,26 @@ footer p {
 body.modal-open {
     overflow: hidden;
 }
+/* FIX MIRRORED QUESTION MARKS */
+
+.artist-card-front{
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    transform:rotateY(0deg) translateZ(1px);
+}
+
+.artist-card-back{
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    transform:rotateY(180deg);
+}
+
+.mystery-symbol{
+    transform:translateZ(2px);
+    -webkit-transform:translateZ(2px);
+
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+
+    will-change:transform;
+}
