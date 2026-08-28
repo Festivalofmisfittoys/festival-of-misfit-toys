@@ -983,3 +983,6 @@ footer p:first-child{color:#fff;font-family:Impact,Haettenschweiler,"Arial Narro
     }
 
 }
+body.modal-open {
+    overflow: hidden;
+}
