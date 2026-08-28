@@ -997,13 +997,13 @@ body.modal-open {
 .artist-card.is-flipped .artist-card-inner {
     transform: rotateY(180deg);
 }
-/* Fix artist card front/back visibility */
-.artist-card-front,
-.artist-card-back {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
+/* MOBILE ONLY — fix flipped card visibility */
+@media (hover: none) and (pointer: coarse) {
 
-.artist-card-back {
-    transform: rotateY(180deg);
+    .artist-card-front,
+    .artist-card-back {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
 }
