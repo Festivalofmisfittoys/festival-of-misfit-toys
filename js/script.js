@@ -51,50 +51,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ==========================================
-       FLIP CARDS
-       ========================================== */
+/* ==========================================
+   ARTIST FLIP CARDS
+   ========================================== */
 
-    artistCards.forEach(function (card) {
+const artistCards = document.querySelectorAll(".artist-card");
 
-        card.addEventListener("click", function (event) {
+artistCards.forEach(function (card) {
 
-            /*
-             * Don't flip when someone clicks
-             * a button on the back.
-             */
-
-            if (event.target.closest("button")) {
-                return;
-            }
-
-            card.classList.toggle("is-flipped");
-
-        });
-
+    card.addEventListener("click", function (event) {
 
         /*
-         * Keyboard accessibility
+         * If the user clicked a button on the
+         * back of the card, don't flip the card.
          */
 
-        card.addEventListener("keydown", function (event) {
+        if (event.target.closest("button")) {
+            return;
+        }
 
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                card.classList.toggle("is-flipped");
-
-            }
-
-        });
+        card.classList.toggle("is-flipped");
 
     });
 
 
+    /*
+     * Keyboard support
+     */
+
+    card.addEventListener("keydown", function (event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            card.classList.toggle("is-flipped");
+
+        }
+
+    });
+
+});
     /* ==========================================
        LEARN MORE
        ========================================== */
