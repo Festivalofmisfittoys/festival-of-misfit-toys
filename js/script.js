@@ -1,236 +1,142 @@
-const countdown = document.getElementById("countdown");
+/* =========================================================
+   FOMT COUNTDOWN
+========================================================= */
 
+const countdown = document.getElementById("countdown");
 const revealDate = new Date("September 8, 2026 00:00:00").getTime();
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    if (!countdown) return;
 
+    const now = Date.now();
     const distance = revealDate - now;
 
     if (distance <= 0) {
-
-        countdown.innerHTML = "LINEUP ANNOUNCED!";
+        countdown.textContent = "LINEUP REVEALED";
         return;
     }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
     );
 
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
     );
 
-    countdown.innerHTML =
-        days + " DAYS • " +
-        hours + " HOURS • " +
-        minutes + " MINUTES";
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    countdown.textContent =
+        `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
 
 updateCountdown();
-
 setInterval(updateCountdown, 1000);
+
 /* =========================================================
-   FOMT ARTIST FLIP CARDS + BIO MODAL
-   ========================================================= */
+   FOMT ARTIST CARDS + MODAL
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const artistCards = document.querySelectorAll(".artist-card");
-    const artistModal = document.getElementById("artist-modal");
-    const modalTitle = document.getElementById("artist-modal-title");
-    const modalBio = document.getElementById("artist-modal-bio");
+    const cards = document.querySelectorAll(".artist-card");
 
-    if (!artistCards.length) {
-        return;
-    }
+    const modal = document.getElementById("artist-modal");
 
+    const modalTitle =
+        document.getElementById("artist-modal-title");
 
-/* ==========================================
-   ARTIST FLIP CARDS
-   ========================================== */
+    const modalBio =
+        document.getElementById("artist-modal-bio");
 
-const cards = document.querySelectorAll(".artist-card");
-
-cards.forEach(function (card) {
-
-    card.addEventListener("click", function (event) {
-
-        /*
-         * If the user clicked a button on the
-         * back of the card, don't flip the card.
-         */
-
-        if (event.target.closest("button")) {
-            return;
-        }
-
-        card.classList.toggle("is-flipped");
-
-    });
-
-
-    /*
-     * Keyboard support
-     */
-
-    card.addEventListener("keydown", function (event) {
-
-        if (
-            event.key === "Enter" ||
-            event.key === " "
-        ) {
-
-            event.preventDefault();
-
-            card.classList.toggle("is-flipped");
-
-        }
-
-    });
-
-});
-    /* ==========================================
-       LEARN MORE
-       ========================================== */
+    const closeElements =
+        document.querySelectorAll("[data-close-modal]");
 
     const learnMoreButtons =
         document.querySelectorAll(".learn-more-btn");
 
+    /* ==========================================
+       MOBILE CARD FLIP
+    ========================================== */
 
-    learnMoreButtons.forEach(function (button) {
+    cards.forEach(card => {
 
-        button.addEventListener("click", function (event) {
+        card.addEventListener("click", function (e) {
 
-            event.stopPropagation();
-
-            const artistNumber =
-                button.dataset.artist;
-
-
-            /*
-             * These are intentionally generic
-             * until the lineup is revealed.
-             *
-             * We'll replace these with the
-             * actual band data later.
-             */
-
-            const artistData = {
-
-                "01": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "02": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "03": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "04": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "05": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "06": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "07": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "08": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                },
-
-                "09": {
-                    title: "ARTIST REVEAL",
-                    bio: "This artist's official biography will appear here when the Festival of Misfit Toys lineup is revealed."
-                }
-
-            };
-
-
-            const artist =
-                artistData[artistNumber];
-
-
-            if (!artist) {
+            if (
+                e.target.closest(".learn-more-btn")
+            ) {
                 return;
             }
 
-
-            modalTitle.textContent =
-                artist.title;
-
-            modalBio.textContent =
-                artist.bio;
-
-
-            artistModal.classList.add("is-open");
-
-            artistModal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.classList.add(
-                "modal-open"
-            );
+            if (
+                window.matchMedia("(hover: none)").matches
+            ) {
+                card.classList.toggle("is-flipped");
+            }
 
         });
 
     });
 
-
     /* ==========================================
-       CLOSE MODAL
-       ========================================== */
+       MODAL OPEN
+    ========================================== */
 
-    const closeModalElements =
-        artistModal.querySelectorAll(
-            "[data-close-modal]"
-        );
+    learnMoreButtons.forEach(btn => {
 
+        btn.addEventListener("click", function (e) {
 
-    closeModalElements.forEach(function (element) {
+            e.stopPropagation();
 
-        element.addEventListener(
-            "click",
-            closeArtistModal
-        );
+            const artistNumber =
+                btn.dataset.artist || "";
+
+            if (!modal) return;
+
+            modal.classList.add("open");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+            if (modalTitle) {
+                modalTitle.textContent =
+                    `ARTIST ${artistNumber}`;
+            }
+
+            if (modalBio) {
+                modalBio.textContent =
+                    "This artist is currently locked away. The official Festival of Misfit Toys lineup will be revealed September 8.";
+            }
+
+        });
 
     });
 
+    /* ==========================================
+       CLOSE MODAL
+    ========================================== */
 
-    function closeArtistModal() {
+    function closeModal() {
 
-        artistModal.classList.remove(
-            "is-open"
-        );
+        if (!modal) return;
 
-        artistModal.setAttribute(
+        modal.classList.remove("open");
+
+        modal.setAttribute(
             "aria-hidden",
             "true"
         );
@@ -241,22 +147,21 @@ cards.forEach(function (card) {
 
     }
 
+    closeElements.forEach(el => {
 
-    /* ==========================================
-       ESCAPE KEY
-       ========================================== */
+        el.addEventListener(
+            "click",
+            closeModal
+        );
+
+    });
 
     document.addEventListener(
         "keydown",
-        function (event) {
+        function (e) {
 
-            if (
-                event.key === "Escape" &&
-                artistModal.classList.contains("is-open")
-            ) {
-
-                closeArtistModal();
-
+            if (e.key === "Escape") {
+                closeModal();
             }
 
         }
