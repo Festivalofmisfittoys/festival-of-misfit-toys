@@ -2297,3 +2297,57 @@ strong {
     }
 
 }
+/* ==================================
+   MOBILE HEADER / NAV FIX
+================================== */
+
+@media (max-width: 600px) {
+
+    /*
+       The desktop header is fixed, but on mobile
+       the two-row navigation needs to occupy actual
+       space in the page so it doesn't cover the hero.
+    */
+
+    header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+
+    /*
+       Make sure the hero starts AFTER the header.
+    */
+
+    .hero {
+        margin-top: 0;
+        padding-top: 25px;
+        box-sizing: border-box;
+    }
+
+
+    /*
+       Keep the festival logo/banner completely
+       inside the phone viewport.
+    */
+
+    .hero-overlay {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .hero h1 {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+}
