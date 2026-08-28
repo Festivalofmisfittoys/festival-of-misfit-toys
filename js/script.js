@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
    ARTIST FLIP CARDS
    ========================================== */
 
-const artistCards = document.querySelectorAll(".artist-card");
+const cards = document.querySelectorAll(".artist-card");
 
-artistCards.forEach(function (card) {
+cards.forEach(function (card) {
 
     card.addEventListener("click", function (event) {
 
