@@ -986,3 +986,10 @@ footer p:first-child{color:#fff;font-family:Impact,Haettenschweiler,"Arial Narro
 body.modal-open {
     overflow: hidden;
 }
+/* =========================================================
+   MOBILE / TOUCH FLIP
+   ========================================================= */
+
+.artist-card.is-flipped .artist-card-inner {
+    transform: rotateY(180deg);
+}
