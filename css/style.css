@@ -201,3 +201,785 @@ footer p:first-child{color:#fff;font-family:Impact,Haettenschweiler,"Arial Narro
   .hero{padding-left:9px;padding-right:9px}.hero h1{font-size:clamp(2.15rem,11.4vw,3.4rem)}.hero h1::after{font-size:.37rem;letter-spacing:1px}
   .reveal-date{font-size:clamp(1.82rem,9.3vw,2.7rem)}#countdown{font-size:1.03rem}
 }
+/* =========================================================
+   FOMT ARTIST FLIP CARDS
+   ========================================================= */
+
+.lineup-section {
+    position: relative;
+    width: min(1400px, 94%);
+    margin: 70px auto;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.artist-grid {
+    width: min(1180px, 100%);
+    margin: 45px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    perspective: 1400px;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.artist-card {
+    height: 390px;
+    position: relative;
+
+    perspective: 1200px;
+    cursor: pointer;
+
+    outline: none;
+}
+
+.artist-card-inner {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .75s cubic-bezier(.2,.75,.2,1);
+
+    border-radius: 3px;
+}
+
+
+/* Desktop hover */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .artist-card:hover .artist-card-inner {
+        transform: rotateY(180deg);
+    }
+
+}
+
+
+/* Keyboard */
+
+.artist-card:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 5px;
+}
+
+
+/* =========================
+   FRONT + BACK
+   ========================= */
+
+.artist-card-front,
+.artist-card-back {
+
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    border: 1px solid rgba(212,175,55,.35);
+    border-top: 3px solid var(--red);
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #050505
+        );
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.55),
+        inset 0 0 40px rgba(177,30,44,.06);
+}
+
+
+/* =========================
+   FRONT
+   ========================= */
+
+.artist-card-front {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-image {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* Mystery artwork */
+
+.mystery-image {
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(177,30,44,.30),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 65% 70%,
+            rgba(212,175,55,.08),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #191919,
+            #030303
+        );
+}
+
+
+/* Dramatic texture */
+
+.mystery-image::before {
+
+    content: "";
+
+    position: absolute;
+    inset: -50%;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 14px,
+            rgba(255,255,255,.025) 14px 16px
+        );
+
+    transform: rotate(8deg);
+}
+
+
+/* Large question mark */
+
+.mystery-symbol {
+
+    position: relative;
+    z-index: 2;
+
+    color: rgba(255,255,255,.92);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 9rem;
+    line-height: 1;
+
+    text-shadow:
+        6px 6px 0 var(--red-dark),
+        0 0 35px rgba(177,30,44,.35);
+}
+
+
+/* Card number */
+
+.artist-number {
+
+    position: absolute;
+
+    top: 15px;
+    left: 17px;
+
+    z-index: 5;
+
+    color: rgba(255,255,255,.42);
+
+    font-size: .55rem;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* Front info */
+
+.artist-front-info {
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 15px 18px;
+}
+
+.artist-status {
+
+    color: var(--gold);
+
+    font-size: .55rem;
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+}
+
+.artist-front-info h3 {
+
+    margin: 7px 0 0;
+
+    color: var(--white);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 1.35rem;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   BACK
+   ========================= */
+
+.artist-card-back {
+
+    transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-top-color: var(--gold);
+}
+
+.artist-card-back .artist-number {
+
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    margin-bottom: 10px;
+
+    color: var(--red);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 3.2rem;
+
+    letter-spacing: 0;
+}
+
+.artist-card-back h3 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 1.45rem;
+
+    letter-spacing: 1.5px;
+}
+
+.artist-card-back p {
+
+    max-width: 270px;
+
+    margin: 12px auto 0;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: .78rem;
+
+    line-height: 1.55;
+}
+
+
+/* =========================
+   SOCIAL LINKS
+   ========================= */
+
+.artist-socials {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 25px;
+}
+
+.artist-socials button {
+
+    padding: 9px 11px;
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    background: transparent;
+
+    color: var(--gold);
+
+    font-size: .52rem;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.artist-socials button:disabled {
+
+    opacity: .5;
+
+    cursor: default;
+}
+
+
+/* =========================
+   LEARN MORE
+   ========================= */
+
+.learn-more-btn {
+
+    margin-top: 22px;
+
+    padding: 12px 25px;
+
+    border: 1px solid var(--red);
+
+    background: var(--red);
+
+    color: var(--white);
+
+    font-size: .58rem;
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.learn-more-btn:hover {
+
+    background: var(--red-dark);
+
+    border-color: var(--gold);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   BIO MODAL
+   ========================= */
+
+.artist-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.artist-modal.is-open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* Dark overlay */
+
+.artist-modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.86);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* Modal */
+
+.artist-modal-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(760px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #050505
+        );
+
+    border: 1px solid rgba(212,175,55,.4);
+
+    border-top: 4px solid var(--red);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.75);
+}
+
+
+/* Modal image */
+
+.artist-modal-image {
+
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.artist-modal-image span {
+
+    color: rgba(255,255,255,.9);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 8rem;
+
+    text-shadow:
+        5px 5px 0 var(--red-dark);
+}
+
+
+/* Modal body */
+
+.artist-modal-body {
+
+    padding: 35px;
+
+    text-align: center;
+}
+
+.artist-modal-kicker {
+
+    color: var(--gold);
+
+    font-size: .58rem;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.artist-modal-body h2 {
+
+    margin: 10px 0 18px;
+
+    color: var(--white);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    letter-spacing: 2px;
+}
+
+.artist-modal-body p {
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color: rgba(255,255,255,.68);
+
+    line-height: 1.7;
+}
+
+
+/* Modal social links */
+
+.artist-modal-links {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.artist-modal-links button {
+
+    padding: 11px 18px;
+
+    background: transparent;
+
+    border: 1px solid rgba(212,175,55,.4);
+
+    color: var(--gold);
+
+    font-size: .55rem;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* Close */
+
+.artist-modal-close {
+
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    background: rgba(0,0,0,.55);
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .lineup-section {
+
+        width: 100%;
+
+        padding:
+            50px 12px;
+    }
+
+    .artist-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 13px;
+
+        margin-top: 30px;
+    }
+
+    .artist-card {
+
+        height: 320px;
+    }
+
+    .artist-image {
+
+        height: 220px;
+    }
+
+    .mystery-symbol {
+
+        font-size: 6rem;
+    }
+
+    .artist-front-info {
+
+        padding: 10px;
+    }
+
+    .artist-status {
+
+        font-size: .43rem;
+
+        letter-spacing: 1.5px;
+    }
+
+    .artist-front-info h3 {
+
+        font-size: .82rem;
+
+        letter-spacing: .8px;
+    }
+
+    .artist-card-back {
+
+        padding: 20px 10px;
+    }
+
+    .artist-card-back .artist-number {
+
+        font-size: 2.2rem;
+    }
+
+    .artist-card-back h3 {
+
+        font-size: .9rem;
+    }
+
+    .artist-card-back p {
+
+        font-size: .62rem;
+    }
+
+    .artist-socials {
+
+        gap: 4px;
+
+        margin-top: 15px;
+    }
+
+    .artist-socials button {
+
+        padding: 6px 5px;
+
+        font-size: .39rem;
+    }
+
+    .learn-more-btn {
+
+        margin-top: 14px;
+
+        padding: 9px 13px;
+
+        font-size: .45rem;
+    }
+
+    .artist-modal {
+
+        padding: 12px;
+    }
+
+    .artist-modal-image {
+
+        height: 220px;
+    }
+
+    .artist-modal-body {
+
+        padding: 25px 18px;
+    }
+
+}
+
+
+/* Very small phones */
+
+@media (max-width: 390px) {
+
+    .artist-grid {
+
+        grid-template-columns: 1fr;
+
+        max-width: 330px;
+    }
+
+    .artist-card {
+
+        height: 370px;
+    }
+
+    .artist-image {
+
+        height: 265px;
+    }
+
+}
+
+
+/* Touch devices */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .artist-card {
+
+        cursor: pointer;
+    }
+
+}
