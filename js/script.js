@@ -263,28 +263,3 @@ artistCards.forEach(function (card) {
     );
 
 });
-
-/* ==========================================
-   MOBILE / TOUCH TAP-TO-FLIP
-   ========================================== */
-
-if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-
-    const artistCards = document.querySelectorAll(".artist-card");
-
-    artistCards.forEach(function(card) {
-
-        card.addEventListener("click", function(event) {
-
-            // Don't flip when interacting with buttons
-            if (event.target.closest("button")) {
-                return;
-            }
-
-            card.classList.toggle("is-flipped");
-
-        });
-
-    });
-
-}
