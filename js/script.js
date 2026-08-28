@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!modal) return;
 
-        modal.classList.remove("open");
+      modal.classList.remove("is-open");
 
         modal.setAttribute(
             "aria-hidden",
