@@ -997,13 +997,10 @@ body.modal-open {
 .artist-card.is-flipped .artist-card-inner {
     transform: rotateY(180deg);
 }
-/* MOBILE ONLY — fix flipped card visibility */
+/* MOBILE ONLY — hide question mark on flipped cards */
 @media (hover: none) and (pointer: coarse) {
-
-    .artist-card-front,
-    .artist-card-back {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+    .artist-card.is-flipped .mystery-symbol {
+        opacity: 0;
+        pointer-events: none;
     }
-
 }
