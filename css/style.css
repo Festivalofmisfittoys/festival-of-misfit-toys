@@ -1735,16 +1735,7 @@ footer p {
     text-align: center;
 
     border-top-color: var(--gold);
-
-    /*
-     * This keeps the contents of the back
-     * facing the viewer when the card flips.
-     */
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
 }
-
-
 /* =========================================================
    FRONT IMAGE
    ========================================================= */
