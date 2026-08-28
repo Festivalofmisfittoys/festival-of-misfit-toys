@@ -263,3 +263,24 @@ artistCards.forEach(function (card) {
     );
 
 });
+
+/* ==========================================
+   MOBILE + DESKTOP TAP/CLICK FLIP
+   ========================================== */
+
+const artistCards = document.querySelectorAll(".artist-card");
+
+artistCards.forEach(function(card) {
+
+    card.addEventListener("click", function(event) {
+
+        // Don't flip when clicking Learn More or social buttons
+        if (event.target.closest("button")) {
+            return;
+        }
+
+        card.classList.toggle("is-flipped");
+
+    });
+
+});
