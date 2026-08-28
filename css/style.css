@@ -997,13 +997,7 @@ body.modal-open {
 .artist-card.is-flipped .artist-card-inner {
     transform: rotateY(180deg);
 }
-/* MOBILE ONLY — hide question mark on flipped cards */
-@media (hover: none) and (pointer: coarse) {
-    .artist-card.is-flipped .mystery-symbol {
-        opacity: 0;
-        pointer-events: none;
-    }
-}
+
 /* ==========================================
    ARTIST CARD 3D FACE FIX
    ========================================== */
