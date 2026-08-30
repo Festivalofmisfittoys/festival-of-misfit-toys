@@ -54,72 +54,7 @@ strong {
 
 
 /* =========================================================
-   HEADER
-   ========================================================= */
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  z-index: 1000;
-  width: 100%;
-
-  padding: 10px 0 12px;
-
-  background: rgba(5,5,5,.92);
-
-  backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid rgba(212,175,55,.18);
-
-  box-shadow:
-    0 8px 30px rgba(0,0,0,.35);
-}
-
-.ticker-wrap {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-
-  padding: 8px 0;
-
-  background:
-    repeating-linear-gradient(
-      135deg,
-      #090909 0 18px,
-      #151515 18px 36px
-    );
-
-  border-bottom: 1px solid rgba(177,30,44,.45);
-}
-
-.ticker {
-  display: inline-block;
-
-  color: var(--gold);
-
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-
-  text-transform: uppercase;
-
-  animation: ticker 25s linear infinite;
-}
-
-@keyframes ticker {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-/* =========================================================
-   NAVIGATION & MOBILE DROPDOWN
+   HEADER & NAVIGATION
    ========================================================= */
 
 header {
@@ -127,6 +62,12 @@ header {
   top: 0;
   z-index: 1000;
   background-color: #080808;
+  width: 100%;
+}
+
+.site-nav {
+  position: relative;
+  background: #080808;
 }
 
 .nav-inner {
@@ -139,7 +80,7 @@ header {
 }
 
 .nav-logo {
-  color: #fff;
+  color: #ffffff;
   font-weight: 900;
   text-decoration: none;
   font-size: 1.1rem;
@@ -157,17 +98,19 @@ header {
   border: none;
   cursor: pointer;
   padding: 0;
+  z-index: 1001;
 }
 
 .nav-toggle span {
+  display: block;
   width: 100%;
   height: 3px;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* Desktop Navigation Menu */
+/* Desktop Menu Layout */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -175,7 +118,7 @@ header {
 }
 
 .nav-menu a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.85rem;
@@ -184,17 +127,20 @@ header {
 }
 
 .nav-menu a:hover {
-  color: #e63946; /* Accent Color */
+  color: #e63946;
 }
 
-/* Mobile Dropdown Rules */
+/* =========================================================
+   MOBILE RESPONSIVE DROPDOWN
+   ========================================================= */
+
 @media (max-width: 768px) {
   .nav-toggle {
-    display: flex; /* Show hamburger button on mobile */
+    display: flex; /* Show button on mobile */
   }
 
   .nav-menu {
-    display: none; /* Hide menu items by default on mobile */
+    display: none; /* Hide menu by default */
     position: absolute;
     top: 100%;
     left: 0;
@@ -203,10 +149,10 @@ header {
     background-color: #080808;
     border-bottom: 2px solid #e63946;
     padding: 20px 0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   }
 
-  /* Revealed when JS adds .is-open class */
+  /* JavaScript opens menu with this class */
   .nav-menu.is-open {
     display: flex !important;
   }
@@ -215,7 +161,7 @@ header {
     padding: 12px 0;
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .nav-menu a:last-child {
