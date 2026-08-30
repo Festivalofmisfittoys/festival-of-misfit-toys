@@ -6,7 +6,6 @@ const countdown = document.getElementById("countdown");
 const revealDate = new Date("September 8, 2026 00:00:00").getTime();
 
 function updateCountdown() {
-
     if (!countdown) return;
 
     const now = Date.now();
@@ -17,27 +16,12 @@ function updateCountdown() {
         return;
     }
 
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-    );
-
-    countdown.textContent =
-        `${days}D ${hours}H ${minutes}M ${seconds}S`;
+    countdown.textContent = `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
 
 updateCountdown();
@@ -45,38 +29,73 @@ setInterval(updateCountdown, 1000);
 
 
 /* =========================================================
-   FOMT ARTIST CARDS + MODAL
+   DOM EVENT LISTENERS
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const cards =
-        document.querySelectorAll(".artist-card");
+    /* ==========================================
+       HAMBURGER NAVIGATION
+       ========================================== */
 
-    const modal =
-        document.getElementById("artist-modal");
+    const navToggle = document.getElementById("nav-toggle");
+    const navMenu = document.getElementById("nav-menu");
 
-    const modalTitle =
-        document.getElementById("artist-modal-title");
+    if (navToggle && navMenu) {
 
-    const modalBio =
-        document.getElementById("artist-modal-bio");
+        navToggle.addEventListener("click", function () {
+            const isOpen = navMenu.classList.toggle("is-open");
 
-    const closeElements =
-        document.querySelectorAll("[data-close-modal]");
+            navToggle.classList.toggle("is-open", isOpen);
 
-    const learnMoreButtons =
-        document.querySelectorAll(".learn-more-btn");
+            navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+            navToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
+        });
+
+        /* Close menu after clicking a link */
+        navMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("is-open");
+                navToggle.classList.remove("is-open");
+                navToggle.setAttribute("aria-expanded", "false");
+                navToggle.setAttribute("aria-label", "Open navigation");
+            });
+        });
+
+        /* Close menu when clicking outside */
+        document.addEventListener("click", function (event) {
+            if (
+                !navMenu.contains(event.target) &&
+                !navToggle.contains(event.target)
+            ) {
+                navMenu.classList.remove("is-open");
+                navToggle.classList.remove("is-open");
+                navToggle.setAttribute("aria-expanded", "false");
+                navToggle.setAttribute("aria-label", "Open navigation");
+            }
+        });
+    }
 
 
     /* ==========================================
-       MOBILE CARD FLIP
+       FOMT ARTIST CARDS + MODAL
        ========================================== */
 
+    const cards = document.querySelectorAll(".artist-card");
+    const modal = document.getElementById("artist-modal");
+    const modalTitle = document.getElementById("artist-modal-title");
+    const modalBio = document.getElementById("artist-modal-bio");
+    const closeElements = document.querySelectorAll("[data-close-modal]");
+    const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
+
+
+    /* MOBILE CARD FLIP */
     cards.forEach(card => {
-
         card.addEventListener("click", function (e) {
-
             if (
                 e.target.closest(".learn-more-btn") ||
                 e.target.closest(".artist-socials")
@@ -84,36 +103,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (
-                window.matchMedia("(hover: none)").matches
-            ) {
+            if (window.matchMedia("(hover: none)").matches) {
                 card.classList.toggle("is-flipped");
             }
-
         });
-
     });
 
 
-    /* ==========================================
-       MODAL OPEN
-       ========================================== */
-
+    /* MODAL OPEN */
     learnMoreButtons.forEach(btn => {
-
         btn.addEventListener("click", function (e) {
-
             e.preventDefault();
             e.stopPropagation();
 
-            const artistNumber =
-                btn.dataset.artist || "";
+            const artistNumber = btn.dataset.artist || "";
 
             if (!modal) return;
 
             if (modalTitle) {
-                modalTitle.textContent =
-                    `ARTIST ${artistNumber}`;
+                modalTitle.textContent = `ARTIST ${artistNumber}`;
             }
 
             if (modalBio) {
@@ -122,307 +130,106 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             modal.classList.add("is-open");
-
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
         });
-
     });
 
 
-    /* ==========================================
-       CLOSE MODAL
-       ========================================== */
-
+    /* CLOSE MODAL */
     function closeModal() {
-
         if (!modal) return;
 
         modal.classList.remove("is-open");
-
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
     }
 
-
     closeElements.forEach(el => {
+        el.addEventListener("click", closeModal);
+    });
 
-        el.addEventListener(
-            "click",
-            closeModal
-        );
-
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeModal();
+        }
     });
 
 
     /* ==========================================
-       ESCAPE KEY
+       WEB3FORMS CONTACT FORM
        ========================================== */
 
-    document.addEventListener(
-        "keydown",
-        function (e) {
+    const contactForm = document.getElementById("contact-form");
+    const contactResult = document.getElementById("contact-result");
+    const contactSubmit = document.getElementById("contact-submit");
 
-            if (e.key === "Escape") {
-                closeModal();
-            }
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   WEB3FORMS CONTACT FORM
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const contactForm =
-        document.getElementById("contact-form");
-
-    const contactResult =
-        document.getElementById("contact-result");
-
-    const contactSubmit =
-        document.getElementById("contact-submit");
-
-
-    if (!contactForm) {
-        return;
-    }
-
-
-    contactForm.addEventListener(
-        "submit",
-        async function (event) {
-
-            /* STOP NORMAL FORM SUBMISSION */
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
             event.preventDefault();
             event.stopPropagation();
-
-
-            /* BUTTON STATE */
 
             if (contactSubmit) {
                 contactSubmit.disabled = true;
                 contactSubmit.textContent = "SENDING...";
             }
 
-
-            /* CLEAR OLD MESSAGE */
-
             if (contactResult) {
                 contactResult.textContent = "";
-                contactResult.className =
-                    "contact-result";
+                contactResult.className = "contact-result";
             }
 
-
-            /* COLLECT FORM DATA */
-
-            const formData =
-                new FormData(contactForm);
-
+            const formData = new FormData(contactForm);
 
             try {
+                const response = await fetch("[https://api.web3forms.com/submit](https://api.web3forms.com/submit)", {
+                    method: "POST",
+                    body: formData
+                });
 
-                const response =
-                    await fetch(
-                        "https://api.web3forms.com/submit",
-                        {
-                            method: "POST",
-                            body: formData
-                        }
-                    );
-
-
-                const result =
-                    await response.json();
-
-
-                /* SUCCESS */
+                const result = await response.json();
 
                 if (result.success) {
-
                     if (contactResult) {
-
-                        contactResult.textContent =
-                            "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
-
-                        contactResult.classList.add(
-                            "success"
-                        );
-
+                        contactResult.textContent = "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
+                        contactResult.classList.add("success");
                     }
-
 
                     contactForm.reset();
 
-
                     if (contactSubmit) {
-
-                        contactSubmit.textContent =
-                            "MESSAGE SENT";
-
+                        contactSubmit.textContent = "MESSAGE SENT";
                         setTimeout(() => {
-
-                            contactSubmit.disabled =
-                                false;
-
-                            contactSubmit.textContent =
-                                "SEND MESSAGE";
-
+                            contactSubmit.disabled = false;
+                            contactSubmit.textContent = "SEND MESSAGE";
                         }, 4000);
-
                     }
-
-
-                }
-
-
-                /* WEB3FORMS ERROR */
-
-                else {
-
+                } else {
                     if (contactResult) {
-
                         contactResult.textContent =
-                            result.message ||
-                            "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
-
-                        contactResult.classList.add(
-                            "error"
-                        );
-
+                            result.message || "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
+                        contactResult.classList.add("error");
                     }
-
 
                     if (contactSubmit) {
-
-                        contactSubmit.disabled =
-                            false;
-
-                        contactSubmit.textContent =
-                            "SEND MESSAGE";
-
+                        contactSubmit.disabled = false;
+                        contactSubmit.textContent = "SEND MESSAGE";
                     }
-
                 }
-
-
-            }
-
-
-            /* NETWORK / JAVASCRIPT ERROR */
-
-            catch (error) {
-
-                console.error(
-                    "Web3Forms error:",
-                    error
-                );
-
+            } catch (error) {
+                console.error("Web3Forms error:", error);
 
                 if (contactResult) {
-
-                    contactResult.textContent =
-                        "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
-
-                    contactResult.classList.add(
-                        "error"
-                    );
-
+                    contactResult.textContent = "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
+                    contactResult.classList.add("error");
                 }
-
 
                 if (contactSubmit) {
-
-                    contactSubmit.disabled =
-                        false;
-
-                    contactSubmit.textContent =
-                        "SEND MESSAGE";
-
+                    contactSubmit.disabled = false;
+                    contactSubmit.textContent = "SEND MESSAGE";
                 }
-
             }
-
-        }
-    );
-   
-/* ==========================================
-HAMBURGER NAVIGATION
-========================================== */
-
-const navToggle = document.getElementById("nav-toggle");
-const navMenu = document.getElementById("nav-menu");
-
-if (navToggle && navMenu) {
-
-```
-navToggle.addEventListener("click", function () {
-
-    const isOpen =
-        navMenu.classList.toggle("is-open");
-
-    navToggle.classList.toggle(
-        "is-open",
-        isOpen
-    );
-
-    navToggle.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-    );
-
-    navToggle.setAttribute(
-        "aria-label",
-        isOpen
-            ? "Close navigation"
-            : "Open navigation"
-    );
+        });
+    }
 
 });
-
-
-/* Close menu after clicking a link */
-
-navMenu.querySelectorAll("a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navMenu.classList.remove("is-open");
-
-        navToggle.classList.remove("is-open");
-
-        navToggle.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-        navToggle.setAttribute(
-            "aria-label",
-            "Open navigation"
-        );
-
-    });
-
-});
-
-}
