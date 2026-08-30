@@ -3680,41 +3680,46 @@ body.modal-open {
 
 }
 /* =========================================================
-   ANIMATED TICKER / BANNER
+   MOVING TICKER
    ========================================================= */
 
 .ticker-wrap {
   width: 100%;
   overflow: hidden;
-  background-color: var(--bg-surface, #111);
-  border-y: 1px solid var(--border, #333);
-  padding: 12px 0;
   white-space: nowrap;
+
+  padding: 8px 0;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #090909 0 18px,
+      #151515 18px 36px
+    );
+
+  border-bottom: 1px solid rgba(177,30,44,.45);
 }
 
-.ticker-track {
-  display: inline-flex;
-  gap: 2rem;
-  animation: ticker-slide 20s linear infinite;
-}
+.ticker {
+  display: inline-block;
 
-/* Pause scrolling on hover */
-.ticker-wrap:hover .ticker-track {
-  animation-play-state: paused;
-}
+  color: var(--gold);
 
-.ticker-item {
-  flex-shrink: 0;
-  font-weight: 700;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+
   text-transform: uppercase;
-  letter-spacing: 1px;
+
+  animation: ticker 25s linear infinite;
 }
 
-@keyframes ticker-slide {
-  0% {
-    transform: translateX(0);
+@keyframes ticker {
+  from {
+    transform: translateX(100%);
   }
-  100% {
-    transform: translateX(-50%);
+
+  to {
+    transform: translateX(-100%);
   }
 }
