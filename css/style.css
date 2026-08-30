@@ -118,7 +118,86 @@ header {
     transform: translateX(-100%);
   }
 }
+/* =========================================================
+   NAVIGATION & DROPDOWN MENU
+   ========================================================= */
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+/* Toggle Button (Hamburger) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+/* Default Desktop Menu */
+nav, .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* Mobile Dropdown Menu Logic */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block; /* Show hamburger button on mobile */
+  }
+
+  nav, .nav-menu {
+    display: none; /* Hide menu by default on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(5, 5, 5, 0.98);
+    border-bottom: 2px solid var(--red);
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Revealed when JS adds .is-open class */
+  nav.is-open, .nav-menu.is-open {
+    display: flex !important;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+}
 /* =========================================================
    HERO
    ========================================================= */
