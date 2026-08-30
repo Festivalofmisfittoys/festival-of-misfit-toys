@@ -119,82 +119,106 @@ header {
   }
 }
 /* =========================================================
-   NAVIGATION & DROPDOWN MENU
+   NAVIGATION & MOBILE DROPDOWN
    ========================================================= */
 
-.header-container {
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #080808;
+}
+
+.nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(1200px, 92%);
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 15px 20px;
 }
 
-/* Toggle Button (Hamburger) */
+.nav-logo {
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* Hamburger Toggle Button */
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
   background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 1.2rem;
-  padding: 6px 12px;
+  border: none;
   cursor: pointer;
-  border-radius: 2px;
+  padding: 0;
 }
 
-/* Default Desktop Menu */
-nav, .nav-menu {
+.nav-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Desktop Navigation Menu */
+.nav-menu {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
-nav a {
-  color: var(--white);
+.nav-menu a {
+  color: #fff;
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
   transition: color 0.2s ease;
 }
 
-nav a:hover {
-  color: var(--gold);
+.nav-menu a:hover {
+  color: #e63946; /* Accent Color */
 }
 
-/* Mobile Dropdown Menu Logic */
+/* Mobile Dropdown Rules */
 @media (max-width: 768px) {
   .nav-toggle {
-    display: block; /* Show hamburger button on mobile */
+    display: flex; /* Show hamburger button on mobile */
   }
 
-  nav, .nav-menu {
-    display: none; /* Hide menu by default on mobile */
+  .nav-menu {
+    display: none; /* Hide menu items by default on mobile */
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0;
+    width: 100%;
     flex-direction: column;
-    background: rgba(5, 5, 5, 0.98);
-    border-bottom: 2px solid var(--red);
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    background-color: #080808;
+    border-bottom: 2px solid #e63946;
+    padding: 20px 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   }
 
   /* Revealed when JS adds .is-open class */
-  nav.is-open, .nav-menu.is-open {
+  .nav-menu.is-open {
     display: flex !important;
   }
 
-  nav a {
+  .nav-menu a {
+    padding: 12px 0;
     width: 100%;
     text-align: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  nav a:last-child {
+  .nav-menu a:last-child {
     border-bottom: none;
   }
 }
