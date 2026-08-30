@@ -54,79 +54,101 @@ strong {
 
 
 /* =========================================================
-   HEADER & NAVIGATION
+   HEADER & HAMBURGER NAVIGATION
    ========================================================= */
 
 header {
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 1000;
+
   width: 100%;
+
   background: #080808;
 }
 
+/* =========================================================
+   NAVIGATION BAR
+   ========================================================= */
+
 .site-nav {
   position: relative;
+
+  display: block;
+
   width: 100%;
+
   background: #080808;
 }
 
 .nav-inner {
+  position: relative;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
 
+  margin: 0 auto;
   padding: 15px 20px;
 }
 
 /* =========================================================
-   FESTIVAL LOGO / NAME
+   FESTIVAL NAME
    ========================================================= */
 
 .nav-logo {
+  display: block;
+
   color: #ffffff;
-  font-weight: 900;
-  text-decoration: none;
+
   font-size: 1.1rem;
+  font-weight: 900;
   letter-spacing: 1px;
+
+  text-decoration: none;
 }
 
 /* =========================================================
-   HAMBURGER TOGGLE
-   Visible on desktop AND mobile
+   HAMBURGER BUTTON
    ========================================================= */
 
 .nav-toggle {
-  display: flex;
+  display: flex !important;
+
   flex-direction: column;
   justify-content: space-between;
+
+  flex-shrink: 0;
 
   width: 30px;
   height: 22px;
 
-  margin-left: auto;
-
+  margin: 0 0 0 auto;
   padding: 0;
 
+  appearance: none;
+
   background: transparent;
-  border: none;
+  border: 0;
 
   cursor: pointer;
 
-  z-index: 1001;
+  position: relative;
+  z-index: 1002;
 }
 
 .nav-toggle span {
   display: block;
 
-  width: 100%;
+  width: 30px;
   height: 3px;
 
-  background-color: #ffffff;
+  flex-shrink: 0;
+
+  background: #ffffff;
 
   border-radius: 2px;
 
@@ -136,8 +158,14 @@ header {
     background-color 0.3s ease;
 }
 
+/* Hover */
+
+.nav-toggle:hover span {
+  background: #e63946;
+}
+
 /* =========================================================
-   HAMBURGER → X ANIMATION
+   HAMBURGER → X
    ========================================================= */
 
 .nav-toggle.is-open span:nth-child(1) {
@@ -152,17 +180,12 @@ header {
   transform: translateY(-9.5px) rotate(-45deg);
 }
 
-.nav-toggle:hover span {
-  background-color: #e63946;
-}
-
 /* =========================================================
    DROPDOWN MENU
-   Hidden until hamburger is clicked
    ========================================================= */
 
 .nav-menu {
-  display: none;
+  display: none !important;
 
   position: absolute;
 
@@ -173,21 +196,25 @@ header {
 
   flex-direction: column;
 
+  margin: 0;
+  padding: 0;
+
   background: rgba(8, 8, 8, 0.98);
 
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 2px solid #e63946;
 
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
 
   overflow: hidden;
+
+  z-index: 1001;
 }
 
-/* JavaScript opens menu */
+/* Open */
 
 .nav-menu.is-open {
-  display: flex;
+  display: flex !important;
 }
 
 /* =========================================================
@@ -199,21 +226,21 @@ header {
 
   width: 100%;
 
+  margin: 0;
   padding: 15px 20px;
 
   color: #ffffff;
 
   background: transparent;
 
+  border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   text-decoration: none;
-
   text-transform: uppercase;
 
   font-size: 0.78rem;
   font-weight: 900;
-
   letter-spacing: 1.5px;
 
   transition:
@@ -250,18 +277,23 @@ header {
   }
 
   .nav-toggle {
-    width: 28px;
+    width: 28px !important;
     height: 21px;
   }
 
+  .nav-toggle span {
+    width: 28px;
+  }
+
   .nav-menu {
+    top: 100%;
     left: 0;
     right: 0;
 
     width: 100%;
 
-    border-left: none;
-    border-right: none;
+    border-left: 0;
+    border-right: 0;
   }
 
   .nav-menu a {
