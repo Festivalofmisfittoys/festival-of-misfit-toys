@@ -47,9 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const isOpen = navMenu.classList.toggle("is-open");
 
             navToggle.classList.toggle("is-open", isOpen);
-
             navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
             navToggle.setAttribute(
                 "aria-label",
                 isOpen ? "Close navigation" : "Open navigation"
@@ -92,8 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeElements = document.querySelectorAll("[data-close-modal]");
     const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
 
-
-    /* MOBILE CARD FLIP */
     cards.forEach(card => {
         card.addEventListener("click", function (e) {
             if (
@@ -109,8 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-    /* MODAL OPEN */
     learnMoreButtons.forEach(btn => {
         btn.addEventListener("click", function (e) {
             e.preventDefault();
@@ -135,8 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-    /* CLOSE MODAL */
     function closeModal() {
         if (!modal) return;
 
@@ -182,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const formData = new FormData(contactForm);
 
             try {
-                const response = await fetch("[https://api.web3forms.com/submit](https://api.web3forms.com/submit)", {
+                const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     body: formData
                 });
