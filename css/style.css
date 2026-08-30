@@ -3833,7 +3833,6 @@ body.modal-open {
 
   animation: ticker 25s linear infinite;
 }
-
 @keyframes ticker {
   from {
     transform: translateX(100%);
@@ -3842,6 +3841,9 @@ body.modal-open {
   to {
     transform: translateX(-100%);
   }
+}
+
+/* Hide desktop logo */
 .nav-inner > .nav-logo {
   display: none !important;
 }
