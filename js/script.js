@@ -1,6 +1,6 @@
 /* =========================================================
    FOMT COUNTDOWN
-========================================================= */
+   ========================================================= */
 
 const countdown = document.getElementById("countdown");
 const revealDate = new Date("September 8, 2026 00:00:00").getTime();
@@ -17,20 +17,23 @@ function updateCountdown() {
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
+
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
     );
 
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
     );
 
     const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
+        (distance % (1000 * 60)) /
+        1000
     );
 
     countdown.textContent =
@@ -40,15 +43,18 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+
 /* =========================================================
    FOMT ARTIST CARDS + MODAL
-========================================================= */
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const cards = document.querySelectorAll(".artist-card");
+    const cards =
+        document.querySelectorAll(".artist-card");
 
-    const modal = document.getElementById("artist-modal");
+    const modal =
+        document.getElementById("artist-modal");
 
     const modalTitle =
         document.getElementById("artist-modal-title");
@@ -62,16 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const learnMoreButtons =
         document.querySelectorAll(".learn-more-btn");
 
+
     /* ==========================================
        MOBILE CARD FLIP
-    ========================================== */
+       ========================================== */
 
     cards.forEach(card => {
 
         card.addEventListener("click", function (e) {
 
             if (
-                e.target.closest(".learn-more-btn")
+                e.target.closest(".learn-more-btn") ||
+                e.target.closest(".artist-socials")
             ) {
                 return;
             }
@@ -86,20 +94,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
     /* ==========================================
        MODAL OPEN
-    ========================================== */
+       ========================================== */
 
     learnMoreButtons.forEach(btn => {
 
         btn.addEventListener("click", function (e) {
 
+            e.preventDefault();
             e.stopPropagation();
 
             const artistNumber =
                 btn.dataset.artist || "";
 
             if (!modal) return;
+
+            if (modalTitle) {
+                modalTitle.textContent =
+                    `ARTIST ${artistNumber}`;
+            }
+
+            if (modalBio) {
+                modalBio.textContent =
+                    "This artist is currently locked away. The official Festival of Misfit Toys lineup will be revealed September 8.";
+            }
 
             modal.classList.add("is-open");
 
@@ -112,29 +132,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 "modal-open"
             );
 
-            if (modalTitle) {
-                modalTitle.textContent =
-                    `ARTIST ${artistNumber}`;
-            }
-
-            if (modalBio) {
-                modalBio.textContent =
-                    "This artist is currently locked away. The official Festival of Misfit Toys lineup will be revealed September 8.";
-            }
-
         });
 
     });
 
+
     /* ==========================================
        CLOSE MODAL
-    ========================================== */
+       ========================================== */
 
     function closeModal() {
 
         if (!modal) return;
 
-      modal.classList.remove("is-open");
+        modal.classList.remove("is-open");
 
         modal.setAttribute(
             "aria-hidden",
@@ -147,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     closeElements.forEach(el => {
 
         el.addEventListener(
@@ -155,6 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
+
+
+    /* ==========================================
+       ESCAPE KEY
+       ========================================== */
 
     document.addEventListener(
         "keydown",
@@ -168,83 +185,185 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+
 /* =========================================================
    WEB3FORMS CONTACT FORM
-========================================================= */
+   ========================================================= */
 
-const contactForm = document.getElementById("contact-form");
-const contactResult = document.getElementById("contact-result");
-const contactSubmit = document.getElementById("contact-submit");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (contactForm) {
+    const contactForm =
+        document.getElementById("contact-form");
 
-    contactForm.addEventListener("submit", async function (event) {
+    const contactResult =
+        document.getElementById("contact-result");
 
-        event.preventDefault();
+    const contactSubmit =
+        document.getElementById("contact-submit");
 
-        contactSubmit.disabled = true;
-        contactSubmit.textContent = "SENDING...";
 
-        contactResult.textContent = "";
-        contactResult.className = "contact-result";
+    if (!contactForm) {
+        return;
+    }
 
-        const formData = new FormData(contactForm);
 
-        try {
+    contactForm.addEventListener(
+        "submit",
+        async function (event) {
 
-            const response = await fetch(
-                "https://api.web3forms.com/submit",
-                {
-                    method: "POST",
-                    body: formData
-                }
-            );
+            /* STOP NORMAL FORM SUBMISSION */
+            event.preventDefault();
+            event.stopPropagation();
 
-            const result = await response.json();
 
-            if (result.success) {
+            /* BUTTON STATE */
 
-                contactResult.textContent =
-                    "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
-
-                contactResult.classList.add("success");
-
-                contactForm.reset();
-
-                contactSubmit.textContent = "MESSAGE SENT";
-
-                setTimeout(function () {
-
-                    contactSubmit.disabled = false;
-                    contactSubmit.textContent = "SEND MESSAGE";
-
-                }, 4000);
-
-            } else {
-
-                contactResult.textContent =
-                    result.message ||
-                    "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
-
-                contactResult.classList.add("error");
-
-                contactSubmit.disabled = false;
-                contactSubmit.textContent = "SEND MESSAGE";
+            if (contactSubmit) {
+                contactSubmit.disabled = true;
+                contactSubmit.textContent = "SENDING...";
             }
 
-        } catch (error) {
 
-            console.error("Web3Forms error:", error);
+            /* CLEAR OLD MESSAGE */
 
-            contactResult.textContent =
-                "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
+            if (contactResult) {
+                contactResult.textContent = "";
+                contactResult.className =
+                    "contact-result";
+            }
 
-            contactResult.classList.add("error");
 
-            contactSubmit.disabled = false;
-            contactSubmit.textContent = "SEND MESSAGE";
+            /* COLLECT FORM DATA */
+
+            const formData =
+                new FormData(contactForm);
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "https://api.web3forms.com/submit",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                /* SUCCESS */
+
+                if (result.success) {
+
+                    if (contactResult) {
+
+                        contactResult.textContent =
+                            "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
+
+                        contactResult.classList.add(
+                            "success"
+                        );
+
+                    }
+
+
+                    contactForm.reset();
+
+
+                    if (contactSubmit) {
+
+                        contactSubmit.textContent =
+                            "MESSAGE SENT";
+
+                        setTimeout(() => {
+
+                            contactSubmit.disabled =
+                                false;
+
+                            contactSubmit.textContent =
+                                "SEND MESSAGE";
+
+                        }, 4000);
+
+                    }
+
+
+                }
+
+
+                /* WEB3FORMS ERROR */
+
+                else {
+
+                    if (contactResult) {
+
+                        contactResult.textContent =
+                            result.message ||
+                            "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
+
+                        contactResult.classList.add(
+                            "error"
+                        );
+
+                    }
+
+
+                    if (contactSubmit) {
+
+                        contactSubmit.disabled =
+                            false;
+
+                        contactSubmit.textContent =
+                            "SEND MESSAGE";
+
+                    }
+
+                }
+
+
+            }
+
+
+            /* NETWORK / JAVASCRIPT ERROR */
+
+            catch (error) {
+
+                console.error(
+                    "Web3Forms error:",
+                    error
+                );
+
+
+                if (contactResult) {
+
+                    contactResult.textContent =
+                        "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
+
+                    contactResult.classList.add(
+                        "error"
+                    );
+
+                }
+
+
+                if (contactSubmit) {
+
+                    contactSubmit.disabled =
+                        false;
+
+                    contactSubmit.textContent =
+                        "SEND MESSAGE";
+
+                }
+
+            }
+
         }
+    );
 
-    });
-
-}
+});
