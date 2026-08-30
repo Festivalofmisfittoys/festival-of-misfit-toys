@@ -367,50 +367,62 @@ document.addEventListener("DOMContentLoaded", () => {
     );
    
 /* ==========================================
-   MOBILE / HAMBURGER NAVIGATION
-   ========================================== */
+HAMBURGER NAVIGATION
+========================================== */
 
 const navToggle = document.getElementById("nav-toggle");
 const navMenu = document.getElementById("nav-menu");
 
 if (navToggle && navMenu) {
 
-    navToggle.addEventListener("click", function () {
+```
+navToggle.addEventListener("click", function () {
 
-        const isOpen =
-            navMenu.classList.toggle("is-open");
+    const isOpen =
+        navMenu.classList.toggle("is-open");
 
-        navToggle.classList.toggle(
-            "is-open",
-            isOpen
-        );
+    navToggle.classList.toggle(
+        "is-open",
+        isOpen
+    );
+
+    navToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
+
+    navToggle.setAttribute(
+        "aria-label",
+        isOpen
+            ? "Close navigation"
+            : "Open navigation"
+    );
+
+});
+
+
+/* Close menu after clicking a link */
+
+navMenu.querySelectorAll("a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navMenu.classList.remove("is-open");
+
+        navToggle.classList.remove("is-open");
 
         navToggle.setAttribute(
             "aria-expanded",
-            isOpen ? "true" : "false"
+            "false"
+        );
+
+        navToggle.setAttribute(
+            "aria-label",
+            "Open navigation"
         );
 
     });
 
-
-    /* Close menu after clicking a link */
-
-    navMenu.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            navMenu.classList.remove("is-open");
-
-            navToggle.classList.remove("is-open");
-
-            navToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        });
-
-    });
+});
 
 }
-});
