@@ -3863,7 +3863,6 @@ body.modal-open {
   to {
     transform: translateX(-100%);
   }
-}
-.nav-logo {
-  display: none;
+.nav-inner > .nav-logo {
+  display: none !important;
 }
