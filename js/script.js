@@ -169,126 +169,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 /* =========================================================
-WEB3FORMS CONTACT FORM
+   WEB3FORMS CONTACT FORM
 ========================================================= */
 
-const contactForm =
-document.getElementById("contact-form");
-
-const contactResult =
-document.getElementById("contact-result");
-
-const contactSubmit =
-document.getElementById("contact-submit");
+const contactForm = document.getElementById("contact-form");
+const contactResult = document.getElementById("contact-result");
+const contactSubmit = document.getElementById("contact-submit");
 
 if (contactForm) {
 
-```
-contactForm.addEventListener("submit", async function (event) {
+    contactForm.addEventListener("submit", async function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = "SENDING...";
 
-    contactSubmit.disabled = true;
+        contactResult.textContent = "";
+        contactResult.className = "contact-result";
 
-    contactSubmit.textContent = "SENDING...";
+        const formData = new FormData(contactForm);
 
-    contactResult.textContent = "";
+        try {
 
-    contactResult.className =
-        "contact-result";
-
-
-    const formData =
-        new FormData(contactForm);
-
-
-    try {
-
-        const response = await fetch(
-            "https://api.web3forms.com/submit",
-            {
-                method: "POST",
-
-                body: formData
-            }
-        );
-
-
-        const result =
-            await response.json();
-
-
-        if (result.success) {
-
-            contactResult.textContent =
-                "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
-
-            contactResult.classList.add(
-                "success"
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
+                    method: "POST",
+                    body: formData
+                }
             );
 
+            const result = await response.json();
 
-            contactForm.reset();
+            if (result.success) {
 
+                contactResult.textContent =
+                    "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
 
-            contactSubmit.textContent =
-                "MESSAGE SENT";
+                contactResult.classList.add("success");
 
+                contactForm.reset();
 
-            setTimeout(function () {
+                contactSubmit.textContent = "MESSAGE SENT";
+
+                setTimeout(function () {
+
+                    contactSubmit.disabled = false;
+                    contactSubmit.textContent = "SEND MESSAGE";
+
+                }, 4000);
+
+            } else {
+
+                contactResult.textContent =
+                    result.message ||
+                    "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
+
+                contactResult.classList.add("error");
 
                 contactSubmit.disabled = false;
+                contactSubmit.textContent = "SEND MESSAGE";
+            }
 
-                contactSubmit.textContent =
-                    "SEND MESSAGE";
+        } catch (error) {
 
-            }, 4000);
-
-
-        } else {
+            console.error("Web3Forms error:", error);
 
             contactResult.textContent =
-                result.message ||
-                "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
+                "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
 
-            contactResult.classList.add(
-                "error"
-            );
-
+            contactResult.classList.add("error");
 
             contactSubmit.disabled = false;
-
-            contactSubmit.textContent =
-                "SEND MESSAGE";
-
+            contactSubmit.textContent = "SEND MESSAGE";
         }
 
-
-    } catch (error) {
-
-        console.error(
-            "Web3Forms error:",
-            error
-        );
-
-
-        contactResult.textContent =
-            "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
-
-        contactResult.classList.add(
-            "error"
-        );
-
-
-        contactSubmit.disabled = false;
-
-        contactSubmit.textContent =
-            "SEND MESSAGE";
-
-    }
-
-});
-```
+    });
 
 }
