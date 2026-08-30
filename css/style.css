@@ -3679,3 +3679,42 @@ body.modal-open {
     }
 
 }
+/* =========================================================
+   ANIMATED TICKER / BANNER
+   ========================================================= */
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-surface, #111);
+  border-y: 1px solid var(--border, #333);
+  padding: 12px 0;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 2rem;
+  animation: ticker-slide 20s linear infinite;
+}
+
+/* Pause scrolling on hover */
+.ticker-wrap:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  flex-shrink: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
