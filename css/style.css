@@ -3847,3 +3847,9 @@ body.modal-open {
 .nav-inner > .nav-logo {
   display: none !important;
 }
+.vendor-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
