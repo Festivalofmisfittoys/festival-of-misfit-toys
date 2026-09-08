@@ -2342,7 +2342,47 @@ footer p {
 
   cursor: default;
 }
+/* =========================================================
+   ARTIST SOCIAL LINKS
+   Match existing artist button styling
+   ========================================================= */
 
+.artist-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 38px;
+  padding: 10px 14px;
+
+  color: var(--gold);
+  background: rgba(0, 0, 0, .55);
+
+  border: 1px solid rgba(212, 175, 55, .45);
+
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  line-height: 1;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.artist-socials a:hover {
+  color: var(--black);
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
 
 /* =========================================================
    LEARN MORE
@@ -2948,11 +2988,12 @@ footer p {
     margin-top: 15px;
   }
 
-  .artist-socials button {
-    padding: 6px 5px;
+.artist-socials button,
+.artist-socials a {
+  padding: 6px 5px;
 
-    font-size: .39rem;
-  }
+  font-size: .39rem;
+}
 
   .learn-more-btn {
     margin-top: 14px;
