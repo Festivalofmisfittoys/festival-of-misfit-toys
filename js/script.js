@@ -1,4 +1,3 @@
-```js
 /* =========================================================
    FESTIVAL OF MISFIT TOYS
    MASTER JAVASCRIPT
@@ -879,4 +878,3 @@ document.addEventListener(
         setupContactForm();
     }
 );
-```
