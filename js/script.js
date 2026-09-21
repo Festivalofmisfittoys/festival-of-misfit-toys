@@ -1,31 +1,21 @@
 /* =========================================================
    FESTIVAL OF MISFIT TOYS
    MASTER JAVASCRIPT
-   PARTIAL ARTIST REVEAL
    ========================================================= */
 
 
 /* =========================================================
-   CONFIGURATION
+   FOMT LINEUP STATUS
    ========================================================= */
 
-const REVEAL_DATE = new Date("2026-09-08T00:00:00").getTime();
-
 /*
-   ONLY THESE ARTISTS ARE CURRENTLY REVEALED
+   Bands marked revealed: true
+   will appear immediately.
 
-   02 = FELICITY
-   04 = WE'RE WOLVES
-   05 = LIVING DEAD GIRL
-   06 = CREATE CONTROL
+   Bands marked revealed: false
+   will remain locked until you manually
+   change them to revealed: true.
 */
-
-const REVEALED_ARTIST_IDS = [
-    "02",
-    "04",
-    "05",
-    "06"
-];
 
 
 /* =========================================================
@@ -33,6 +23,18 @@ const REVEALED_ARTIST_IDS = [
    ========================================================= */
 
 const bandData = [
+
+    {
+        id: "01",
+        name: "408",
+        bio: "Orlando-based alt/pop punk/electronic band.",
+        image: "images/408.jpg",
+        instagram: "https://www.instagram.com/408music",
+        website: "",
+        spotify: "https://open.spotify.com/artist/1m2wYIvVYvhEnvdaOJbIfT",
+        revealed: false
+    },
+
     {
         id: "02",
         name: "FELICITY",
@@ -40,17 +42,30 @@ const bandData = [
         image: "images/felicity.jpg",
         instagram: "https://www.instagram.com/wearefelicity",
         website: "https://www.wearefelicity.com/",
-        spotify: "https://open.spotify.com/artist/2aqSgJBj7gtdClLx6SQ1mK"
+        spotify: "https://open.spotify.com/artist/2aqSgJBj7gtdClLx6SQ1mK",
+        revealed: true
+    },
+
+    {
+        id: "03",
+        name: "DONEFOR",
+        bio: "With their unique blend of genres one can only describe as “ADHD-CORE”, DONEFOR polarizes the music scene with their genre bending sounds, insane stage antics and active social media presence. Hailing from SWFL.",
+        image: "images/donefor.jpg",
+        instagram: "https://www.instagram.com/donefor_band",
+        website: "https://doneforband.com/",
+        spotify: "https://open.spotify.com/artist/26nddmSfHAIsObi8F1kkKn",
+        revealed: false
     },
 
     {
         id: "04",
-        name: "WE'RE WOLVES",
+        name: "We're Wolves",
         bio: "Step into the world of We're Wolves — a musical force that blends alternative, hard rock, and metalcore. Hailing from West Palm Beach, Florida.",
         image: "images/werewolves.jpg",
         instagram: "https://www.instagram.com/werewolves_fl",
         website: "https://www.werewolvesfl.com/",
-        spotify: "https://open.spotify.com/artist/73hZY77xQYtJsTrslIzy7v"
+        spotify: "https://open.spotify.com/artist/73hZY77xQYtJsTrslIzy7v",
+        revealed: true
     },
 
     {
@@ -60,147 +75,138 @@ const bandData = [
         image: "images/livingdeadgirl.jpg",
         instagram: "https://www.instagram.com/livingdeadgirlofficial/",
         website: "https://www.livingdeadgirl.ca/",
-        spotify: "https://open.spotify.com/artist/3ahU0zmYd7h1xTDBGGiDur"
+        spotify: "https://open.spotify.com/artist/3ahU0zmYd7h1xTDBGGiDur",
+        revealed: true
     },
 
     {
         id: "06",
-        name: "CREATE CONTROL",
+        name: "Create Control",
         bio: "Emerging from the vibrant tapestry of Central Florida's music scene, Create Control is a five-piece melodic metalcore band that deftly intertwines the raw intensity of nu-metal and the evocative spirit of alternative rock.",
         image: "images/createcontrol.jpg",
         instagram: "https://www.instagram.com/crtctrlbandfl",
         website: "https://www.createcontrolband.com/",
-        spotify: "https://open.spotify.com/artist/55t0fVUZ1q3pR2EFXorJif"
+        spotify: "https://open.spotify.com/artist/55t0fVUZ1q3pR2EFXorJif",
+        revealed: true
+    },
+
+    {
+        id: "07",
+        name: "INDEBTED",
+        bio: "Nü-Core from Florida.",
+        image: "images/indebted.jpg",
+        instagram: "https://www.instagram.com/indebtedmusic",
+        website: "https://indebtedmusic.com/",
+        spotify: "https://open.spotify.com/artist/5IQnFzOZeFYHYkiwwhRsbh",
+        revealed: false
+    },
+
+    {
+        id: "08",
+        name: "INSITE",
+        bio: "INSITE is a rising rock and heavy metal vocalist who first gained widespread attention through his viral cover performances on social media and his breakout appearance on American Idol in 2025.",
+        image: "images/insite.jpg",
+        instagram: "https://www.instagram.com/insiteofmind/",
+        website: "https://www.insiteofmind.com/",
+        spotify: "https://open.spotify.com/artist/2h05fxb5Yu4afnOaI8FxOq",
+        revealed: true
+    },
+
+    {
+        id: "09",
+        name: "Bay Street",
+        bio: "If pop culture met pop punk with breakdowns Bay Street would be the product. A DIY heavy pop punk band hailing from Apopka, FL. With chugging breakdowns that are reminiscent of 2011 metalcore, choruses that you can’t help but be carried away by.",
+        image: "images/baystreet.jpg",
+        instagram: "https://www.instagram.com/baystreetfl/",
+        website: "",
+        spotify: "https://open.spotify.com/artist/56ypHZ2F0QC0Qq3aCYrWMG",
+        revealed: true
+    },
+
+    {
+        id: "10",
+        name: "ENAMORED",
+        bio: "Enamored is a 5-piece Post-Hardcore/Metalcore band from SWFL. Leading the 2000s revival into a modern twist. They attack with melodic tanking riffs, clean soaring vocals and neck breaking screams.",
+        image: "images/enamored.jpg",
+        instagram: "https://www.instagram.com/enamoredband/",
+        website: "",
+        spotify: "https://open.spotify.com/artist/44Mko7AxnBDJKBCs6KAbAd?si=U8W7ko6lR3eFciZqaLh1Cg",
+        revealed: true
+    },
+
+    {
+        id: "11",
+        name: "WICKED PLAYGROUND",
+        bio: "Wicked Playground is an Alternative Nu-Metal band based out of Miami, FL. Influenced by many bands such as Korn, Rammstein, Deftones, Slipknot, etc.; Wicked Playground is known for blending genres and putting on a hell of a show.",
+        image: "images/wicked.jpg",
+        instagram: "https://www.instagram.com/wickedplaygroundmusic/",
+        website: "",
+        spotify: "https://open.spotify.com/artist/0R6cpc6UNLQMDhmpxLAjy1?si=TaWsw230SAStloKmRJNz_w",
+        revealed: true
     }
+
 ];
 
 
 /* =========================================================
-   COUNTDOWN
+   BUILD SOCIAL LINKS
    ========================================================= */
 
-function updateCountdown() {
+function buildSocialLinks(data) {
 
-    const countdown = document.getElementById("countdown");
+    const links = [];
 
-    if (!countdown) return;
+    if (data.instagram) {
 
-    const now = Date.now();
-    const distance = REVEAL_DATE - now;
-
-    if (distance <= 0) {
-        countdown.textContent = "FIRST ARTISTS REVEALED";
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-    );
-
-    countdown.textContent =
-        `${days}D ${hours}H ${minutes}M ${seconds}S`;
-}
-
-
-/* =========================================================
-   HELPER FUNCTIONS
-   ========================================================= */
-
-function lineupIsRevealed() {
-    return Date.now() >= REVEAL_DATE;
-}
-
-
-function isArtistRevealed(artistId) {
-    return (
-        lineupIsRevealed() &&
-        REVEALED_ARTIST_IDS.includes(artistId)
-    );
-}
-
-
-function getArtistData(artistId) {
-    return bandData.find(
-        artist => artist.id === artistId
-    );
-}
-
-
-/* =========================================================
-   SOCIAL LINKS
-   ========================================================= */
-
-function buildSocialLinks(artist) {
-
-    if (!artist) return "";
-
-    let links = "";
-
-    if (artist.instagram) {
-        links += `
+        links.push(`
             <a
-                href="${artist.instagram}"
+                href="${data.instagram}"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="${artist.name} Instagram"
-            >
+                rel="noopener noreferrer">
                 INSTAGRAM
             </a>
-        `;
+        `);
+
     }
 
-    if (artist.website) {
-        links += `
+    if (data.website) {
+
+        links.push(`
             <a
-                href="${artist.website}"
+                href="${data.website}"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="${artist.name} Website"
-            >
+                rel="noopener noreferrer">
                 WEBSITE
             </a>
-        `;
+        `);
+
     }
 
-    if (artist.spotify) {
-        links += `
+    if (data.spotify) {
+
+        links.push(`
             <a
-                href="${artist.spotify}"
+                href="${data.spotify}"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="${artist.name} Spotify"
-            >
+                rel="noopener noreferrer">
                 SPOTIFY
             </a>
-        `;
+        `);
+
     }
 
-    return links;
+    return links.join("");
 }
 
 
 /* =========================================================
-   REVEAL ARTISTS
+   REVEAL ARTIST CARDS
    ========================================================= */
 
 function revealArtists() {
 
-    const cards = document.querySelectorAll(".artist-card");
-
-    if (!cards.length) return;
+    const cards =
+        document.querySelectorAll(".artist-card");
 
     cards.forEach(card => {
 
@@ -209,672 +215,853 @@ function revealArtists() {
 
         if (!numberElement) return;
 
-        const artistId =
+        const artistNumber =
             numberElement.textContent.trim();
 
-        /*
-           If this artist isn't part of the partial reveal,
-           leave the card completely untouched.
-        */
+        const data =
+            bandData.find(
+                band => band.id === artistNumber
+            );
 
-        if (!REVEALED_ARTIST_IDS.includes(artistId)) {
-            return;
-        }
-
-        const artist = getArtistData(artistId);
-
-        if (!artist) return;
+        if (!data) return;
 
 
-        /* -------------------------------------------------
-           FRONT OF CARD
-           ------------------------------------------------- */
+        /* =====================================================
+           LOCKED CARD
+           ===================================================== */
 
-        const front =
-            card.querySelector(".artist-card-front");
+        if (!data.revealed) {
 
-        if (front) {
-
-            const image =
-                front.querySelector(".artist-image");
-
-            if (image && artist.image) {
-
-                image.classList.remove("mystery-image");
-
-                image.style.backgroundImage =
-                    `url("${artist.image}")`;
-
-                image.style.backgroundSize = "cover";
-                image.style.backgroundPosition = "center";
-            }
-
-
-            const mysterySymbol =
-                front.querySelector(".mystery-symbol");
-
-            if (mysterySymbol) {
-                mysterySymbol.style.display = "none";
-            }
-
-
-            const status =
-                front.querySelector(".artist-status");
-
-            if (status) {
-                status.textContent = "FESTIVAL ARTIST";
-            }
-
+            const frontStatus =
+                card.querySelector(
+                    ".artist-front-info .artist-status"
+                );
 
             const frontTitle =
-                front.querySelector(".artist-front-info h3");
-
-            if (frontTitle) {
-                frontTitle.textContent = artist.name;
-            }
-        }
-
-
-        /* -------------------------------------------------
-           BACK OF CARD
-           ------------------------------------------------- */
-
-        const back =
-            card.querySelector(".artist-card-back");
-
-        if (back) {
-
-            const backTitle =
-                back.querySelector("h3");
-
-            if (backTitle) {
-                backTitle.textContent = artist.name;
-            }
-
-
-            const bio =
-                back.querySelector("p");
-
-            if (bio) {
-                bio.textContent = artist.bio;
-            }
-
-
-            const socials =
-                back.querySelector(".artist-socials");
-
-            if (socials) {
-                socials.innerHTML =
-                    buildSocialLinks(artist);
-            }
-
+                card.querySelector(
+                    ".artist-front-info h3"
+                );
 
             const learnMore =
-                back.querySelector(".learn-more-btn");
-
-            if (learnMore) {
-
-                learnMore.disabled = false;
-
-                learnMore.dataset.artist =
-                    artist.id;
-
-                learnMore.removeAttribute("aria-disabled");
-            }
-        }
-
-
-        /* -------------------------------------------------
-           MARK CARD AS REVEALED
-           ------------------------------------------------- */
-
-        card.classList.add("is-revealed");
-    });
-
-
-    /* -----------------------------------------------------
-       UPDATE SECRET MESSAGE
-       ----------------------------------------------------- */
-
-    const secretNote =
-        document.querySelector(".lineup-secret-note");
-
-    if (secretNote) {
-        secretNote.textContent =
-            "PHASE 1 REVEAL. MORE TO COME.";
-    }
-}
-
-
-/* =========================================================
-   ARTIST MODAL
-   ========================================================= */
-
-function setupArtistModal() {
-
-    const modal =
-        document.getElementById("artist-modal");
-
-    if (!modal) return;
-
-
-    const modalTitle =
-        document.getElementById("artist-modal-title");
-
-    const modalBio =
-        document.getElementById("artist-modal-bio");
-
-    const modalImage =
-        modal.querySelector(".artist-modal-image");
-
-    const modalLinks =
-        modal.querySelector(".artist-modal-links");
-
-    const closeButtons =
-        modal.querySelectorAll("[data-close-modal]");
-
-
-    /* -----------------------------------------------------
-       OPEN MODAL
-       ----------------------------------------------------- */
-
-    function openModal(artist) {
-
-        if (!artist) return;
-
-
-        if (modalTitle) {
-            modalTitle.textContent =
-                artist.name;
-        }
-
-
-        if (modalBio) {
-            modalBio.textContent =
-                artist.bio;
-        }
-
-
-        if (modalLinks) {
-            modalLinks.innerHTML =
-                buildSocialLinks(artist);
-        }
-
-
-        if (modalImage && artist.image) {
-
-            modalImage.classList.remove("mystery-image");
-
-            modalImage.style.backgroundImage =
-                `url("${artist.image}")`;
-
-            modalImage.style.backgroundSize =
-                "cover";
-
-            modalImage.style.backgroundPosition =
-                "center";
-
-            const questionMark =
-                modalImage.querySelector("span");
-
-            if (questionMark) {
-                questionMark.style.display =
-                    "none";
-            }
-        }
-
-
-        modal.classList.add("is-open");
-
-        modal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.classList.add(
-            "modal-open"
-        );
-    }
-
-
-    /* -----------------------------------------------------
-       CLOSE MODAL
-       ----------------------------------------------------- */
-
-    function closeModal() {
-
-        modal.classList.remove("is-open");
-
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-    }
-
-
-    /* -----------------------------------------------------
-       LEARN MORE BUTTONS
-       ----------------------------------------------------- */
-
-    document.addEventListener(
-        "click",
-        function(event) {
-
-            const button =
-                event.target.closest(
+                card.querySelector(
                     ".learn-more-btn"
                 );
 
-            if (!button) return;
+            if (frontStatus) {
 
-            event.preventDefault();
-            event.stopPropagation();
+                frontStatus.textContent =
+                    "ARTIST REVEAL";
 
-
-            const artistId =
-                button.dataset.artist;
-
-            if (!artistId) return;
-
-            if (!isArtistRevealed(artistId)) {
-                return;
             }
 
+            if (frontTitle) {
 
-            const artist =
-                getArtistData(artistId);
+                frontTitle.textContent =
+                    "COMING SOON";
 
-            if (!artist) return;
+            }
 
-            openModal(artist);
+            if (learnMore) {
+
+                learnMore.disabled = true;
+
+            }
+
+            return;
         }
-    );
 
 
-    /* -----------------------------------------------------
-       CLOSE BUTTONS
-       ----------------------------------------------------- */
+        /* =====================================================
+           FRONT
+           ===================================================== */
 
-    closeButtons.forEach(button => {
+        const frontImage =
+            card.querySelector(".artist-image");
 
-        button.addEventListener(
-            "click",
-            closeModal
+        const frontStatus =
+            card.querySelector(
+                ".artist-front-info .artist-status"
+            );
+
+        const frontTitle =
+            card.querySelector(
+                ".artist-front-info h3"
+            );
+
+
+        if (frontImage) {
+
+            frontImage.classList.remove(
+                "mystery-image"
+            );
+
+            frontImage.style.backgroundImage =
+                `url("${data.image}")`;
+
+            frontImage.style.backgroundSize =
+                "cover";
+
+            frontImage.style.backgroundPosition =
+                "center";
+
+
+            const mysterySymbol =
+                frontImage.querySelector(
+                    ".mystery-symbol"
+                );
+
+            if (mysterySymbol) {
+
+                mysterySymbol.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        if (frontStatus) {
+
+            frontStatus.textContent =
+                "FESTIVAL ARTIST";
+
+        }
+
+
+        if (frontTitle) {
+
+            frontTitle.textContent =
+                data.name;
+
+        }
+
+
+        /* =====================================================
+           BACK
+           ===================================================== */
+
+        const back =
+            card.querySelector(
+                ".artist-card-back"
+            );
+
+        if (!back) return;
+
+
+        const backTitle =
+            back.querySelector("h3");
+
+        const backBio =
+            back.querySelector("p");
+
+        const socials =
+            back.querySelector(
+                ".artist-socials"
+            );
+
+        const learnMore =
+            back.querySelector(
+                ".learn-more-btn"
+            );
+
+
+        if (backTitle) {
+
+            backTitle.textContent =
+                data.name;
+
+        }
+
+
+        if (backBio) {
+
+            backBio.textContent =
+                data.bio;
+
+        }
+
+
+        if (socials) {
+
+            socials.innerHTML =
+                buildSocialLinks(data);
+
+        }
+
+
+        if (learnMore) {
+
+            learnMore.disabled =
+                false;
+
+        }
+
+
+        card.classList.add(
+            "is-revealed"
         );
+
     });
 
 
-    /* -----------------------------------------------------
-       ESCAPE KEY
-       ----------------------------------------------------- */
+    /* =====================================================
+       SECRET NOTE
+       ===================================================== */
 
-    document.addEventListener(
-        "keydown",
-        function(event) {
+    const secretNote =
+        document.querySelector(
+            ".lineup-secret-note"
+        );
 
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        }
-    );
+    if (secretNote) {
+
+        secretNote.textContent =
+            "THE LINEUP IS HERE. MORE ARTISTS TO BE REVEALED.";
+
+    }
+
 }
 
 
 /* =========================================================
-   MOBILE ARTIST CARD FLIPPING
+   LINEUP STATUS
    ========================================================= */
 
-function setupArtistCards() {
+function lineupIsRevealed() {
 
-    const cards =
-        document.querySelectorAll(
-            ".artist-card"
-        );
+    return true;
 
-    if (!cards.length) return;
+}
 
 
-    const isTouchDevice =
-        window.matchMedia(
-            "(hover: none) and (pointer: coarse)"
-        );
+/* =========================================================
+   ARTIST CARDS + MODAL
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const cards =
+            document.querySelectorAll(
+                ".artist-card"
+            );
+
+        const modal =
+            document.getElementById(
+                "artist-modal"
+            );
+
+        const modalImage =
+            document.querySelector(
+                ".artist-modal-image"
+            );
+
+        const modalKicker =
+            document.querySelector(
+                ".artist-modal-kicker"
+            );
+
+        const modalTitle =
+            document.getElementById(
+                "artist-modal-title"
+            );
+
+        const modalBio =
+            document.getElementById(
+                "artist-modal-bio"
+            );
+
+        const modalLinks =
+            document.querySelector(
+                ".artist-modal-links"
+            );
+
+        const closeElements =
+            document.querySelectorAll(
+                "[data-close-modal]"
+            );
+
+        const learnMoreButtons =
+            document.querySelectorAll(
+                ".learn-more-btn"
+            );
 
 
-    cards.forEach(card => {
+        /* =====================================================
+           INITIAL ARTIST STATE
+           ===================================================== */
 
-        card.addEventListener(
-            "click",
-            function(event) {
+        revealArtists();
 
-                /*
-                   Don't flip when clicking:
-                   - Learn More
-                   - social links
-                */
 
-                if (
-                    event.target.closest(
-                        ".learn-more-btn"
-                    )
-                ) {
-                    return;
+        /* =====================================================
+           MOBILE CARD FLIP
+           ===================================================== */
+
+        cards.forEach(card => {
+
+            card.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target.closest(
+                            ".learn-more-btn"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        window.matchMedia(
+                            "(hover: none)"
+                        ).matches
+                    ) {
+
+                        card.classList.toggle(
+                            "is-flipped"
+                        );
+
+                    }
+
                 }
+            );
 
-                if (
-                    event.target.closest(
-                        ".artist-socials a"
-                    )
-                ) {
-                    return;
+
+            /* =================================================
+               KEYBOARD SUPPORT
+               ================================================= */
+
+            card.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+
+                        if (
+                            window.matchMedia(
+                                "(hover: none)"
+                            ).matches
+                        ) {
+
+                            card.classList.toggle(
+                                "is-flipped"
+                            );
+
+                        }
+
+                    }
+
                 }
+            );
+
+        });
 
 
-                /*
-                   Only use JavaScript flipping
-                   on touch/mobile devices.
+        /* =====================================================
+           LEARN MORE
+           ===================================================== */
 
-                   Desktop continues using
-                   the CSS hover rule.
-                */
+        learnMoreButtons.forEach(
+            function (button) {
 
-                if (!isTouchDevice.matches) {
-                    return;
-                }
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.stopPropagation();
+
+                        if (!modal) return;
 
 
-                card.classList.toggle(
-                    "is-flipped"
+                        const artistNumber =
+                            button.dataset.artist || "";
+
+
+                        const data =
+                            bandData.find(
+                                band =>
+                                    band.id ===
+                                    artistNumber
+                            );
+
+
+                        if (
+                            !data ||
+                            !data.revealed
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /* =====================================
+                           MODAL CONTENT
+                           ===================================== */
+
+                        if (modalKicker) {
+
+                            modalKicker.textContent =
+                                "FESTIVAL ARTIST";
+
+                        }
+
+
+                        if (modalTitle) {
+
+                            modalTitle.textContent =
+                                data.name;
+
+                        }
+
+
+                        if (modalBio) {
+
+                            modalBio.textContent =
+                                data.bio;
+
+                        }
+
+
+                        if (modalLinks) {
+
+                            modalLinks.innerHTML =
+                                buildSocialLinks(data);
+
+                        }
+
+
+                        /* =====================================
+                           MODAL IMAGE
+                           ===================================== */
+
+                        if (modalImage) {
+
+                            modalImage.classList.remove(
+                                "mystery-image"
+                            );
+
+                            modalImage.style.backgroundImage =
+                                `url("${data.image}")`;
+
+                            modalImage.style.backgroundSize =
+                                "cover";
+
+                            modalImage.style.backgroundPosition =
+                                "center";
+
+
+                            const mysterySpan =
+                                modalImage.querySelector(
+                                    "span"
+                                );
+
+
+                            if (mysterySpan) {
+
+                                mysterySpan.style.display =
+                                    "none";
+
+                            }
+
+                        }
+
+
+                        /* =====================================
+                           OPEN MODAL
+                           ===================================== */
+
+                        modal.classList.add(
+                            "is-open"
+                        );
+
+                        modal.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
+
+                        document.body.classList.add(
+                            "modal-open"
+                        );
+
+                    }
                 );
+
             }
         );
 
 
-        /* -------------------------------------------------
-           KEYBOARD SUPPORT
-           ------------------------------------------------- */
+        /* =====================================================
+           CLOSE MODAL
+           ===================================================== */
 
-        card.addEventListener(
+        function closeModal() {
+
+            if (!modal) return;
+
+            modal.classList.remove(
+                "is-open"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+        closeElements.forEach(
+            function (element) {
+
+                element.addEventListener(
+                    "click",
+                    closeModal
+                );
+
+            }
+        );
+
+
+        document.addEventListener(
             "keydown",
-            function(event) {
+            function (event) {
 
                 if (
-                    event.key !== "Enter" &&
-                    event.key !== " "
+                    event.key === "Escape"
                 ) {
-                    return;
+
+                    closeModal();
+
                 }
 
-
-                if (!isTouchDevice.matches) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-                card.classList.toggle(
-                    "is-flipped"
-                );
             }
         );
-    });
-}
+
+    }
+);
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   HAMBURGER NAVIGATION
    ========================================================= */
 
-function setupNavigation() {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const toggle =
-        document.getElementById("nav-toggle");
-
-    const menu =
-        document.getElementById("nav-menu");
-
-    if (!toggle || !menu) return;
-
-
-    /* -----------------------------------------------------
-       TOGGLE MENU
-       ----------------------------------------------------- */
-
-    toggle.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            const isOpen =
-                menu.classList.toggle(
-                    "is-open"
-                );
-
-            toggle.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
+        const navToggle =
+            document.getElementById(
+                "nav-toggle"
             );
 
-            toggle.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation"
-                    : "Open navigation"
+        const navMenu =
+            document.getElementById(
+                "nav-menu"
             );
+
+
+        if (!navToggle || !navMenu) {
+
+            return;
+
         }
-    );
 
 
-    /* -----------------------------------------------------
-       CLOSE AFTER CLICKING A NAV LINK
-       ----------------------------------------------------- */
-
-    menu.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener(
+        navToggle.addEventListener(
             "click",
-            function() {
+            function () {
 
-                menu.classList.remove(
-                    "is-open"
+                const isOpen =
+                    navMenu.classList.toggle(
+                        "is-open"
+                    );
+
+
+                navToggle.classList.toggle(
+                    "is-open",
+                    isOpen
                 );
 
-                toggle.setAttribute(
+
+                navToggle.setAttribute(
                     "aria-expanded",
-                    "false"
+                    isOpen
+                        ? "true"
+                        : "false"
                 );
 
-                toggle.setAttribute(
+
+                navToggle.setAttribute(
                     "aria-label",
-                    "Open navigation"
+                    isOpen
+                        ? "Close navigation"
+                        : "Open navigation"
                 );
+
             }
         );
-    });
 
 
-    /* -----------------------------------------------------
-       CLOSE WHEN CLICKING OUTSIDE
-       ----------------------------------------------------- */
+        navMenu
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
 
-    document.addEventListener(
-        "click",
-        function(event) {
+                    link.addEventListener(
+                        "click",
+                        function () {
 
-            if (
-                !menu.contains(event.target) &&
-                !toggle.contains(event.target)
-            ) {
+                            navMenu.classList.remove(
+                                "is-open"
+                            );
 
-                menu.classList.remove(
-                    "is-open"
-                );
+                            navToggle.classList.remove(
+                                "is-open"
+                            );
 
-                toggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                            navToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
 
-                toggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
-            }
-        }
-    );
-}
+                            navToggle.setAttribute(
+                                "aria-label",
+                                "Open navigation"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+);
 
 
 /* =========================================================
    WEB3FORMS CONTACT FORM
    ========================================================= */
 
-function setupContactForm() {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const form =
-        document.getElementById(
-            "contact-form"
-        );
+        const contactForm =
+            document.getElementById(
+                "contact-form"
+            );
 
-    if (!form) return;
+        const contactResult =
+            document.getElementById(
+                "contact-result"
+            );
 
-
-    const result =
-        document.getElementById(
-            "result"
-        );
-
-    const submitButton =
-        form.querySelector(
-            'button[type="submit"]'
-        );
-
-
-    form.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
+        const contactSubmit =
+            document.getElementById(
+                "contact-submit"
+            );
 
 
-            if (submitButton) {
-                submitButton.disabled = true;
-                submitButton.textContent =
-                    "SENDING...";
-            }
+        if (!contactForm) return;
 
 
-            if (result) {
-                result.textContent = "";
-            }
+        contactForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
 
 
-            const formData =
-                new FormData(form);
+                if (contactSubmit) {
+
+                    contactSubmit.disabled =
+                        true;
+
+                    contactSubmit.textContent =
+                        "SENDING...";
+
+                }
 
 
-            try {
+                if (contactResult) {
 
-                const response =
-                    await fetch(
-                        "https://api.web3forms.com/submit",
-                        {
-                            method: "POST",
-                            body: formData
-                        }
+                    contactResult.textContent =
+                        "";
+
+                    contactResult.className =
+                        "contact-result";
+
+                }
+
+
+                const formData =
+                    new FormData(
+                        contactForm
                     );
 
 
-                const data =
-                    await response.json();
+                try {
+
+                    const response =
+                        await fetch(
+                            "https://api.web3forms.com/submit",
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        );
 
 
-                if (data.success) {
+                    const result =
+                        await response.json();
 
-                    if (result) {
-                        result.textContent =
-                            "MESSAGE SENT. THANK YOU!";
+
+                    if (result.success) {
+
+                        if (contactResult) {
+
+                            contactResult.textContent =
+                                "MESSAGE SENT — THANK YOU FOR REACHING OUT!";
+
+                            contactResult.classList.add(
+                                "success"
+                            );
+
+                        }
+
+
+                        contactForm.reset();
+
+
+                        if (contactSubmit) {
+
+                            contactSubmit.textContent =
+                                "MESSAGE SENT";
+
+                        }
+
+
+                        setTimeout(
+                            function () {
+
+                                if (contactSubmit) {
+
+                                    contactSubmit.disabled =
+                                        false;
+
+                                    contactSubmit.textContent =
+                                        "SEND MESSAGE";
+
+                                }
+
+                            },
+                            4000
+                        );
+
+
+                    } else {
+
+                        if (contactResult) {
+
+                            contactResult.textContent =
+                                result.message ||
+                                "SOMETHING WENT WRONG. PLEASE TRY AGAIN.";
+
+                            contactResult.classList.add(
+                                "error"
+                            );
+
+                        }
+
+
+                        if (contactSubmit) {
+
+                            contactSubmit.disabled =
+                                false;
+
+                            contactSubmit.textContent =
+                                "SEND MESSAGE";
+
+                        }
+
                     }
 
-                    form.reset();
 
-                } else {
+                } catch (error) {
 
-                    if (result) {
-                        result.textContent =
-                            data.message ||
-                            "Something went wrong. Please try again.";
+                    console.error(
+                        "Web3Forms error:",
+                        error
+                    );
+
+
+                    if (contactResult) {
+
+                        contactResult.textContent =
+                            "UNABLE TO SEND MESSAGE. PLEASE TRY AGAIN.";
+
+                        contactResult.classList.add(
+                            "error"
+                        );
+
                     }
+
+
+                    if (contactSubmit) {
+
+                        contactSubmit.disabled =
+                            false;
+
+                        contactSubmit.textContent =
+                            "SEND MESSAGE";
+
+                    }
+
                 }
 
-            } catch (error) {
-
-                console.error(
-                    "Contact form error:",
-                    error
-                );
-
-                if (result) {
-                    result.textContent =
-                        "Something went wrong. Please try again.";
-                }
-
-            } finally {
-
-                if (submitButton) {
-
-                    submitButton.disabled = false;
-
-                    submitButton.textContent =
-                        "SEND MESSAGE";
-                }
             }
-        }
-    );
-}
+        );
+
+    }
+);
 
 
 /* =========================================================
-   INITIALIZE EVERYTHING
+   INITIALIZE
    ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
-        /* Countdown */
-        updateCountdown();
+        const countdown =
+            document.getElementById(
+                "countdown"
+            );
 
-        setInterval(
-            updateCountdown,
-            1000
-        );
+        if (countdown) {
 
+            countdown.textContent =
+                "LINEUP REVEALED";
 
-        /* Reveal artists */
-        if (lineupIsRevealed()) {
-            revealArtists();
         }
 
-
-        /* Artist cards */
-        setupArtistCards();
-
-
-        /* Artist modal */
-        setupArtistModal();
-
-
-        /* Navigation */
-        setupNavigation();
-
-
-        /* Contact form */
-        setupContactForm();
     }
 );
