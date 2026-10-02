@@ -32,7 +32,7 @@ const bandData = [
         instagram: "https://www.instagram.com/408music",
         website: "",
         spotify: "https://open.spotify.com/artist/1m2wYIvVYvhEnvdaOJbIfT",
-        revealed: false
+        revealed: true
     },
 
     {
@@ -54,7 +54,7 @@ const bandData = [
         instagram: "https://www.instagram.com/donefor_band",
         website: "https://doneforband.com/",
         spotify: "https://open.spotify.com/artist/26nddmSfHAIsObi8F1kkKn",
-        revealed: false
+        revealed: true
     },
 
     {
@@ -98,7 +98,7 @@ const bandData = [
         instagram: "https://www.instagram.com/indebtedmusic",
         website: "https://indebtedmusic.com/",
         spotify: "https://open.spotify.com/artist/5IQnFzOZeFYHYkiwwhRsbh",
-        revealed: false
+        revealed: true
     },
 
     {
