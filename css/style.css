@@ -267,47 +267,89 @@ header {
 
 @media (max-width: 768px) {
 
-  .nav-inner {
-    padding: 12px 15px;
-  }
+/* ---------------------------------------------------------
+   SPONSORS
+   --------------------------------------------------------- */
 
-  .nav-logo {
-    font-size: 0.9rem;
-    letter-spacing: 0.8px;
-  }
+.sponsor-section {
+  padding:
+    75px
+    15px;
+}
 
-  .nav-toggle {
-    width: 28px !important;
-    height: 21px;
-  }
+.sponsor-inner {
+  max-width: 100%;
+}
 
-  .nav-toggle span {
-    width: 28px;
-  }
+.sponsor-intro {
+  font-size: .98rem;
+}
 
-  .nav-menu {
-    top: 100%;
-    left: 0;
-    right: 0;
+.sponsor-lead {
+  margin-bottom: 38px !important;
+}
 
-    width: 100%;
+.sponsor-grid {
+  grid-template-columns: 1fr;
 
-    border-left: 0;
-    border-right: 0;
-  }
+  gap: 20px;
+}
 
-  .nav-menu a {
-    padding: 16px 20px;
+.sponsor-card-presenting {
+  margin-bottom: 20px;
+}
 
-    text-align: center;
+.sponsor-card-header {
+  padding:
+    25px
+    22px
+    22px;
+}
 
-    font-size: 0.72rem;
-    letter-spacing: 1.3px;
-  }
+.sponsor-tier {
+  font-size: 1.2rem;
+}
 
-  .nav-menu a:hover {
-    padding-left: 20px;
-  }
+.sponsor-price {
+  font-size: 3.3rem;
+}
+
+.sponsor-description {
+  font-size: .88rem;
+}
+
+.sponsor-card-content {
+  padding:
+    24px
+    22px
+    26px;
+}
+
+.sponsor-benefits li {
+  font-size: .86rem;
+}
+
+.sponsor-card-footer {
+  padding:
+    0
+    22px
+    22px;
+}
+
+.sponsor-card-button {
+  font-size: .63rem;
+
+  letter-spacing: 1px;
+
+  padding:
+    13px
+    12px;
+}
+
+.sponsor-bottom {
+  margin-top: 38px;
+
+  padding-top: 25px;
 }
 /* =========================================================
    HERO
