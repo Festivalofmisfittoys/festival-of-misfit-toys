@@ -1797,81 +1797,15 @@ header {
 
 .sponsor-card-content {
   flex: 1;
-
   padding: 27px 32px 30px;
-}
-
-.sponsor-card-content h3 {
-  margin: 0 0 20px;
-
-  color: var(--gold);
-
-  font-size: .68rem;
-
-  font-weight: 900;
-
-  letter-spacing: 2px;
-
-  line-height: 1.4;
-
-  text-transform: uppercase;
 }
 
 .sponsor-benefits {
   margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-}
-
-.sponsor-benefits li {
-  position: relative;
-
-  margin: 0;
-
-  padding:
-    0
-    0
-    13px
-    24px;
-
-  color: rgba(255,255,255,.82);
-
+  color: rgba(255,255,255,.78);
   font-size: .9rem;
-
-  line-height: 1.5;
+  line-height: 1.8;
 }
-
-.sponsor-benefits li + li {
-  padding-top: 13px;
-
-  border-top: 1px solid rgba(255,255,255,.07);
-}
-
-.sponsor-benefits li::before {
-  content: "✓";
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--red);
-
-  font-weight: 900;
-}
-
-.sponsor-benefits li + li::before {
-  top: 13px;
-}
-
-.sponsor-benefits strong {
-  color: #fff;
-}
-
-
 /* ---------------------------------------------------------
    CARD BUTTON
    --------------------------------------------------------- */
