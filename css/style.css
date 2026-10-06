@@ -1736,34 +1736,6 @@ header {
     3px 3px 0 rgba(212,175,55,.25);
 }
 
-.sponsor-availability {
-  display: inline-block;
-
-  margin-top: 16px;
-
-  padding: 6px 9px;
-
-  color: rgba(255,255,255,.75);
-
-  border: 1px solid rgba(255,255,255,.18);
-
-  font-size: .62rem;
-
-  font-weight: 900;
-
-  letter-spacing: 1.5px;
-
-  line-height: 1.2;
-
-  text-transform: uppercase;
-}
-
-.sponsor-availability-gold {
-  color: var(--gold);
-
-  border-color: rgba(212,175,55,.5);
-}
-
 .sponsor-description {
   max-width: 760px;
 
