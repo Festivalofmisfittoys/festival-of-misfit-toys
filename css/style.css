@@ -4280,6 +4280,7 @@ body.modal-open {
     width: 100%;
     min-height: 352px;
 }
+```css
 /* =========================================================
    FESTIVAL AD / PARTNER RAIL
    ========================================================= */
@@ -4287,215 +4288,143 @@ body.modal-open {
 .festival-ad-rail {
     width: 100%;
     overflow: hidden;
+    background: #050505;
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
     position: relative;
-
-    background:
-        linear-gradient(
-            90deg,
-            #050505,
-            #111 15%,
-            #111 85%,
-            #050505
-        );
-
-    border-top: 1px solid rgba(212,175,55,.18);
-    border-bottom: 1px solid rgba(177,30,44,.55);
-
-    padding: 7px 0;
 }
 
 .festival-ad-track {
     display: flex;
     width: max-content;
-
-    gap: 8px;
-
-    animation: festivalAdScroll 42s linear infinite;
+    animation: festivalAdScroll 45s linear infinite;
+    will-change: transform;
 }
-
-.festival-ad-rail:hover .festival-ad-track {
-    animation-play-state: paused;
-}
-
-
-/* ---------------------------------------------------------
-   INDIVIDUAL AD TILES
-   --------------------------------------------------------- */
 
 .festival-ad-tile {
-    position: relative;
-
-    flex: 0 0 245px;
-
-    height: 72px;
+    width: 240px;
+    height: 82px;
+    flex: 0 0 240px;
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
 
-    padding: 10px 18px;
+    text-align: center;
+    text-decoration: none;
 
+    position: relative;
     overflow: hidden;
 
-    color: #fff;
+    border-right: 1px solid rgba(255,255,255,0.12);
 
-    text-decoration: none;
-    text-align: left;
-
-    background:
-        linear-gradient(
-            135deg,
-            #151515,
-            #090909
-        );
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    box-sizing: border-box;
-
-    transition:
-        transform .2s ease,
-        border-color .2s ease,
-        background .2s ease;
-}
-
-.festival-ad-tile::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    right: 0;
-
-    width: 4px;
-    height: 100%;
-
-    background: var(--red);
-}
-
-.festival-ad-tile:hover {
-    transform: translateY(-1px);
-
-    border-color: rgba(212,175,55,.7);
-
-    background:
-        linear-gradient(
-            135deg,
-            #1c1c1c,
-            #0b0b0b
-        );
-}
-
-.festival-ad-tile:hover::after {
-    background: var(--gold);
+    transition: filter 0.2s ease;
 }
 
 
-/* ---------------------------------------------------------
-   TILE TYPE: AD SPACE AVAILABLE
-   --------------------------------------------------------- */
+/* =========================================================
+   AVAILABLE AD SPACE
+   ========================================================= */
 
 .festival-ad-available {
-    background:
-        repeating-linear-gradient(
-            135deg,
-            #0b0b0b 0,
-            #0b0b0b 8px,
-            #101010 8px,
-            #101010 16px
-        );
-
-    border-color: rgba(212,175,55,.28);
-}
-
-.festival-ad-available::after {
-    background: var(--gold);
+    background: #111;
+    color: #fff;
+    padding: 8px 15px;
 }
 
 .festival-ad-available .ad-label {
-    color: var(--gold);
+    color: #D4AF37;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.festival-ad-available strong {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 3px 0;
+}
+
+.festival-ad-available small {
+    color: rgba(255,255,255,0.55);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    line-height: 1;
 }
 
 
-/* ---------------------------------------------------------
-   TILE TYPE: FEATURED / SPONSOR CTA
-   --------------------------------------------------------- */
+/* =========================================================
+   CURRENT PARTNERS
+   ========================================================= */
+
+.festival-ad-partner {
+    background: #fff;
+    padding: 8px 18px;
+}
+
+.festival-ad-partner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   SPONSOR CTA
+   ========================================================= */
 
 .festival-ad-featured {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(177,30,44,.25),
-            #0b0b0b 70%
-        );
-
-    border-color: rgba(177,30,44,.7);
-}
-
-.festival-ad-featured::after {
-    background: var(--gold);
+    background: #B11E2C;
+    color: #fff;
+    padding: 8px 15px;
 }
 
 .festival-ad-featured .ad-label {
-    color: var(--gold);
-}
-
-
-/* ---------------------------------------------------------
-   TILE TYPOGRAPHY
-   --------------------------------------------------------- */
-
-.festival-ad-tile .ad-label {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: .48rem;
+    color: #D4AF37;
+    font-size: 9px;
     font-weight: 900;
-
     letter-spacing: 2px;
     line-height: 1;
-
-    text-transform: uppercase;
 }
 
-.festival-ad-tile strong {
-    display: block;
-
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
-
-    font-size: 1.15rem;
-
-    letter-spacing: .8px;
-    line-height: .95;
-
-    text-transform: uppercase;
+.festival-ad-featured strong {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    line-height: 1.1;
+    margin: 4px 0;
 }
 
-.festival-ad-tile small {
-    display: block;
-
-    margin-top: 5px;
-
-    color: rgba(255,255,255,.48);
-
-    font-size: .45rem;
+.festival-ad-featured small {
+    color: rgba(255,255,255,0.8);
+    font-size: 8px;
     font-weight: 700;
-
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
     line-height: 1;
-
-    text-transform: uppercase;
 }
 
 
-/* ---------------------------------------------------------
-   CONTINUOUS SCROLL
-   --------------------------------------------------------- */
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.festival-ad-tile:hover {
+    filter: brightness(1.12);
+}
+
+
+/* =========================================================
+   SEAMLESS SCROLL
+   ========================================================= */
 
 @keyframes festivalAdScroll {
 
@@ -4504,60 +4433,38 @@ body.modal-open {
     }
 
     to {
-        transform: translateX(
-            calc(-50% - 4px)
-        );
+        transform: translateX(-50%);
     }
 
 }
 
 
-/* ---------------------------------------------------------
-   ACCESSIBILITY
-   --------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .festival-ad-track {
-        animation: none;
-    }
-
-}
-
-
-/* ---------------------------------------------------------
+/* =========================================================
    MOBILE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 @media (max-width: 600px) {
 
-    .festival-ad-rail {
-        padding: 6px 0;
+    .festival-ad-tile {
+        width: 200px;
+        flex-basis: 200px;
+        height: 72px;
+    }
+
+    .festival-ad-available strong {
+        font-size: 16px;
+    }
+
+    .festival-ad-featured strong {
+        font-size: 13px;
     }
 
     .festival-ad-track {
-        gap: 6px;
-
-        animation-duration: 34s;
-    }
-
-    .festival-ad-tile {
-        flex-basis: 205px;
-
-        height: 62px;
-
-        padding: 8px 14px;
-    }
-
-    .festival-ad-tile strong {
-        font-size: .98rem;
-    }
-
-    .festival-ad-tile small {
-        font-size: .39rem;
+        animation-duration: 38s;
     }
 
 }
+
 /* =========================================================
    COMMUNITY PARTNERS
    ========================================================= */
