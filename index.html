@@ -1861,135 +1861,139 @@
 
 
     <script src="js/script.js"></script>
-```html
+    
 <script>
-/* =========================================================
-   FESTIVAL AD / PARTNER RAIL
-   Add new partners to the list below.
-   ========================================================= */
 
-const festivalPartners = [
-    {
-        image: "images/mypetsvet.jpg",
-        name: "My Pets Vet"
-    },
-    {
-        image: "images/theshirtseries.jpg",
-        name: "The Shirt Series"
-    },
-    {
-        image: "images/musicatequila.jpg",
-        name: "Musica Tequila"
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================
+       CURRENT COMMUNITY PARTNERS
+       Add new partners to this list.
+    ========================================= */
+
+    const festivalPartners = [
+        {
+            image: "images/mypetsvet.jpg",
+            name: "My Pets Vet"
+        },
+        {
+            image: "images/theshirtseries.jpg",
+            name: "The Shirt Series"
+        },
+        {
+            image: "images/musicatequila.jpg",
+            name: "Musica Tequila"
+        }
+    ];
+
+
+    const track = document.getElementById("festivalAdTrack");
+
+    if (!track) {
+        return;
     }
-];
 
-    /* ADD NEW PARTNERS HERE
 
-    ,
-    {
-        image: "../images/newpartner.jpg",
-        name: "New Partner"
+    /* =========================================
+       CREATE PARTNER TILE
+    ========================================= */
+
+    function createPartner(partner) {
+
+        const tile = document.createElement("a");
+
+        tile.href = "#sponsors";
+        tile.className = "festival-ad-tile festival-ad-partner";
+
+        const image = document.createElement("img");
+
+        image.src = partner.image;
+        image.alt = partner.name;
+
+        tile.appendChild(image);
+
+        return tile;
     }
 
-    */
-];
+
+    /* =========================================
+       CREATE AVAILABLE AD TILE
+    ========================================= */
+
+    function createAvailableAd(message) {
+
+        const tile = document.createElement("a");
+
+        tile.href = "#sponsors";
+        tile.className = "festival-ad-tile festival-ad-available";
+
+        tile.innerHTML =
+            '<span class="ad-label">AD SPACE</span>' +
+            '<strong>AVAILABLE</strong>' +
+            '<small>' + message + '</small>';
+
+        return tile;
+    }
 
 
-/* =========================================================
-   BUILD THE RAIL
-   You should not need to edit anything below this line.
-   ========================================================= */
+    /* =========================================
+       CREATE SPONSOR CTA TILE
+    ========================================= */
 
-const festivalAdTrack = document.getElementById("festivalAdTrack");
+    function createFeaturedAd(label, title, message) {
 
-function createAvailableAd(text) {
-    const tile = document.createElement("a");
+        const tile = document.createElement("a");
 
-    tile.href = "#sponsors";
-    tile.className = "festival-ad-tile festival-ad-available";
+        tile.href = "#sponsors";
+        tile.className = "festival-ad-tile festival-ad-featured";
 
-    tile.innerHTML = `
-        <span class="ad-label">AD SPACE</span>
-        <strong>AVAILABLE</strong>
-        <small>${text}</small>
-    `;
+        tile.innerHTML =
+            '<span class="ad-label">' + label + '</span>' +
+            '<strong>' + title + '</strong>' +
+            '<small>' + message + '</small>';
 
-    return tile;
-}
+        return tile;
+    }
 
 
-function createPartner(partner) {
-    const tile = document.createElement("a");
+    /* =========================================
+       BUILD FIRST SET
+    ========================================= */
 
-    tile.href = "#sponsors";
-    tile.className = "festival-ad-tile festival-ad-partner";
-
-    tile.innerHTML = `
-        <img src="${partner.image}" alt="${partner.name}">
-    `;
-
-    return tile;
-}
+    const firstSet = document.createDocumentFragment();
 
 
-function createFeaturedAd(label, title, text) {
-    const tile = document.createElement("a");
+    festivalPartners.forEach(function (partner, index) {
 
-    tile.href = "#sponsors";
-    tile.className = "festival-ad-tile festival-ad-featured";
-
-    tile.innerHTML = `
-        <span class="ad-label">${label}</span>
-        <strong>${title}</strong>
-        <small>${text}</small>
-    `;
-
-    return tile;
-}
-
-
-function buildFestivalRail() {
-
-    const railSet = document.createDocumentFragment();
-
-    /* Add partners and available ad spaces */
-
-    festivalPartners.forEach((partner, index) => {
-
-        /* Partner */
-
-        railSet.appendChild(
+        firstSet.appendChild(
             createPartner(partner)
         );
 
 
-        /* Available space after each partner */
-
         if (index === 0) {
 
-            railSet.appendChild(
+            firstSet.appendChild(
                 createAvailableAd("PUT YOUR BUSINESS HERE")
             );
 
         } else if (index === 1) {
 
-            railSet.appendChild(
+            firstSet.appendChild(
                 createAvailableAd("REACH THE MISFIT CROWD")
             );
 
         } else {
 
-            railSet.appendChild(
+            firstSet.appendChild(
                 createAvailableAd("SUPPORT LIVE MUSIC + GIVING")
             );
+
         }
 
     });
 
 
-    /* Sponsor CTA */
-
-    railSet.appendChild(
+    firstSet.appendChild(
         createFeaturedAd(
             "BECOME A",
             "FESTIVAL PARTNER",
@@ -1998,16 +2002,12 @@ function buildFestivalRail() {
     );
 
 
-    /* Additional available space */
-
-    railSet.appendChild(
+    firstSet.appendChild(
         createAvailableAd("PUT YOUR BUSINESS HERE")
     );
 
 
-    /* Second sponsor CTA */
-
-    railSet.appendChild(
+    firstSet.appendChild(
         createFeaturedAd(
             "GET YOUR",
             "BRAND ON THE FESTIVAL",
@@ -2016,27 +2016,22 @@ function buildFestivalRail() {
     );
 
 
-    /*
-       Create the first half of the rail.
-       We then clone it for the seamless loop.
-    */
+    /* =========================================
+       ADD FIRST SET
+    ========================================= */
 
-    festivalAdTrack.appendChild(railSet);
-
-
-    const firstSet = festivalAdTrack.innerHTML;
-
-    festivalAdTrack.insertAdjacentHTML(
-        "beforeend",
-        firstSet
-    );
-}
+    track.appendChild(firstSet);
 
 
-/* Start the rail */
+    /* =========================================
+       DUPLICATE FOR SEAMLESS LOOP
+    ========================================= */
 
-buildFestivalRail();
+    const duplicate = track.cloneNode(true);
 
+    track.appendChild(duplicate);
+
+});
 </script>
 
 </body>
