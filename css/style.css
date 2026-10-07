@@ -4542,3 +4542,139 @@ body.modal-open {
     }
 
 }
+/* =========================================================
+   FESTIVAL AD / PARTNER RAIL
+   ========================================================= */
+
+.festival-ad-rail {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background: #0b0b0b;
+  border-bottom: 1px solid rgba(212,175,55,.3);
+}
+
+.festival-ad-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  width: max-content;
+  padding: 8px 0;
+
+  animation: festivalAdScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.festival-ad-rail:hover .festival-ad-track {
+  animation-play-state: paused;
+}
+
+/* The track holds two identical sets of tiles, so sliding
+   by -50% loops seamlessly. */
+@keyframes festivalAdScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.festival-ad-tile {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 210px;
+  height: 64px;
+
+  margin-right: 12px;
+  padding: 6px 12px;
+
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.15;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.festival-ad-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+/* Partner logo tile */
+.festival-ad-partner {
+  background: rgba(255,255,255,.06);
+}
+
+.festival-ad-partner img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Available ad space */
+.festival-ad-available {
+  background: rgba(255,255,255,.025);
+  border: 1px dashed rgba(212,175,55,.5);
+}
+
+/* Sponsor call-to-action */
+.festival-ad-featured {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  border-color: var(--gold);
+}
+
+.festival-ad-tile .ad-label {
+  color: var(--gold);
+  font-size: .5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.festival-ad-tile strong {
+  margin: 2px 0;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+.festival-ad-tile small {
+  color: rgba(255,255,255,.6);
+  font-size: .5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .festival-ad-tile {
+    width: 170px;
+    height: 56px;
+    margin-right: 10px;
+  }
+
+  .festival-ad-track {
+    animation-duration: 35s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .festival-ad-rail {
+    overflow-x: auto;
+  }
+
+  .festival-ad-track {
+    animation: none;
+  }
+}
