@@ -40,97 +40,13 @@
         FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD • FREE ADMISSION • NOVEMBER 28 • BAY STREET YARD •
     </div>
 </div>
+        
 <!-- ==================================
      FESTIVAL AD / PARTNER RAIL
 ================================== -->
 
 <div class="festival-ad-rail">
-
-    <div class="festival-ad-track">
-
-        <!-- AD SPACE -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>PUT YOUR BUSINESS HERE</small>
-        </a>
-
-        <!-- AD SPACE -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>REACH THE MISFIT CROWD</small>
-        </a>
-
-        <!-- SPONSOR SLOT -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-featured">
-            <span class="ad-label">BECOME A</span>
-            <strong>FESTIVAL PARTNER</strong>
-            <small>SPONSOR THE 2026 FESTIVAL</small>
-        </a>
-
-        <!-- AD SPACE -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>SUPPORT LIVE MUSIC + GIVING</small>
-        </a>
-
-        <!-- AD SPACE -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>PUT YOUR BUSINESS HERE</small>
-        </a>
-
-        <!-- SPONSOR SLOT -->
-        <a href="#sponsors" class="festival-ad-tile festival-ad-featured">
-            <span class="ad-label">GET YOUR</span>
-            <strong>BRAND ON THE FESTIVAL</strong>
-            <small>SPONSORSHIP OPPORTUNITIES</small>
-        </a>
-
-
-        <!-- DUPLICATE SET FOR SEAMLESS LOOP -->
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>PUT YOUR BUSINESS HERE</small>
-        </a>
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>REACH THE MISFIT CROWD</small>
-        </a>
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-featured">
-            <span class="ad-label">BECOME A</span>
-            <strong>FESTIVAL PARTNER</strong>
-            <small>SPONSOR THE 2026 FESTIVAL</small>
-        </a>
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>SUPPORT LIVE MUSIC + GIVING</small>
-        </a>
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-available">
-            <span class="ad-label">AD SPACE</span>
-            <strong>AVAILABLE</strong>
-            <small>PUT YOUR BUSINESS HERE</small>
-        </a>
-
-        <a href="#sponsors" class="festival-ad-tile festival-ad-featured">
-            <span class="ad-label">GET YOUR</span>
-            <strong>BRAND ON THE FESTIVAL</strong>
-            <small>SPONSORSHIP OPPORTUNITIES</small>
-        </a>
-
-    </div>
-
+    <div class="festival-ad-track" id="festivalAdTrack"></div>
 </div>
 <nav class="site-nav">
 
@@ -1945,6 +1861,182 @@
 
 
     <script src="js/script.js"></script>
+```html
+<script>
+/* =========================================================
+   FESTIVAL AD / PARTNER RAIL
+   Add new partners to the list below.
+   ========================================================= */
+
+const festivalPartners = [
+    {
+        image: "../images/mypetsvet.jpg",
+        name: "My Pets Vet"
+    },
+    {
+        image: "../images/theshirtseries.jpg",
+        name: "The Shirt Series"
+    },
+    {
+        image: "../images/musicatequila.jpg",
+        name: "Musica Tequila"
+    }
+
+    /* ADD NEW PARTNERS HERE
+
+    ,
+    {
+        image: "../images/newpartner.jpg",
+        name: "New Partner"
+    }
+
+    */
+];
+
+
+/* =========================================================
+   BUILD THE RAIL
+   You should not need to edit anything below this line.
+   ========================================================= */
+
+const festivalAdTrack = document.getElementById("festivalAdTrack");
+
+function createAvailableAd(text) {
+    const tile = document.createElement("a");
+
+    tile.href = "#sponsors";
+    tile.className = "festival-ad-tile festival-ad-available";
+
+    tile.innerHTML = `
+        <span class="ad-label">AD SPACE</span>
+        <strong>AVAILABLE</strong>
+        <small>${text}</small>
+    `;
+
+    return tile;
+}
+
+
+function createPartner(partner) {
+    const tile = document.createElement("a");
+
+    tile.href = "#sponsors";
+    tile.className = "festival-ad-tile festival-ad-partner";
+
+    tile.innerHTML = `
+        <img src="${partner.image}" alt="${partner.name}">
+    `;
+
+    return tile;
+}
+
+
+function createFeaturedAd(label, title, text) {
+    const tile = document.createElement("a");
+
+    tile.href = "#sponsors";
+    tile.className = "festival-ad-tile festival-ad-featured";
+
+    tile.innerHTML = `
+        <span class="ad-label">${label}</span>
+        <strong>${title}</strong>
+        <small>${text}</small>
+    `;
+
+    return tile;
+}
+
+
+function buildFestivalRail() {
+
+    const railSet = document.createDocumentFragment();
+
+    /* Add partners and available ad spaces */
+
+    festivalPartners.forEach((partner, index) => {
+
+        /* Partner */
+
+        railSet.appendChild(
+            createPartner(partner)
+        );
+
+
+        /* Available space after each partner */
+
+        if (index === 0) {
+
+            railSet.appendChild(
+                createAvailableAd("PUT YOUR BUSINESS HERE")
+            );
+
+        } else if (index === 1) {
+
+            railSet.appendChild(
+                createAvailableAd("REACH THE MISFIT CROWD")
+            );
+
+        } else {
+
+            railSet.appendChild(
+                createAvailableAd("SUPPORT LIVE MUSIC + GIVING")
+            );
+        }
+
+    });
+
+
+    /* Sponsor CTA */
+
+    railSet.appendChild(
+        createFeaturedAd(
+            "BECOME A",
+            "FESTIVAL PARTNER",
+            "SPONSOR THE 2026 FESTIVAL"
+        )
+    );
+
+
+    /* Additional available space */
+
+    railSet.appendChild(
+        createAvailableAd("PUT YOUR BUSINESS HERE")
+    );
+
+
+    /* Second sponsor CTA */
+
+    railSet.appendChild(
+        createFeaturedAd(
+            "GET YOUR",
+            "BRAND ON THE FESTIVAL",
+            "SPONSORSHIP OPPORTUNITIES"
+        )
+    );
+
+
+    /*
+       Create the first half of the rail.
+       We then clone it for the seamless loop.
+    */
+
+    festivalAdTrack.appendChild(railSet);
+
+
+    const firstSet = festivalAdTrack.innerHTML;
+
+    festivalAdTrack.insertAdjacentHTML(
+        "beforeend",
+        firstSet
+    );
+}
+
+
+/* Start the rail */
+
+buildFestivalRail();
+
+</script>
 
 </body>
 
