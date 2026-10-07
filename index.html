@@ -1859,16 +1859,13 @@
 
     </a>
 
+<script src="js/script.js"></script>
 
-    <script src="js/script.js"></script>
-    
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================================
        CURRENT COMMUNITY PARTNERS
-       Add new partners to this list.
     ========================================= */
 
     const festivalPartners = [
@@ -1886,6 +1883,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
+
+    /* =========================================
+       FIND THE AD TRACK
+    ========================================= */
 
     const track = document.getElementById("festivalAdTrack");
 
@@ -1957,77 +1958,112 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       BUILD FIRST SET
+       BUILD ONE COMPLETE AD SET
     ========================================= */
 
-    const firstSet = document.createDocumentFragment();
+    function buildAdSet() {
+
+        const fragment = document.createDocumentFragment();
+
+        festivalPartners.forEach(function (partner, index) {
+
+            fragment.appendChild(
+                createPartner(partner)
+            );
+
+            if (index === 0) {
+
+                fragment.appendChild(
+                    createAvailableAd(
+                        "PUT YOUR BUSINESS HERE"
+                    )
+                );
+
+            } else if (index === 1) {
+
+                fragment.appendChild(
+                    createAvailableAd(
+                        "REACH THE MISFIT CROWD"
+                    )
+                );
+
+            } else {
+
+                fragment.appendChild(
+                    createAvailableAd(
+                        "SUPPORT LIVE MUSIC + GIVING"
+                    )
+                );
+
+            }
+        });
 
 
-    festivalPartners.forEach(function (partner, index) {
+        /* =========================================
+           FEATURED SPONSOR TILE
+        ========================================= */
 
-        firstSet.appendChild(
-            createPartner(partner)
+        fragment.appendChild(
+            createFeaturedAd(
+                "BECOME A",
+                "FESTIVAL PARTNER",
+                "SPONSOR THE 2026 FESTIVAL"
+            )
         );
 
 
-        if (index === 0) {
+        /* =========================================
+           AVAILABLE AD TILE
+        ========================================= */
 
-            firstSet.appendChild(
-                createAvailableAd("PUT YOUR BUSINESS HERE")
-            );
-
-        } else if (index === 1) {
-
-            firstSet.appendChild(
-                createAvailableAd("REACH THE MISFIT CROWD")
-            );
-
-        } else {
-
-            firstSet.appendChild(
-                createAvailableAd("SUPPORT LIVE MUSIC + GIVING")
-            );
-
-        }
-
-    });
+        fragment.appendChild(
+            createAvailableAd(
+                "PUT YOUR BUSINESS HERE"
+            )
+        );
 
 
-    firstSet.appendChild(
-        createFeaturedAd(
-            "BECOME A",
-            "FESTIVAL PARTNER",
-            "SPONSOR THE 2026 FESTIVAL"
-        )
-    );
+        /* =========================================
+           FINAL SPONSOR CTA
+        ========================================= */
+
+        fragment.appendChild(
+            createFeaturedAd(
+                "GET YOUR",
+                "BRAND ON THE FESTIVAL",
+                "SPONSORSHIP OPPORTUNITIES"
+            )
+        );
 
 
-    firstSet.appendChild(
-        createAvailableAd("PUT YOUR BUSINESS HERE")
-    );
-
-
-    firstSet.appendChild(
-        createFeaturedAd(
-            "GET YOUR",
-            "BRAND ON THE FESTIVAL",
-            "SPONSORSHIP OPPORTUNITIES"
-        )
-    );
+        return fragment;
+    }
 
 
     /* =========================================
-       ADD FIRST SET
+       CLEAR ANY EXISTING AD CONTENT
     ========================================= */
 
-    track.appendChild(firstSet);
+    track.innerHTML = "";
 
 
     /* =========================================
-       DUPLICATE FOR SEAMLESS LOOP
+       ADD FIRST AD SET
+    ========================================= */
+
+    track.appendChild(
+        buildAdSet()
+    );
+
+
+    /* =========================================
+       DUPLICATE AD SET FOR SEAMLESS LOOP
     ========================================= */
 
     const duplicate = track.cloneNode(true);
+
+    /* Prevent duplicate IDs */
+    duplicate.removeAttribute("id");
 
     track.appendChild(duplicate);
 
