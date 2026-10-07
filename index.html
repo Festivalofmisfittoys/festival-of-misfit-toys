@@ -2060,14 +2060,14 @@ document.addEventListener("DOMContentLoaded", function () {
        DUPLICATE AD SET FOR SEAMLESS LOOP
     ========================================= */
 
-    const tiles = Array.from(track.children);
-
     tiles.forEach(function (tile) {
         const copy = tile.cloneNode(true);
         copy.setAttribute("aria-hidden", "true");
         copy.setAttribute("tabindex", "-1");
         track.appendChild(copy);
     });
+
+});
 </script>
 
 </body>
