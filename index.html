@@ -1885,7 +1885,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             image: "images/musicatequila.jpg",
             name: "Musica Tequila"
-        }
+        },
         {
         image: "images/schoolofrock.jpg",
         name: "School of Rock Fort Myers"
@@ -2064,17 +2064,17 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    /* =========================================
-       DUPLICATE AD SET FOR SEAMLESS LOOP
-    ========================================= */
+/* =========================================
+   DUPLICATE AD SET FOR SEAMLESS LOOP
+========================================= */
 
-    tiles.forEach(function (tile) {
-        const copy = tile.cloneNode(true);
-        copy.setAttribute("aria-hidden", "true");
-        copy.setAttribute("tabindex", "-1");
-        track.appendChild(copy);
-    });
+const tiles = Array.from(track.children);
 
+tiles.forEach(function (tile) {
+    const copy = tile.cloneNode(true);
+    copy.setAttribute("aria-hidden", "true");
+    copy.setAttribute("tabindex", "-1");
+    track.appendChild(copy);
 });
 </script>
 
